@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SpeakZilla — Speak English, know exactly what to fix</title>
+<meta name="description" content="SpeakZilla listens as you read a sentence aloud and scores your pronunciation word by word. Choose a British or American coach and practise until you are understood the first time.">
+<link rel="icon" href="assets/icon.png">
+<meta property="og:title" content="SpeakZilla — Speak English, know exactly what to fix">
+<meta property="og:description" content="Word-by-word pronunciation feedback with a British or American coach.">
+<meta property="og:image" content="assets/icon.png">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0f0e17; --paper:#f4f2ff; --surface:#fff; --muted:#6e6d7a;
+    --accent:#ff6b35; --teal:#00c9a7; --indigo:#6c63ff; --border:#e5e4ef;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--paper);color:var(--ink);
+       font:16px/1.6 system-ui,-apple-system,"Segoe UI",sans-serif}
+  .wrap{max-width:960px;margin:0 auto;padding:0 20px}
+  h1,h2,h3{font-family:Fredoka,system-ui,sans-serif;font-weight:700;line-height:1.2;margin:0}
+  a{color:var(--accent)}
+
+  header{background:var(--ink);padding:14px 0}
+  .bar{display:flex;align-items:center;justify-content:space-between}
+  .brand{display:flex;align-items:center;gap:10px;color:#fff;text-decoration:none}
+  .brand img{width:32px;height:32px;border-radius:9px}
+  .brand span{font-family:Fredoka,sans-serif;font-size:19px;font-weight:700}
+  .bar a.nav{color:rgba(255,255,255,.6);text-decoration:none;font-size:14px}
+
+  .hero{background:var(--ink);color:#fff;padding:56px 0 72px;text-align:center}
+  .hero img.mark{width:104px;height:104px;border-radius:26px;margin-bottom:22px}
+  .hero h1{font-size:clamp(30px,6vw,48px)}
+  .hero h1 em{font-style:normal;color:var(--accent)}
+  .hero p{color:rgba(255,255,255,.65);font-size:clamp(16px,2.4vw,19px);max-width:560px;margin:16px auto 0}
+  .badges{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:30px}
+  .badge{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);
+         border-radius:12px;padding:11px 18px;color:rgba(255,255,255,.75);font-size:14px}
+
+  section{padding:64px 0}
+  .lede{color:var(--muted);max-width:620px;margin-top:10px}
+  .steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-top:32px}
+  .step{background:var(--surface);border-radius:16px;padding:22px}
+  .n{width:32px;height:32px;border-radius:50%;background:var(--accent);color:#fff;
+     display:flex;align-items:center;justify-content:center;font-weight:700;margin-bottom:12px}
+  .step h3{font-size:17px;margin-bottom:6px}
+  .step p{margin:0;color:var(--muted);font-size:15px}
+
+  .coaches{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px;margin-top:32px}
+  .coach{background:var(--surface);border-radius:20px;padding:22px;display:flex;gap:16px;align-items:center}
+  .coach img{width:88px;height:88px;border-radius:50%;flex:none}
+  .coach h3{font-size:19px}
+  .coach .accent{font-size:13px;font-weight:700;margin:2px 0 6px}
+  .coach p{margin:0;color:var(--muted);font-size:14px}
+
+  .cta{background:var(--ink);color:#fff;border-radius:24px;padding:44px 28px;text-align:center;margin:0 0 64px}
+  .cta h2{font-size:clamp(22px,4vw,30px)}
+  .cta p{color:rgba(255,255,255,.6);margin:12px auto 0;max-width:460px}
+
+  footer{border-top:1px solid var(--border);padding:28px 0 44px;color:var(--muted);font-size:14px}
+  footer .row{display:flex;gap:18px;flex-wrap:wrap;justify-content:space-between}
+  footer a{color:var(--muted)}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap bar">
+    <a class="brand" href="/"><img src="assets/icon.png" alt=""><span>SpeakZilla</span></a>
+    <a class="nav" href="/privacy.html">Privacy</a>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="wrap">
+    <img class="mark" src="assets/icon.png" alt="SpeakZilla">
+    <h1>Speak English.<br>Know <em>exactly</em> what to fix.</h1>
+    <p>SpeakZilla listens as you read a sentence aloud and scores your pronunciation
+       word by word — so instead of guessing, you can see which sounds landed and which need another try.</p>
+    <div class="badges">
+      <div class="badge">iOS — coming soon</div>
+      <div class="badge">Android — coming soon</div>
+    </div>
+  </div>
+</div>
+
+<section class="wrap">
+  <h2>How it works</h2>
+  <p class="lede">Three steps, about a minute each.</p>
+  <div class="steps">
+    <div class="step">
+      <div class="n">1</div>
+      <h3>Listen</h3>
+      <p>Your coach reads the sentence, so you know what it should sound like.</p>
+    </div>
+    <div class="step">
+      <div class="n">2</div>
+      <h3>Speak</h3>
+      <p>Read it aloud. SpeakZilla listens while you talk, not after.</p>
+    </div>
+    <div class="step">
+      <div class="n">3</div>
+      <h3>See the detail</h3>
+      <p>Every word is scored and colour-coded, so you know precisely what to work on.</p>
+    </div>
+  </div>
+</section>
+
+<section class="wrap">
+  <h2>Choose your accent</h2>
+  <p class="lede">Two coaches, two accents. Whichever you pick speaks every example you practise —
+     so you train the English you actually want to sound like.</p>
+  <div class="coaches">
+    <div class="coach">
+      <img src="assets/alex.png" alt="Alex">
+      <div>
+        <h3>Alex</h3>
+        <div class="accent" style="color:var(--indigo)">British English</div>
+        <p>Calm and precise — good for clean, crisp consonants.</p>
+      </div>
+    </div>
+    <div class="coach">
+      <img src="assets/sofia.png" alt="Sofia">
+      <div>
+        <h3>Sofia</h3>
+        <div class="accent" style="color:var(--accent)">American English</div>
+        <p>Warm and encouraging — natural, everyday rhythm.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="wrap">
+  <div class="cta">
+    <h2>Launching soon</h2>
+    <p>SpeakZilla is coming to the App Store and Google Play.
+       Until then, you can reach us at the address below.</p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap row">
+    <div>© <span id="y"></span> SpeakZilla</div>
+    <div>
+      <a href="/privacy.html">Privacy policy</a> &nbsp;·&nbsp;
+      <a href="mailto:support@speakzilla.app">support@speakzilla.app</a>
+    </div>
+  </div>
+</footer>
+
+<script>document.getElementById('y').textContent = new Date().getFullYear()</script>
+</body>
+</html>
