@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Set a new password — SpeakZilla</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="assets/icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@600;700&display=swap" rel="stylesheet">
+<style>
+  :root{--ink:#0f0e17;--paper:#f4f2ff;--surface:#fff;--muted:#6e6d7a;--accent:#ff6b35;
+        --border:#e5e4ef;--ok:#00c9a7;--bad:#ff4d6d}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--paper);color:var(--ink);
+       font:16px/1.6 system-ui,-apple-system,"Segoe UI",sans-serif}
+  header{background:var(--ink);padding:14px 0}
+  .wrap{max-width:460px;margin:0 auto;padding:0 20px}
+  .brand{display:flex;align-items:center;gap:10px;color:#fff;text-decoration:none}
+  .brand img{width:30px;height:30px;border-radius:8px}
+  .brand span{font-family:Fredoka,sans-serif;font-size:18px;font-weight:700}
+  main{background:var(--surface);border-radius:20px;padding:30px 26px;margin:36px auto 48px}
+  h1{font-family:Fredoka,sans-serif;font-size:24px;margin:0 0 6px}
+  p.lede{color:var(--muted);font-size:14px;margin:0 0 22px}
+  label{display:block;font-size:13px;font-weight:600;margin:0 0 6px}
+  input{width:100%;padding:13px 14px;font-size:16px;border:1px solid var(--border);
+        border-radius:12px;background:#fbfaff}
+  input:focus{outline:2px solid var(--accent);outline-offset:1px}
+  .hint{font-size:12px;color:var(--muted);margin:6px 0 18px}
+  button{width:100%;padding:15px;font-size:16px;font-weight:700;color:#fff;background:var(--accent);
+         border:0;border-radius:12px;cursor:pointer}
+  button:disabled{opacity:.55;cursor:default}
+  .msg{margin-top:16px;font-size:14px;line-height:1.5}
+  .ok{color:#0a8f78}.bad{color:#c4374f}
+  .done{text-align:center}
+  .done .tick{font-size:44px;color:var(--ok);line-height:1}
+  a{color:var(--accent)}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap"><a class="brand" href="/"><img src="assets/icon.png" alt=""><span>SpeakZilla</span></a></div>
+</header>
+
+<div class="wrap">
+  <main id="card">
+    <h1>Set a new password</h1>
+    <p class="lede">Choose a new password for your SpeakZilla account, then sign in on the app.</p>
+
+    <form id="form">
+      <label for="pw">New password</label>
+      <input id="pw" type="password" autocomplete="new-password" minlength="8" required>
+      <p class="hint">At least 8 characters.</p>
+      <button id="go" type="submit">Update password</button>
+    </form>
+    <p id="msg" class="msg"></p>
+  </main>
+</div>
+
+<script>
+const SUPABASE_URL = 'https://xfgrmhstzvrryexsosiz.supabase.co';
+const ANON = 'sb_publishable_Gy_fvxYEMZrIUE_gqh2e3Q_l8sK_xkz';
+
+// Supabase returns the recovery token in the URL fragment, which never leaves
+// the browser — so it is read here and then cleared from the address bar so it
+// is not left sitting in history.
+const hash = new URLSearchParams(location.hash.replace(/^#/, ''));
+const token = hash.get('access_token');
+const errDesc = hash.get('error_description');
+history.replaceState(null, '', location.pathname);
+
+const msg = document.getElementById('msg');
+const form = document.getElementById('form');
+const go = document.getElementById('go');
+
+function fail(text) { msg.className = 'msg bad'; msg.textContent = text; }
+
+if (errDesc) {
+  form.style.display = 'none';
+  fail(errDesc + ' — request a new link from the app.');
+} else if (!token) {
+  form.style.display = 'none';
+  fail('This link is missing its reset token. Open the most recent link from your email, or request a new one in the app.');
+}
+
+form.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const pw = document.getElementById('pw').value;
+  if (pw.length < 8) { fail('Password must be at least 8 characters.'); return; }
+
+  go.disabled = true; go.textContent = 'Updating…';
+  msg.textContent = '';
+  try {
+    const res = await fetch(SUPABASE_URL + '/auth/v1/user', {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+        apikey: ANON,
+        Authorization: 'Bearer ' + token,
+      },
+      body: JSON.stringify({ password: pw }),
+    });
+    const j = await res.json().catch(() => ({}));
+    if (!res.ok) throw new Error(j.msg || j.error_description || j.message || 'Could not update the password');
+
+    document.getElementById('card').innerHTML =
+      '<div class="done"><div class="tick">&#10003;</div>' +
+      '<h1>Password updated</h1>' +
+      '<p class="lede">Open SpeakZilla and sign in with your new password.</p>' +
+      '<p><a href="/">Back to speakzilla.app</a></p></div>';
+  } catch (err) {
+    go.disabled = false; go.textContent = 'Update password';
+    // A link that has expired reads as an auth failure; say so plainly.
+    fail(/expired|invalid|JWT/i.test(err.message)
+      ? 'That reset link has expired. Request a new one from the app.'
+      : err.message);
+  }
+});
+</script>
+</body>
+</html>
