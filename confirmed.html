@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Email confirmed — SpeakZilla</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="assets/icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@600;700&display=swap" rel="stylesheet">
+<style>
+  :root{--ink:#0f0e17;--paper:#f4f2ff;--surface:#fff;--muted:#6e6d7a;--accent:#ff6b35;
+        --border:#e5e4ef;--ok:#00c9a7}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--paper);color:var(--ink);
+       font:16px/1.6 system-ui,-apple-system,"Segoe UI",sans-serif}
+  header{background:var(--ink);padding:14px 0}
+  .wrap{max-width:460px;margin:0 auto;padding:0 20px}
+  .brand{display:flex;align-items:center;gap:10px;color:#fff;text-decoration:none}
+  .brand img{width:30px;height:30px;border-radius:8px}
+  .brand span{font-family:Fredoka,sans-serif;font-size:18px;font-weight:700}
+  main{background:var(--surface);border-radius:20px;padding:34px 26px;margin:36px auto 48px;
+       text-align:center}
+  .tick{font-size:52px;color:var(--ok);line-height:1;margin-bottom:6px}
+  h1{font-family:Fredoka,sans-serif;font-size:24px;margin:0 0 8px}
+  p.lede{color:var(--muted);font-size:14px;margin:0 0 8px}
+  .steps{text-align:left;border-top:1px solid var(--border);margin-top:24px;padding-top:20px;
+         font-size:14px;color:var(--muted)}
+  .steps b{color:var(--ink)}
+  a{color:var(--accent)}
+  .bad .tick{color:#ff4d6d}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap"><a class="brand" href="/"><img src="assets/icon.png" alt=""><span>SpeakZilla</span></a></div>
+</header>
+
+<div class="wrap">
+  <main id="card">
+    <div class="tick">&#10003;</div>
+    <h1>Email confirmed</h1>
+    <p class="lede">Your SpeakZilla account is ready.</p>
+    <div class="steps">
+      <p style="margin:0 0 6px"><b>Next:</b> open SpeakZilla on your phone and sign in with
+      the email and password you just used.</p>
+      <p style="margin:0">You will take a short placement test so your coach knows where to
+      start you — about two minutes, and you can retake it any time.</p>
+    </div>
+  </main>
+</div>
+
+<script>
+// Supabase redirects here after verifying the address. A successful confirm
+// carries tokens in the fragment; a stale or reused link carries an error
+// instead. Either way the fragment is cleared so nothing lingers in history.
+const hash = new URLSearchParams(location.hash.replace(/^#/, ''));
+const errDesc = hash.get('error_description');
+const errCode = hash.get('error');
+history.replaceState(null, '', location.pathname);
+
+if (errDesc || errCode) {
+  const expired = /expired|invalid/i.test(errDesc || errCode);
+  document.getElementById('card').className = 'bad';
+  document.getElementById('card').innerHTML =
+    '<div class="tick">!</div>' +
+    '<h1>' + (expired ? 'This link has expired' : 'That link did not work') + '</h1>' +
+    '<p class="lede">' + (expired
+      ? 'Confirmation links are single-use and time limited. Open SpeakZilla and sign up again with the same email to get a fresh one.'
+      : (errDesc || 'Something went wrong confirming your email.') + ' Open SpeakZilla and try again.') +
+    '</p>' +
+    '<div class="steps"><p style="margin:0">Still stuck? Email ' +
+    '<a href="mailto:support@speakzilla.app">support@speakzilla.app</a> and we will sort it out.</p></div>';
+}
+</script>
+</body>
+</html>
