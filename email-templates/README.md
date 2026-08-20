@@ -34,3 +34,35 @@ Other deliberate choices:
 The templates cannot change who the mail is from. That needs custom SMTP —
 until then Supabase sends as "Supabase Auth", and only to team member
 addresses, capped at 2 messages an hour.
+
+## Custom SMTP (Resend)
+
+Verify the **root** domain `speakzilla.app` in Resend, not a subdomain — Resend
+already scopes its own records under `send.`, so nothing lands on the root and
+nothing collides with the Cloudflare Email Routing records that deliver
+support@. All three records go in Cloudflare as **DNS Only** (grey cloud); the
+proxy breaks mail records.
+
+| Type | Name | Value |
+| --- | --- | --- |
+| MX | `send` | `feedback-smtp.<region>.amazonses.com`, priority 10 |
+| TXT | `send` | `v=spf1 include:amazonses.com ~all` |
+| TXT | `resend._domainkey` | the `p=...` key from Resend |
+
+Supabase → Authentication → Emails → SMTP Settings:
+
+| Field | Value |
+| --- | --- |
+| Host | `smtp.resend.com` |
+| Port | `465` |
+| Username | `resend` (the literal word) |
+| Password | Resend API key — sending access, scoped to the domain |
+| Sender email | `support@speakzilla.app` |
+| Sender name | `SpeakZilla` |
+
+`support@` rather than `noreply@` on purpose: it already routes to Gmail, and
+people reply to confirmation mail when something has gone wrong.
+
+Afterwards raise the limit under Authentication → Rate Limits — it stays at 30
+an hour until changed. Test with an address that is **not** a Supabase team
+member, since a team address would have worked before SMTP too.
