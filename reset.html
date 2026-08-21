@@ -51,7 +51,7 @@
     <form id="form">
       <label for="pw">New password</label>
       <input id="pw" type="password" autocomplete="new-password" minlength="8" required>
-      <p class="hint">At least 8 characters.</p>
+      <p class="hint" id="rules">At least 8 characters, one number and one special character.</p>
       <button id="go" type="submit">Update password</button>
     </form>
     <p id="msg" class="msg"></p>
@@ -87,7 +87,15 @@ if (errDesc) {
 form.addEventListener('submit', async (e) => {
   e.preventDefault();
   const pw = document.getElementById('pw').value;
-  if (pw.length < 8) { fail('Password must be at least 8 characters.'); return; }
+  // Same list the app enforces on sign-up (PASSWORD_RULES in App.tsx) and the
+  // same one Supabase enforces server-side. Checked here only so the failure
+  // reads as a sentence rather than a raw API error.
+  const unmet = [
+    ['at least 8 characters', pw.length >= 8],
+    ['a number', /\d/.test(pw)],
+    ['a special character', /[^A-Za-z0-9]/.test(pw)],
+  ].find(([, ok]) => !ok);
+  if (unmet) { fail('Your password needs ' + unmet[0] + '.'); return; }
 
   go.disabled = true; go.textContent = 'Updating…';
   msg.textContent = '';
