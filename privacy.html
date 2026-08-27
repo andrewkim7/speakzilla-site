@@ -68,17 +68,17 @@
 <li>Your lesson progress, scores, accuracy history, streaks, points, tokens,</li>
 </ul>
 <p>  daily missions, and which lessons you've completed.</p>
-<p><strong>c) Voice recordings and transcripts</strong> *(the most important category — see</p>
-<p>Section 3)*</p>
+<p><strong>c) Your speech, and the transcript of it</strong> *(the most important category —</p>
+<p>see Section 3)*</p>
 <ul>
-<li>When you practise, your speech is captured and sent for scoring, and a</li>
+<li>When you practise, your speech is captured and streamed for scoring, and a</li>
 </ul>
-<p>  text transcript of what you said is generated. See Section 3 for what is</p>
-<p>  and is not kept.</p>
+<p>  text transcript of what you said is generated.</p>
 <ul>
-<li>We store the transcript and the resulting pronunciation scores (overall</li>
+<li>We store the transcript and the resulting pronunciation scores (overall and</li>
 </ul>
-<p>  and per word/sound).</p>
+<p>  per word/sound). <strong>On the mobile app we do not store the audio itself</strong> —</p>
+<p>  see Section 3.</p>
 <p><strong>d) Information collected automatically</strong></p>
 <ul>
 <li>Basic technical data needed to run and secure the service (for example</li>
@@ -126,7 +126,7 @@
 <p>processes data on our behalf under their own terms and security controls:</p>
 <table>
 <tr><th>Provider</th><th>Purpose</th><th>What it handles</th></tr>
-<tr><td><strong>Supabase</strong></td><td>Database, authentication, file storage</td><td>Account, progress, transcripts, and (web only) audio recordings</td></tr>
+<tr><td><strong>Supabase</strong></td><td>Database, authentication, file storage</td><td>Account, progress and transcripts. Audio recordings only from the web app; the mobile app uploads none</td></tr>
 <tr><td><strong>Microsoft Azure AI Speech</strong></td><td>Speech recognition + pronunciation assessment; text-to-speech</td><td>Audio clips and reference text</td></tr>
 <tr><td><strong>Cloudflare</strong></td><td>App hosting and delivery</td><td>Technical/log data (e.g. IP)</td></tr>
 </table>
@@ -140,12 +140,14 @@
 <p>part of a business transfer (e.g. merger or acquisition), in which case we</p>
 <p>will notify you where required.</p>
 <h2>6. Data retention</h2>
-<p>We keep your account and progress data for as long as your account is</p>
-<p>active. We retain voice recordings for <strong>90 days</strong></p>
-<p>to power feedback and progress features, after which they are</p>
-<p>automatically deleted. When you delete your account, we delete or</p>
-<p>anonymise your personal data within <strong>30 days</strong>, except</p>
-<p>where we must retain some data to comply with legal obligations.</p>
+<p>We keep your account and progress data for as long as your account is active.</p>
+<p><strong>The mobile app does not store your voice recordings at all.</strong> Your speech is</p>
+<p>streamed for scoring and discarded; only the transcript and the scores are</p>
+<p>kept. Where a recording is stored — currently only if you practise on the web —</p>
+<p>it is deleted automatically after <strong>90 days</strong>.</p>
+<p>When you delete your account, we delete or anonymise your personal data within</p>
+<p><strong>30 days</strong>, except where we must retain some data to comply with legal</p>
+<p>obligations.</p>
 <h2>7. Your rights and choices</h2>
 <p>Depending on where you live (e.g. under GDPR or CCPA/CPRA), you may have</p>
 <p>the right to:</p>

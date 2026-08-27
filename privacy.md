@@ -29,13 +29,13 @@ on the web or in our mobile apps.
 - Your lesson progress, scores, accuracy history, streaks, points, tokens,
   daily missions, and which lessons you've completed.
 
-**c) Voice recordings and transcripts** *(the most important category — see
-Section 3)*
-- When you practise, your speech is captured and sent for scoring, and a
-  text transcript of what you said is generated. See Section 3 for what is
-  and is not kept.
-- We store the transcript and the resulting pronunciation scores (overall
-  and per word/sound).
+**c) Your speech, and the transcript of it** *(the most important category —
+see Section 3)*
+- When you practise, your speech is captured and streamed for scoring, and a
+  text transcript of what you said is generated.
+- We store the transcript and the resulting pronunciation scores (overall and
+  per word/sound). **On the mobile app we do not store the audio itself** —
+  see Section 3.
 
 **d) Information collected automatically**
 - Basic technical data needed to run and secure the service (for example
@@ -85,7 +85,7 @@ processes data on our behalf under their own terms and security controls:
 
 | Provider | Purpose | What it handles |
 | --- | --- | --- |
-| **Supabase** | Database, authentication, file storage | Account, progress, transcripts, and (web only) audio recordings |
+| **Supabase** | Database, authentication, file storage | Account, progress and transcripts. Audio recordings only from the web app; the mobile app uploads none |
 | **Microsoft Azure AI Speech** | Speech recognition + pronunciation assessment; text-to-speech | Audio clips and reference text |
 | **Cloudflare** | App hosting and delivery | Technical/log data (e.g. IP) |
 
@@ -100,12 +100,16 @@ will notify you where required.
 
 ## 6. Data retention
 
-We keep your account and progress data for as long as your account is
-active. We retain voice recordings for **90 days**
-to power feedback and progress features, after which they are
-automatically deleted. When you delete your account, we delete or
-anonymise your personal data within **30 days**, except
-where we must retain some data to comply with legal obligations.
+We keep your account and progress data for as long as your account is active.
+
+**The mobile app does not store your voice recordings at all.** Your speech is
+streamed for scoring and discarded; only the transcript and the scores are
+kept. Where a recording is stored — currently only if you practise on the web —
+it is deleted automatically after **90 days**.
+
+When you delete your account, we delete or anonymise your personal data within
+**30 days**, except where we must retain some data to comply with legal
+obligations.
 
 
 ## 7. Your rights and choices
