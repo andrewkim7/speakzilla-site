@@ -41,11 +41,23 @@ body = re.sub(r'(?<!href=")\b(https?://[^\s<)]+)', r'<a href="\1">\1</a>', body)
 # any unfilled placeholder stays impossible to miss
 body = re.sub(r'\[([A-Z][A-Z /—-]*[A-Z])\]', r'<mark>[\1]</mark>', body)
 
+# privacy.html is its own template: everything outside the markers — the
+# shared header, the footer, the styles — is preserved, and only the generated
+# body between them is replaced.
+#
+# The markers used to be `<main>` and the back link, so the boundary depended
+# on whatever markup happened to sit there. When the back link was replaced by
+# a real footer, a regeneration put the old link back and dropped a marker.
+# Explicit comments cannot be moved by accident, and a missing one now stops
+# the build rather than being guessed at.
+START, END = '<!-- content:start -->', '<!-- content:end -->'
 shell = io.open('privacy.html', encoding='utf-8').read()
-head, tail = shell.split('  <main>\n', 1)
-tail = tail.split('    <a class="back"', 1)[1]
+if START not in shell or END not in shell:
+    raise SystemExit('privacy.html is missing the content markers — refusing '
+                     'to guess where the generated section begins.')
 io.open('privacy.html', 'w', encoding='utf-8').write(
-    head + '  <main>\n' + body + '\n    <a class="back"' + tail)
+    shell.split(START, 1)[0] + START + '\n' + body + '\n' + END
+    + shell.split(END, 1)[1])
 
 left = re.findall(r'<mark>\[[^\]]+\]</mark>', body)
 print('rebuilt privacy.html —', len(left), 'placeholder(s) left:',
