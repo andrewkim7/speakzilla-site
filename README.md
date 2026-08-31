@@ -9,6 +9,8 @@ alongside the app. The app itself lives in `speakzilla-mobile`.
 
 - `index.html`  — landing page
 - `privacy.html` — privacy policy (converted from the mobile repo's PRIVACY.md)
+- `support.html` — support page. Apple requires a support URL for the store
+  listing, and an email address alone does not satisfy it.
 - `assets/`      — mascot and coach portraits, shared with the app
 
 ## Before publishing
