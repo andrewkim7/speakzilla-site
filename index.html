@@ -60,6 +60,16 @@
   .cta{background:var(--ink);color:#fff;border-radius:24px;padding:44px 28px;text-align:center;margin:0 0 64px}
   .cta h2{font-size:clamp(22px,4vw,30px)}
   .cta p{color:rgba(255,255,255,.6);margin:12px auto 0;max-width:460px}
+  .notify{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;max-width:460px;margin:22px auto 0}
+  .notify input{flex:1 1 240px;min-width:0;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);
+    border-radius:12px;padding:13px 15px;color:#fff;font-size:16px}
+  .notify input::placeholder{color:rgba(255,255,255,.45)}
+  .notify button{background:var(--accent);color:#fff;border:0;border-radius:12px;padding:13px 22px;
+    font-size:16px;font-weight:700;cursor:pointer}
+  .notify button:disabled{opacity:.6;cursor:default}
+  .notify-msg{min-height:20px;font-size:14px;margin-top:14px}
+  .notify-msg.ok{color:var(--teal)}
+  .hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
 
   footer{border-top:1px solid var(--border);padding:28px 0 44px;color:var(--muted);font-size:14px}
   footer .row{display:flex;gap:18px;flex-wrap:wrap;justify-content:space-between}
@@ -137,9 +147,16 @@
 
 <section class="wrap">
   <div class="cta">
-    <h2>Launching soon</h2>
-    <p>SpeakZilla is coming to the App Store and Google Play.
-       Until then, you can reach us at the address below.</p>
+    <h2>Be first to know when it launches</h2>
+    <p>SpeakZilla is coming to the App Store and Google Play. Leave your email and
+       we'll tell you the moment it's live — nothing else, ever.</p>
+    <form id="notify" class="notify" novalidate>
+      <input id="email" type="email" required placeholder="you@example.com"
+             autocomplete="email" aria-label="Email address">
+      <input class="hp" type="text" id="website" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <button type="submit">Notify me</button>
+    </form>
+    <p id="notify-msg" class="notify-msg" role="status" aria-live="polite"></p>
   </div>
 </section>
 
@@ -155,5 +172,37 @@
 </footer>
 
 <script>document.getElementById('y').textContent = new Date().getFullYear()</script>
+
+<script>
+// Launch waitlist. Writes straight to Supabase with the publishable key
+// (insert-only under RLS, so the list can be added to but never read back from
+// here). return=minimal because the anon role has no read on the table.
+(function () {
+  var SB_URL = 'https://xfgrmhstzvrryexsosiz.supabase.co';
+  var SB_KEY = 'sb_publishable_Gy_fvxYEMZrIUE_gqh2e3Q_l8sK_xkz';
+  var form = document.getElementById('notify');
+  var msg = document.getElementById('notify-msg');
+  var btn = form.querySelector('button');
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    if (document.getElementById('website').value) { done("You're on the list. We'll email you at launch."); return; } // honeypot
+    var email = document.getElementById('email').value.trim();
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { msg.className = 'notify-msg'; msg.textContent = 'Please enter a valid email address.'; return; }
+    btn.disabled = true; btn.textContent = 'Sending…'; msg.textContent = '';
+    fetch(SB_URL + '/rest/v1/waitlist', {
+      method: 'POST',
+      headers: { apikey: SB_KEY, Authorization: 'Bearer ' + SB_KEY, 'Content-Type': 'application/json', Prefer: 'return=minimal' },
+      body: JSON.stringify({ email: email, source: 'site' })
+    }).then(function (res) {
+      if (res.ok) done("You're on the list. We'll email you the moment it's live.");
+      else if (res.status === 409) done("You're already on the list — talk soon.");
+      else fail();
+    }).catch(fail);
+  });
+  function done(text) { form.style.display = 'none'; msg.className = 'notify-msg ok'; msg.textContent = text; }
+  function fail() { btn.disabled = false; btn.textContent = 'Notify me'; msg.className = 'notify-msg';
+    msg.textContent = 'Something went wrong — please try again, or email support@speakzilla.app.'; }
+})();
+</script>
 </body>
 </html>
