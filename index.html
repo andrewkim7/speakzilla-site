@@ -70,6 +70,11 @@
   .notify-msg{min-height:20px;font-size:14px;margin-top:14px}
   .notify-msg.ok{color:var(--teal)}
   .hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
+  .plat{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;max-width:460px;margin:20px auto 0}
+  .plat .opt{cursor:pointer;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.2);
+    border-radius:999px;padding:8px 16px;font-size:14px;color:rgba(255,255,255,.72);user-select:none}
+  .plat .opt input{position:absolute;opacity:0;width:0;height:0}
+  .plat .opt.sel{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:700}
 
   footer{border-top:1px solid var(--border);padding:28px 0 44px;color:var(--muted);font-size:14px}
   footer .row{display:flex;gap:18px;flex-wrap:wrap;justify-content:space-between}
@@ -148,8 +153,13 @@
 <section class="wrap">
   <div class="cta">
     <h2>Be first to know when it launches</h2>
-    <p>SpeakZilla is coming to the App Store and Google Play. Leave your email and
-       we'll tell you the moment it's live — nothing else, ever.</p>
+    <p>SpeakZilla is coming to the App Store and Google Play. Pick your platform,
+       leave your email, and we'll tell you the moment it's live on it — nothing else, ever.</p>
+    <div class="plat" role="radiogroup" aria-label="Which platform are you waiting for?">
+      <label class="opt sel"><input type="radio" name="platform" value="ios" checked>iPhone</label>
+      <label class="opt"><input type="radio" name="platform" value="android">Android</label>
+      <label class="opt"><input type="radio" name="platform" value="both">Both</label>
+    </div>
     <form id="notify" class="notify" novalidate>
       <input id="email" type="email" required placeholder="you@example.com"
              autocomplete="email" aria-label="Email address">
@@ -183,16 +193,24 @@
   var form = document.getElementById('notify');
   var msg = document.getElementById('notify-msg');
   var btn = form.querySelector('button');
+  var plat = document.querySelector('.plat');
+  // Highlight the chosen platform pill (no :has() dependency).
+  plat.addEventListener('change', function () {
+    var opts = plat.querySelectorAll('.opt');
+    for (var i = 0; i < opts.length; i++) opts[i].classList.toggle('sel', opts[i].querySelector('input').checked);
+  });
   form.addEventListener('submit', function (e) {
     e.preventDefault();
     if (document.getElementById('website').value) { done("You're on the list. We'll email you at launch."); return; } // honeypot
     var email = document.getElementById('email').value.trim();
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { msg.className = 'notify-msg'; msg.textContent = 'Please enter a valid email address.'; return; }
+    var picked = plat.querySelector('input:checked');
+    var platform = picked ? picked.value : 'both';
     btn.disabled = true; btn.textContent = 'Sending…'; msg.textContent = '';
     fetch(SB_URL + '/rest/v1/waitlist', {
       method: 'POST',
       headers: { apikey: SB_KEY, Authorization: 'Bearer ' + SB_KEY, 'Content-Type': 'application/json', Prefer: 'return=minimal' },
-      body: JSON.stringify({ email: email, source: 'site' })
+      body: JSON.stringify({ email: email, platform: platform, source: 'site' })
     }).then(function (res) {
       if (res.ok) done("You're on the list. We'll email you the moment it's live.");
       else if (res.status === 409) done("You're already on the list — talk soon.");
