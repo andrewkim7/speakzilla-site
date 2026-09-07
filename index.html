@@ -76,6 +76,20 @@
   .plat .opt input{position:absolute;opacity:0;width:0;height:0}
   .plat .opt.sel{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:700}
 
+  .dl{background:#fff;color:var(--ink);text-decoration:none;font-family:Fredoka,sans-serif;
+      font-weight:700;font-size:16px;padding:13px 22px;border-radius:13px;display:inline-flex;align-items:center;gap:8px}
+
+  .shots{background:#14121d;padding:64px 0}
+  .shots h2{color:#fff}
+  .shots .lede{color:rgba(255,255,255,.6)}
+  .gallery{display:flex;gap:18px;overflow-x:auto;margin-top:30px;padding-bottom:12px;
+           scroll-snap-type:x proximity;scrollbar-width:thin}
+  .gallery img{width:258px;height:auto;flex:none;border-radius:22px;scroll-snap-align:center;
+               box-shadow:0 20px 50px rgba(0,0,0,.5)}
+  .gallery::-webkit-scrollbar{height:8px}
+  .gallery::-webkit-scrollbar-track{background:rgba(255,255,255,.06);border-radius:99px}
+  .gallery::-webkit-scrollbar-thumb{background:rgba(255,255,255,.22);border-radius:99px}
+
   footer{border-top:1px solid var(--border);padding:28px 0 44px;color:var(--muted);font-size:14px}
   footer .row{display:flex;gap:18px;flex-wrap:wrap;justify-content:space-between}
   footer a{color:var(--muted)}
@@ -98,11 +112,34 @@
     <p>SpeakZilla listens as you read a sentence aloud and scores your pronunciation
        word by word — so instead of guessing, you can see which sounds landed and which need another try.</p>
     <div class="badges">
+      <!-- LAUNCH DAY (iOS live): delete this "iOS — coming soon" badge and
+           uncomment the download button below. Keep the Android badge until
+           Android ships. -->
       <div class="badge">iOS — coming soon</div>
       <div class="badge">Android — coming soon</div>
+      <!-- LAUNCH DAY — uncomment on iOS launch. Optionally swap for Apple's
+           official "Download on the App Store" badge:
+           https://developer.apple.com/app-store/marketing/guidelines/
+      <a class="dl" href="https://apps.apple.com/app/id6805255043">Download on the App Store</a>
+      -->
     </div>
   </div>
 </div>
+
+<section class="shots">
+  <div class="wrap">
+    <h2>See it in action</h2>
+    <p class="lede">Real screens — a scored sentence, your coach, a map of forty sounds, and your progress.</p>
+    <div class="gallery">
+      <img src="assets/shots/shot-1.jpg" width="720" height="1558" loading="lazy" alt="A sentence scored word by word, with a percentage and per-word colours">
+      <img src="assets/shots/shot-2.jpg" width="720" height="1558" loading="lazy" alt="Choosing a British or American coach">
+      <img src="assets/shots/shot-3.jpg" width="720" height="1558" loading="lazy" alt="The Sound Map — forty English sounds coloured by how well you say each">
+      <img src="assets/shots/shot-4.jpg" width="720" height="1558" loading="lazy" alt="A coaching tip for a specific sound">
+      <img src="assets/shots/shot-5.jpg" width="720" height="1558" loading="lazy" alt="The lesson map, from first words to near-native">
+      <img src="assets/shots/shot-6.jpg" width="720" height="1558" loading="lazy" alt="Progress — accuracy over time and recent attempts">
+    </div>
+  </div>
+</section>
 
 <section class="wrap">
   <h2>How it works</h2>
