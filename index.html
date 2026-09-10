@@ -239,32 +239,49 @@
 <script>document.getElementById('y').textContent = new Date().getFullYear()</script>
 
 <script>
-// Screenshot gallery: elegant dots + arrows instead of a scrollbar.
+// Screenshot gallery: dots + looping arrows instead of a scrollbar.
 (function () {
   var g = document.getElementById('gallery');
   if (!g) return;
   var imgs = g.querySelectorAll('img');
+  var n = imgs.length;
   var dotsBox = document.getElementById('dots');
   var prev = document.querySelector('.gnav.prev');
   var next = document.querySelector('.gnav.next');
   var GAP = 18;
   function step() { return imgs[0].getBoundingClientRect().width + GAP; }
-  imgs.forEach(function (_, i) {
+  function maxScroll() { return g.scrollWidth - g.clientWidth; }
+  var atStart = function () { return g.scrollLeft <= 4; };
+  var atEnd = function () { return g.scrollLeft >= maxScroll() - 4; };
+
+  // One dot per screen, mapped to SCROLL POSITION (0→first, max→last) so the
+  // last dot lights up at the end even though several screens are visible at
+  // once on desktop, and every dot is reachable.
+  for (var k = 0; k < n; k++) (function (i) {
     var d = document.createElement('button');
     d.className = 'dot'; d.type = 'button';
     d.setAttribute('aria-label', 'Go to screenshot ' + (i + 1));
-    d.addEventListener('click', function () { g.scrollTo({ left: i * step(), behavior: 'smooth' }); });
+    d.addEventListener('click', function () {
+      g.scrollTo({ left: n > 1 ? (i / (n - 1)) * maxScroll() : 0, behavior: 'smooth' });
+    });
     dotsBox.appendChild(d);
-  });
+  })(k);
+
   function update() {
-    var active = Math.round(g.scrollLeft / step());
+    var m = maxScroll();
+    var active = m <= 0 ? 0 : Math.min(n - 1, Math.max(0, Math.round((g.scrollLeft / m) * (n - 1))));
     var ds = dotsBox.children;
     for (var i = 0; i < ds.length; i++) ds[i].classList.toggle('on', i === active);
-    if (prev) prev.disabled = g.scrollLeft < 4;
-    if (next) next.disabled = g.scrollLeft > g.scrollWidth - g.clientWidth - 4;
   }
-  if (prev) prev.addEventListener('click', function () { g.scrollBy({ left: -step(), behavior: 'smooth' }); });
-  if (next) next.addEventListener('click', function () { g.scrollBy({ left: step(), behavior: 'smooth' }); });
+  // Arrows loop — never a dead end.
+  if (prev) prev.addEventListener('click', function () {
+    if (atStart()) g.scrollTo({ left: maxScroll(), behavior: 'smooth' });   // wrap to end
+    else g.scrollBy({ left: -step(), behavior: 'smooth' });
+  });
+  if (next) next.addEventListener('click', function () {
+    if (atEnd()) g.scrollTo({ left: 0, behavior: 'smooth' });               // wrap to start
+    else g.scrollBy({ left: step(), behavior: 'smooth' });
+  });
   g.addEventListener('scroll', update, { passive: true });
   window.addEventListener('resize', update);
   update();
