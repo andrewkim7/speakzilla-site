@@ -38,11 +38,22 @@ is the same one the store listing follows: the site ships WITH the app.
 3. **Screenshots in the gallery are the English ones.** Swap in Korean and
    Japanese captures once Andrew has taken them for the store listing
    (`assets/shots/ko/…`), and point the generator at them.
-4. **The app** should open `/ko/` and `/ja/` links when it is in that language
-   (Profile → 문의하기 / 개인정보 처리방침). Small change in `ProfileScreen`.
+4. **The app** opens `/ko/` and `/ja/` when it is in that language — DONE
+   2026-09-20 (`speakzilla-mobile` `84aca5d`, `lib/siteLinks.ts`). It switches
+   by itself when `ko`/`ja` move into `RELEASED` in `lib/i18n.ts`, which is
+   the v1.3 build; until then every link stays English, so nothing opens a
+   404. Privacy stays English until `ko/privacy.html` exists: then add the
+   code to `LOCALIZED.privacy` in that file.
 5. **App Store Connect:** set the Korean and Japanese Support / Marketing /
    Privacy URLs to `https://speakzilla.app/ko/support`, `/ko/`, `/ko/privacy`
    (and `/ja/…`). Cloudflare serves `ko/support.html` at `/ko/support`.
-6. The sign-up and password-reset emails, and `confirmed.html` / `reset.html`,
-   are still English. Supabase allows one template per email: make them
-   bilingual rather than Korean-only.
+6. **Emails** — written 2026-09-20, NOT yet in Supabase. After the merge is
+   live, paste the two templates and the two subjects from
+   `email-templates/` into the Supabase dashboard and run the three-step send
+   test in `email-templates/README.md`. Step 1 of that test (an old account
+   still gets its English reset mail) is the one that must not be skipped.
+   `confirmed.html` and `reset.html` already choose their own language and
+   need nothing further.
+7. **Privacy policy wording:** the account now stores the learner's chosen
+   language (`user_metadata.locale`) so that account email arrives in it. One
+   sentence in the policy, all languages.

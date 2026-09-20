@@ -30,6 +30,8 @@
   .steps b{color:var(--ink)}
   a{color:var(--accent)}
   .bad .tick{color:#ff4d6d}
+  :lang(ko) main{word-break:keep-all}
+  :lang(ja) h1,:lang(ja) p{text-wrap:pretty}
 </style>
 </head>
 <body>
@@ -40,12 +42,12 @@
 <div class="wrap">
   <main id="card">
     <div class="tick">&#10003;</div>
-    <h1>Email confirmed</h1>
-    <p class="lede">Your SpeakZilla account is ready.</p>
+    <h1 id="t-title">Email confirmed</h1>
+    <p class="lede" id="t-lede">Your SpeakZilla account is ready.</p>
     <div class="steps">
-      <p style="margin:0 0 6px"><b>Next:</b> open SpeakZilla on your phone and sign in with
+      <p style="margin:0 0 6px" id="t-next"><b>Next:</b> open SpeakZilla on your phone and sign in with
       the email and password you just used.</p>
-      <p style="margin:0">You will take a short placement test so your coach knows where to
+      <p style="margin:0" id="t-test">You will take a short placement test so your coach knows where to
       start you — about two minutes, and you can retake it any time.</p>
     </div>
   </main>
@@ -58,20 +60,79 @@
 const hash = new URLSearchParams(location.hash.replace(/^#/, ''));
 const errDesc = hash.get('error_description');
 const errCode = hash.get('error');
+const token = hash.get('access_token') || '';
 history.replaceState(null, '', location.pathname);
+
+// Which language? These pages are reached from an email, not from /ko/ or /ja/, so they decide for
+// themselves. The account's language (user_metadata.locale, set by the app) rides inside the token
+// Supabase passes in the fragment; when there is no token -- an expired link -- the browser's
+// language is the next best guess. Decoded for display only; nothing here trusts the token.
+function pickLang(jwt) {
+  try {
+    const p = JSON.parse(atob(jwt.split('.')[1].replace(/-/g, '+').replace(/_/g, '/')));
+    const l = p && p.user_metadata && p.user_metadata.locale;
+    if (l === 'en' || l === 'ko' || l === 'ja') return l;
+  } catch (e) {}
+  for (const n of (navigator.languages || [navigator.language || 'en'])) {
+    const l = String(n).slice(0, 2).toLowerCase();
+    if (l === 'ko' || l === 'ja' || l === 'en') return l;
+  }
+  return 'en';
+}
+
+// English lives in the HTML above, so the page still reads correctly with scripts off.
+const TEXT = {
+  ko: {
+    doc: '이메일 확인 완료 — SpeakZilla',
+    title: '이메일 확인 완료',
+    lede: 'SpeakZilla 계정이 준비됐어요.',
+    next: '<b>다음 단계:</b> 휴대폰에서 SpeakZilla를 열고 방금 쓴 이메일과 비밀번호로 로그인하세요.',
+    test: '코치가 어디서부터 시작할지 알 수 있도록 짧은 레벨 테스트를 봐요. 2분쯤 걸리고, 언제든 다시 볼 수 있어요.',
+    expiredTitle: '링크가 만료됐어요',
+    expiredBody: '확인 링크는 한 번만 쓸 수 있고 시간이 지나면 만료돼요. SpeakZilla를 열고 같은 이메일로 다시 가입하면 새 링크를 받을 수 있어요.',
+    failedTitle: '링크가 작동하지 않았어요',
+    failedBody: '이메일을 확인하는 중에 문제가 생겼어요. SpeakZilla를 열고 다시 시도해 주세요.',
+    stuck: '계속 안 되나요? <a href="mailto:support@speakzilla.app">support@speakzilla.app</a>으로 메일을 보내 주시면 해결해 드릴게요.',
+  },
+  ja: {
+    doc: 'メールアドレスを確認しました — SpeakZilla',
+    title: '確認が完了しました',
+    lede: 'アカウントの準備ができました。',
+    next: '<b>次のステップ：</b>スマートフォンでSpeakZillaを開き、先ほどのメールアドレスとパスワードでログインしてください。',
+    test: 'コーチがどこから始めるかを決められるように、短いレベルテストを受けます。2分ほどで、いつでも受け直せます。',
+    expiredTitle: 'リンクの有効期限が切れました',
+    expiredBody: '確認リンクは一度しか使えず、時間がたつと無効になります。SpeakZillaを開いて同じメールアドレスでもう一度登録すると、新しいリンクが届きます。',
+    failedTitle: 'リンクが正しく動作しませんでした',
+    failedBody: 'メールアドレスの確認中に問題が発生しました。SpeakZillaを開いて、もう一度お試しください。',
+    stuck: '解決しない場合は、<a href="mailto:support@speakzilla.app">support@speakzilla.app</a>までメールでご連絡ください。',
+  },
+};
+const lang = pickLang(token);
+const L = TEXT[lang];
+if (L) {
+  document.documentElement.lang = lang;
+  document.title = L.doc;
+  document.getElementById('t-title').textContent = L.title;
+  document.getElementById('t-lede').textContent = L.lede;
+  document.getElementById('t-next').innerHTML = L.next;
+  document.getElementById('t-test').innerHTML = L.test;
+  document.querySelector('.brand').href = '/' + lang + '/';
+}
 
 if (errDesc || errCode) {
   const expired = /expired|invalid/i.test(errDesc || errCode);
   document.getElementById('card').className = 'bad';
   document.getElementById('card').innerHTML =
     '<div class="tick">!</div>' +
-    '<h1>' + (expired ? 'This link has expired' : 'That link did not work') + '</h1>' +
-    '<p class="lede">' + (expired
+    // Supabase's own error text is English only, so a translated page says its own sentence instead.
+    '<h1>' + (L ? (expired ? L.expiredTitle : L.failedTitle)
+                : (expired ? 'This link has expired' : 'That link did not work')) + '</h1>' +
+    '<p class="lede">' + (L ? (expired ? L.expiredBody : L.failedBody) : (expired
       ? 'Confirmation links are single-use and time limited. Open SpeakZilla and sign up again with the same email to get a fresh one.'
-      : (errDesc || 'Something went wrong confirming your email.') + ' Open SpeakZilla and try again.') +
+      : (errDesc || 'Something went wrong confirming your email.') + ' Open SpeakZilla and try again.')) +
     '</p>' +
-    '<div class="steps"><p style="margin:0">Still stuck? Email ' +
-    '<a href="mailto:support@speakzilla.app">support@speakzilla.app</a> and we will sort it out.</p></div>';
+    '<div class="steps"><p style="margin:0">' + (L ? L.stuck : 'Still stuck? Email ' +
+    '<a href="mailto:support@speakzilla.app">support@speakzilla.app</a> and we will sort it out.') + '</p></div>';
 }
 </script>
 </body>
