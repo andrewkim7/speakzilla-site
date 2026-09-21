@@ -148,8 +148,9 @@ absolute security.
 ## 9. International data transfers
 
 SpeakZilla is operated from **Canada**. Your account, progress and transcripts
-are stored by Supabase in the **United States**. Microsoft, Resend, Expo and
-Cloudflare are United States companies; Cloudflare serves the website from the
+are stored by Supabase in the **United States**. Your speech is processed by
+Microsoft Azure AI Speech in **Canada** (the Canada Central region). Microsoft,
+Resend, Expo and Cloudflare are United States companies; Cloudflare serves the website from the
 data centre nearest to you. Where required, we rely on appropriate safeguards
 (such as Standard Contractual Clauses and each provider's data processing
 agreement) for these transfers.
