@@ -36,9 +36,13 @@ is the same one the store listing follows: the site ships WITH the app.
      Central** (Andrew, from the Azure portal), so audio is processed in
      Canada; Microsoft is named as a United States company. In all three
      policies. If the resource is ever moved, all three must change;
-   - `[CHECK]` — THREE left, all Andrew's: the log-retention line (generic),
-     the backup-retention sentence (needs the Supabase plan), and the 1-year
-     figure for support mail (his choice).
+   - ~~`[CHECK]`~~ NONE left (2026-09-21). Support mail: 1 year (Andrew).
+     Backups: the Supabase project is on the FREE plan, which has no
+     customer-accessible backups ("We automatically back up all Pro, Team, and
+     Enterprise Plan projects" — supabase.com/docs/guides/platform/backups), so
+     both policies promise only "any copy left in a backup is deleted within
+     30 days at the latest". **That sentence is a commitment: if Andrew starts
+     taking his own database dumps, no dump may be kept longer than 30 days.**
    **Verified against the vendors' own pages, 2026-09-21:**
    - Microsoft: "When doing real-time speech to text, fast transcription,
      pronunciation assessment, and speech translation, Microsoft does not
