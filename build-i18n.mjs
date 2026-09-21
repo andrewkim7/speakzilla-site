@@ -477,7 +477,10 @@ for (const lang of Object.keys(LANGS)) {
 for (const [file, html] of outputs) {
   if (/%PRIVACY|undefined/.test(html)) throw new Error(`${file}: unresolved placeholder`)
   fs.mkdirSync(path.dirname(file), { recursive: true })
-  fs.writeFileSync(file, html)
+  // Keep the line endings the file already has: on Windows git checks these pages out with CRLF, and
+  // rewriting them with LF made every build show six "modified" files with no real change.
+  const crlf = fs.existsSync(file) && fs.readFileSync(file, 'utf8').includes('\r\n')
+  fs.writeFileSync(file, crlf ? html.replace(/\r?\n/g, '\r\n') : html)
   written++
   console.log('wrote', path.relative(root, file), `(${(html.length / 1024).toFixed(1)} KB)`)
 }

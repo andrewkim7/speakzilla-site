@@ -67,10 +67,8 @@ is the same one the store listing follows: the site ships WITH the app.
    - a language link in the header (EN · 한국어 · 日本語) — and the same on the
      generated pages (add it to `localize()` in the generator);
    - reciprocal `hreflang` tags (the generated pages already carry theirs);
-   - `support.html` still says "Streaks and days roll over at midnight UTC".
-     Since the local-day change that is wrong for anyone on the new app: the
-     day turns over at the learner's own midnight. The ko/ja pages already say
-     so. Change the English when the local-day client reaches production.
+   - ~~`support.html` said "midnight UTC"~~ DONE 2026-09-21 (`3b427ac`, live): the
+     local-day client reached production that day.
 3. **Screenshots in the gallery are the English ones.** Swap in Korean and
    Japanese captures once Andrew has taken them for the store listing
    (`assets/shots/ko/…`), and point the generator at them.
