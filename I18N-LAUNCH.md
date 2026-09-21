@@ -111,3 +111,25 @@ is the same one the store listing follows: the site ships WITH the app.
 7. **Privacy policy wording:** the account now stores the learner's chosen
    language (`user_metadata.locale`) so that account email arrives in it. One
    sentence in the policy, all languages.
+
+## If personal data ever leaks — what the three policies promise
+
+Written 2026-09-21 so the deadlines are not looked up for the first time
+during an incident. **Re-check every number against the regulator's page at
+the time; these are from memory of the law, not from a lawyer.**
+
+- **Korea (PIPA Art. 34):** tell the affected users within 72 hours of
+  learning of it. Also report to PIPC/KISA within 72 hours when 1,000+ people
+  are affected, or the cause was outside unlawful access (hacking), whatever
+  the count. Report at https://privacy.kisa.or.kr.
+- **Japan (APPI Art. 26):** reportable when it involved unauthorised access
+  or another malicious cause (any count), or 1,000+ people, or could cause
+  financial harm. First report to the PPC "promptly" (guideline: 3–5 days),
+  final report within 30 days (60 if malicious), and tell the affected users.
+  Report form: https://www.ppc.go.jp/personalinfo/legal/leakAction/
+- **Canada (PIPEDA):** report to the OPC and tell users as soon as feasible
+  when there is a real risk of significant harm; keep a record of every
+  breach for 24 months.
+- First moves regardless of country: rotate the Supabase service key and the
+  Azure key, check Supabase auth and API logs, write down what was exposed
+  and when it was discovered (the clocks start at discovery).
