@@ -21,7 +21,38 @@ const LANGS = {
   ko: { html: 'ko', name: '한국어', store: 'https://apps.apple.com/kr/app/id6805255043' },
   ja: { html: 'ja', name: '日本語', store: 'https://apps.apple.com/jp/app/id6805255043' },
 }
-const privacyReady = (lang) => fs.existsSync(path.join(root, lang, 'privacy.html'))
+// A language has its own policy when its SOURCE exists (privacy.<lang>.md). These are not translations of
+// privacy.md: the Korean one follows PIPA's prescribed contents and the Japanese one APPI's, which is what
+// each regulator asks of a foreign service (speakzilla-mobile NEXT.md, "RESEARCH DONE 2026-09-21").
+const privacyReady = (lang) => fs.existsSync(path.join(root, `privacy.${lang}.md`))
+
+// The same small markdown dialect as build-privacy.py, line for line: one source line is one block, so a
+// paragraph or list item must sit on ONE line. [UPPERCASE] placeholders are marked so they cannot be missed.
+function mdToHtml(src) {
+  const out = []; let inTbl = false, inList = false
+  const closeList = () => { if (inList) { out.push('</ul>'); inList = false } }
+  for (const ln of src.replace(/\r\n/g, '\n').split('\n')) {
+    const t = ln.replace(/\s+$/, '')
+    if (!t.trim()) { closeList(); continue }
+    if (t.startsWith('|')) {
+      const cells = t.replace(/^\|/, '').replace(/\|$/, '').split('|').map((c) => c.trim())
+      if (/^[-: ]*$/.test(cells.join(''))) continue
+      if (!inTbl) { out.push('<div class="tbl"><table>'); inTbl = true; out.push('<tr>' + cells.map((c) => `<th>${c}</th>`).join('') + '</tr>') }
+      else out.push('<tr>' + cells.map((c) => `<td>${c}</td>`).join('') + '</tr>')
+      continue
+    }
+    if (inTbl) { out.push('</table></div>'); inTbl = false }
+    if (t.startsWith('## ')) { closeList(); out.push(`<h2>${t.slice(3)}</h2>`); continue }
+    if (t.startsWith('# ')) { closeList(); out.push(`<h1>${t.slice(2)}</h1>`); continue }
+    if (t.startsWith('- ')) { if (!inList) { out.push('<ul>'); inList = true } out.push(`<li>${t.slice(2)}</li>`); continue }
+    closeList(); out.push(`<p>${t}</p>`)
+  }
+  closeList(); if (inTbl) out.push('</table></div>')
+  return out.join('\n')
+    .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+    .replace(/(?<!href=")(https?:\/\/[^\s<)）]+)/g, '<a href="$1">$1</a>')
+    .replace(/\[([A-Z][A-Z /—-]*[A-Z])\]/g, '<mark>[$1]</mark>')
+}
 
 // [english, ko, ja, count?]  -- count defaults to 1
 
@@ -413,6 +444,33 @@ for (const lang of Object.keys(LANGS)) {
   sup = sup.split('%PRIVACY_NOTE%').join(note).split('%PRIVACY%').join('/privacy.html')
   sup = localize(sup, lang, 'support.html')
   outputs.push([path.join(root, lang, 'support.html'), sup])
+
+  // ── privacy ── its own text (privacy.<lang>.md) inside the English page's shell.
+  if (privacyReady(lang)) {
+    // main a: a long URL in a Japanese paragraph has nowhere to break and pushed the page sideways on a phone.
+    const TABLE_CSS = '  .tbl{overflow-x:auto;margin:12px 0}\n  .tbl table{margin:0;min-width:560px}\n  td{font-size:14px;line-height:1.55}\n  main a{overflow-wrap:anywhere}\n</style>'
+    let pv =fs.readFileSync(path.join(root, 'privacy.html'), 'utf8').replace(/\r\n/g, '\n')
+    if (pv.split(start).length !== 2 || pv.split(end).length !== 2) throw new Error('privacy.html: content markers missing')
+    const body = mdToHtml(fs.readFileSync(path.join(root, `privacy.${lang}.md`), 'utf8'))
+    pv = pv.slice(0, pv.indexOf(start) + start.length) + body + '\n' + pv.slice(pv.indexOf(end))
+    pv = applyAll(pv, [
+      ['<title>Privacy policy — SpeakZilla</title>', '<title>개인정보 처리방침 — SpeakZilla</title>', '<title>プライバシーポリシー — SpeakZilla</title>'],
+      ['<a class="nav" href="/support.html">Support</a>\n      <a class="nav" href="/privacy.html">Privacy</a>',
+        `<a class="nav" href="/support.html">${footerWords.ko[0]}</a>\n      <a class="nav" href="/privacy.html">개인정보</a>`,
+        `<a class="nav" href="/support.html">${footerWords.ja[0]}</a>\n      <a class="nav" href="/privacy.html">プライバシー</a>`],
+      ['<a href="/support.html">Support</a> &nbsp;&middot;&nbsp;\n      <a href="/privacy.html">Privacy policy</a> &nbsp;&middot;&nbsp;',
+        `<a href="/support.html">${footerWords.ko[0]}</a> &nbsp;&middot;&nbsp;\n      <a href="/privacy.html">${footerWords.ko[1]}</a> &nbsp;&middot;&nbsp;`,
+        `<a href="/support.html">${footerWords.ja[0]}</a> &nbsp;&middot;&nbsp;\n      <a href="/privacy.html">${footerWords.ja[1]}</a> &nbsp;&middot;&nbsp;`],
+      ['Short lessons: ', '짧은 레슨 영상 (영어): ', 'ショート動画（英語）：'],
+      // Six-column tables (Korea's transfer table) need room to scroll sideways on a phone.
+      // (The row has one column per language; the CSS is the same in both.)
+      ['</style>', TABLE_CSS, TABLE_CSS],
+    ], lang, 'privacy.html')
+    pv = localize(pv, lang, 'privacy.html')
+    const left = [...new Set((body.match(/<mark>\[[^\]]+\]<\/mark>/g) || []).map((x) => x.replace(/<[^>]+>/g, '')))]
+    console.log(`  ${lang}/privacy.html: ${left.length ? 'placeholders left: ' + left.join(' ') : 'no placeholders left'}`)
+    outputs.push([path.join(root, lang, 'privacy.html'), pv])
+  }
 }
 
 // Nothing above threw: write everything.

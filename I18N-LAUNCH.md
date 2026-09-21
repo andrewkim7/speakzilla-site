@@ -21,12 +21,28 @@ is the same one the store listing follows: the site ships WITH the app.
 
 ## Before merging (launch day)
 
-1. **Privacy policy.** `/ko/` and `/ja/` currently link to the English policy
-   and say so (영문 / 英語). A translated policy needs Andrew's research into
-   what Korea (개인정보 보호법) and Japan (APPI) require of a Canadian one-person
-   business that targets their users — in particular the transfer of voice
-   audio abroad. When `ko/privacy.html` exists the generator links to it by
-   itself and drops the note.
+1. **Privacy policies — DRAFTED 2026-09-21, not final.** `privacy.ko.md` and
+   `privacy.ja.md` are NOT translations of `privacy.md`: the Korean one follows
+   PIPA's prescribed contents (Art. 30, Decree Art. 31, the Art. 28-8 transfer
+   table, the Art. 22(3) list of what is processed without consent), the
+   Japanese one APPI's (Art. 32 items, security measures incl. 外的環境の把握,
+   the foreign vendors and countries, the request procedures). Research and
+   article numbers: `speakzilla-mobile` NEXT.md, "RESEARCH DONE 2026-09-21".
+   Not legal advice; written by Claude, to be read by Andrew. `node
+   build-i18n.mjs` builds `<lang>/privacy.html` from them and prints every
+   placeholder still open. **Open before launch:**
+   - `[DATE]` — the effective date = the day v1.3.0 is released;
+   - `[COUNTRY]` — where Azure AI Speech processes the audio: the region of
+     the Speech resource (Azure portal → the Speech resource → Location);
+   - `[CHECK]` on: Microsoft not storing real-time audio (confirm against
+     Microsoft's Speech data-privacy page), Resend's log retention, the
+     backup-retention sentence (Supabase plan), the 1-year figure for support
+     mail (Andrew's choice), and — Japanese only — that a DPA really is in
+     place with Supabase, Microsoft and Resend before claiming it.
+   The build keeps working with placeholders in, on purpose: they show
+   highlighted on the page, so nothing unverified can ship unnoticed.
+   The English policy was corrected and is LIVE (`9a62df1`): Apple/Google
+   sign-in, time zone + language, Resend + Expo, the countries.
 2. **English pages need three edits, on `master`, the same day:**
    - a language link in the header (EN · 한국어 · 日本語) — and the same on the
      generated pages (add it to `localize()` in the generator);
