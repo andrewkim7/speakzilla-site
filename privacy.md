@@ -1,7 +1,7 @@
 # SpeakZilla Privacy Policy
 
 **Effective date:** 19 August 2026
-**Last updated:** 19 August 2026
+**Last updated:** 21 September 2026
 
 SpeakZilla ("SpeakZilla", "we", "us") is a pronunciation-practice app
 operated by Andrew Kim, Ontario, Canada. This policy explains
@@ -24,6 +24,8 @@ on the web or in our mobile apps.
   form by our authentication provider — we never see or store your plain
   password).
 - A display name, which by default is derived from your email address.
+- If you sign in with Apple or Google instead of a password: the email address that provider gives us and, where the provider shares them, your name and profile picture, which we show on your Profile screen. We receive nothing else from your Apple or Google account, and we never see that account's password.
+- Two settings, so the app behaves correctly for you: your **time zone** (so that daily limits, streaks and missions turn over at your own midnight) and your **chosen app language** (so that account email reaches you in it).
 
 **b) Learning activity and progress**
 - Your lesson progress, scores, accuracy history, streaks, points, tokens,
@@ -42,8 +44,8 @@ see Section 3)*
   IP address, device/browser type, and timestamps), collected by our
   hosting and backend providers through standard server logs.
 
-We do **not** knowingly collect payment information, precise location, or
-data from third-party social accounts.
+We do **not** collect payment information, precise location, your contacts, or
+anything from an Apple or Google account beyond what is listed in (a).
 
 ## 3. Voice data — how it works
 
@@ -87,12 +89,19 @@ processes data on our behalf under their own terms and security controls:
 | --- | --- | --- |
 | **Supabase** | Database, authentication, file storage | Account, progress and transcripts. Audio recordings only from the web app; the mobile app uploads none |
 | **Microsoft Azure AI Speech** | Speech recognition + pronunciation assessment; text-to-speech | Audio clips and reference text |
-| **Cloudflare** | App hosting and delivery | Technical/log data (e.g. IP) |
+| **Cloudflare** | Website hosting and delivery | Technical/log data (e.g. IP) |
+| **Resend** | Delivering account email (confirming your address, password resets) | Your email address and the message |
+| **Expo (EAS Update)** | Delivering app updates | Technical data (e.g. IP, app version, device platform). No account data |
 
 Please review each provider's own privacy documentation:
 - Supabase: https://supabase.com/privacy
 - Microsoft Azure: https://privacy.microsoft.com
 - Cloudflare: https://www.cloudflare.com/privacypolicy/
+- Resend: https://resend.com/legal/privacy-policy
+- Expo: https://expo.dev/privacy
+
+Apple and Google act as sign-in providers if you choose them. They are not our
+processors, and their own privacy policies govern your account with them.
 
 We may also disclose data if required by law, to protect our rights, or as
 part of a business transfer (e.g. merger or acquisition), in which case we
@@ -138,9 +147,12 @@ absolute security.
 
 ## 9. International data transfers
 
-Our providers may process and store data in countries other than yours,
-including the United States. Where required, we rely on appropriate
-safeguards (such as Standard Contractual Clauses) for these transfers.
+SpeakZilla is operated from **Canada**. Your account, progress and transcripts
+are stored by Supabase in the **United States**. Microsoft, Resend, Expo and
+Cloudflare are United States companies; Cloudflare serves the website from the
+data centre nearest to you. Where required, we rely on appropriate safeguards
+(such as Standard Contractual Clauses and each provider's data processing
+agreement) for these transfers.
 
 ## 10. Children's privacy
 
