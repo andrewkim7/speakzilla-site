@@ -59,6 +59,16 @@ is the same one the store listing follows: the site ships WITH the app.
      terms, no signature; Supabase's DPA "supplements and forms part of the
      Supabase Terms of Service" — supabase.com/legal/dpa. A countersigned
      Supabase copy can be requested from the dashboard; optional.
+   **Read by Andrew 2026-09-21 (Korean): approved.** Then checked against a
+   Korean law office's checklist for the April 2025 drafting guideline
+   (newlawyer.co.kr/41/193, written 2026-02-13; it confirms contract-necessary
+   data needs no separate consent). Three additions to the Korean policy from
+   it: 수집 방법 (how each item is collected), 수탁자의 관리와 재위탁 (supervision
+   and sub-processors, via each vendor's DPA), and a section saying the
+   pronunciation score is computed automatically but is not an "automated
+   decision" under Art. 37-2. Its placement list (sign-up screen, app
+   settings, help page, store listing, site footer) is all covered once the
+   per-language Privacy URL is set in App Store Connect.
    The build keeps working with placeholders in, on purpose: they show
    highlighted on the page, so nothing unverified can ship unnoticed.
    The English policy was corrected and is LIVE (`9a62df1`): Apple/Google
