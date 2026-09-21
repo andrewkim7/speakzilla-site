@@ -32,8 +32,10 @@ is the same one the store listing follows: the site ships WITH the app.
    build-i18n.mjs` builds `<lang>/privacy.html` from them and prints every
    placeholder still open. **Open before launch:**
    - `[DATE]` — the effective date = the day v1.3.0 is released;
-   - `[COUNTRY]` — where Azure AI Speech processes the audio: the region of
-     the Speech resource (Azure portal → the Speech resource → Location);
+   - ~~`[COUNTRY]`~~ RESOLVED 2026-09-21: the Speech resource is in **Canada
+     Central** (Andrew, from the Azure portal), so audio is processed in
+     Canada; Microsoft is named as a United States company. In all three
+     policies. If the resource is ever moved, all three must change;
    - `[CHECK]` on: Microsoft not storing real-time audio (confirm against
      Microsoft's Speech data-privacy page), Resend's log retention, the
      backup-retention sentence (Supabase plan), the 1-year figure for support
