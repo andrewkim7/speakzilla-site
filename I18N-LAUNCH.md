@@ -69,6 +69,16 @@ is the same one the store listing follows: the site ships WITH the app.
    decision" under Art. 37-2. Its placement list (sign-up screen, app
    settings, help page, store listing, site footer) is all covered once the
    per-language Privacy URL is set in App Store Connect.
+   Second check, same office's article on the 2026-04-24 guideline
+   (newlawyer.co.kr/41/329, written 2026-09-21). Two additions: 앱이 요청하는
+   기기 권한 (microphone required, notifications optional and local-only —
+   verified: no push token is ever requested, no photo/location/contacts
+   package is installed) and a version-history sentence in section 14.
+   **Standing duty from that sentence: when the Korean policy changes, keep
+   the old version and link it from the page.** Not applicable to us: the
+   generative-AI appendix (we are not one; "no training on your voice" is
+   already stated), the domestic representative (Art. 31-2 thresholds not
+   met), the 2026-09-11 privacy-officer reporting duty (large processors).
    The build keeps working with placeholders in, on purpose: they show
    highlighted on the page, so nothing unverified can ship unnoticed.
    The English policy was corrected and is LIVE (`9a62df1`): Apple/Google
