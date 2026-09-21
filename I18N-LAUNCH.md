@@ -36,11 +36,25 @@ is the same one the store listing follows: the site ships WITH the app.
      Central** (Andrew, from the Azure portal), so audio is processed in
      Canada; Microsoft is named as a United States company. In all three
      policies. If the resource is ever moved, all three must change;
-   - `[CHECK]` on: Microsoft not storing real-time audio (confirm against
-     Microsoft's Speech data-privacy page), Resend's log retention, the
-     backup-retention sentence (Supabase plan), the 1-year figure for support
-     mail (Andrew's choice), and — Japanese only — that a DPA really is in
-     place with Supabase, Microsoft and Resend before claiming it.
+   - `[CHECK]` — THREE left, all Andrew's: the log-retention line (generic),
+     the backup-retention sentence (needs the Supabase plan), and the 1-year
+     figure for support mail (his choice).
+   **Verified against the vendors' own pages, 2026-09-21:**
+   - Microsoft: "When doing real-time speech to text, fast transcription,
+     pronunciation assessment, and speech translation, Microsoft does not
+     retain or store the data provided by customers"; real-time audio "is
+     processed only on the Azure's server memory, and no data is stored at
+     rest" — learn.microsoft.com, *Data, privacy, and security for Speech to
+     text* (article dated 2026-03-31).
+   - Resend: "email and log data is retained for 30 days on Free, Pro, and
+     Scale plans"; "Backups persist for 7 days"; data stored in the United
+     States; its DPA "is in force for every Resend account… fully executed
+     once you sign up" — resend.com/security/gdpr.
+   - DPAs (the Japanese policy relies on them): Resend automatic (above);
+     Microsoft's Products and Services DPA is part of the Azure subscription
+     terms, no signature; Supabase's DPA "supplements and forms part of the
+     Supabase Terms of Service" — supabase.com/legal/dpa. A countersigned
+     Supabase copy can be requested from the dashboard; optional.
    The build keeps working with placeholders in, on purpose: they show
    highlighted on the page, so nothing unverified can ship unnoticed.
    The English policy was corrected and is LIVE (`9a62df1`): Apple/Google
