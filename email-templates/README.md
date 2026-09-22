@@ -10,11 +10,10 @@ Paste into **Supabase → Authentication → Email Templates**.
 Both use `{{ .ConfirmationURL }}` and, since the Korean and Japanese work,
 `{{ .Data.locale }}`.
 
-> **On branch `i18n-ko-ja` these are the three-language versions. Do not paste
-> them into Supabase before app v1.3.0 is released** — their footers link to
-> `/ko/` and `/ja/`, which do not exist on the live site until the branch is
-> merged. What is in the dashboard today is the English-only version on
-> `master`.
+> The site went live with `/ko/` and `/ja/` on 2026-09-22, so these can be
+> pasted any time. Until they are, the dashboard holds the English-only
+> version: Korean and Japanese sign-ups get English mail (it works, it is
+> just not localized).
 
 ## Three languages, one template
 
