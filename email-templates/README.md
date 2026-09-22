@@ -54,15 +54,22 @@ Reset Password:
 
     {{ $lang := printf "%v" .Data.locale }}{{ if eq $lang "ko" }}SpeakZilla 비밀번호 재설정{{ else if eq $lang "ja" }}SpeakZillaパスワードの再設定{{ else }}Reset your SpeakZilla password{{ end }}
 
-**Not verified against Supabase itself:** that the subject field accepts
-conditionals (the documentation only shows them in the body). The send test
-below settles it. If a subject arrives with `{{` in it, or the mail does not
-arrive, use these instead — plain text, all three languages:
+**Verified 2026-09-22:** the subject field accepts the conditionals — the send
+test below produced an English, a Korean and a Japanese subject. Pasted into
+Supabase the same day. If a future Supabase change ever shows `{{` in a
+subject, use these instead — plain text, all three languages:
 
     SpeakZilla — Confirm your account · 계정 확인 · アカウント確認
     SpeakZilla — Reset your password · 비밀번호 재설정 · パスワード再設定
 
 ### Send test, the day they are pasted (about five minutes)
+
+Run 2026-09-22 by Andrew: all three PASSED. Note for next time: Gmail delivered
+the Japanese confirmation about five minutes after Supabase/Resend sent it
+(the auth log showed the signup at 200 in 1.3 s); the two resets arrived within
+a minute. Wait five minutes and check spam before suspecting the template. An
+account with no language cannot be one of the real users — create a stand-in
+in the dashboard (Add user, auto-confirm) with a `+alias` address.
 
 1. **An account with no language** — request a password reset for any account
    created before v1.3. It must arrive, in English. This is the one that
