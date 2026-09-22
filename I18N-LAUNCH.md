@@ -1,4 +1,4 @@
-# Korean and Japanese pages — branch `i18n-ko-ja`
+# Korean and Japanese pages — LIVE since 2026-09-22 (`4511536`)
 
 Built 2026-09-20. `master` is what Cloudflare Pages serves. The original plan
 was to merge only when v1.3.0 was released; on 2026-09-22 Andrew decided the
