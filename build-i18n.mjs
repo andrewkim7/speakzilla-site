@@ -380,9 +380,14 @@ function localize(html, lang, page) {
   html = html.split('href="/support.html"').join(`href="/${lang}/support.html"`)
   html = html.split('href="/privacy.html"').join(`href="${privacy}"`)
   html = html.split('https://apps.apple.com/app/id6805255043').join(L.store)
-  // hreflang: tell search engines these are the same page in three languages.
-  const alt = ['en', 'ko', 'ja'].map((l) => `<link rel="alternate" hreflang="${l}" href="https://speakzilla.app/${l === 'en' ? '' : l + '/'}${page === 'index.html' ? '' : page.replace('.html', '')}">`).join('\n')
-  once('<meta name="viewport" content="width=device-width, initial-scale=1">', `<meta name="viewport" content="width=device-width, initial-scale=1">\n${alt}`)
+  // hreflang tags: the English source carries all three (plus x-default) and they are absolute, so
+  // they pass through unchanged. The header's language switcher lists the OTHER two languages.
+  const tail = page === 'index.html' ? '' : page.replace('.html', '')
+  const sw = (l) => l === 'en' ? `<a class="nav lang" href="/${tail}" lang="en">English</a>`
+    : l === 'ko' ? `<a class="nav lang" href="/ko/${tail}" lang="ko">한국어</a>` : `<a class="nav lang" href="/ja/${tail}" lang="ja">日本語</a>`
+  const ind = page === 'index.html' ? '    ' : '      '
+  once(`${ind}${sw('ko')}\n${ind}${sw('ja')}\n`, `${ind}${sw('en')}\n${ind}${sw(lang === 'ko' ? 'ja' : 'ko')}\n`)
+  if (page === 'index.html') html = html.split('src="/assets/shots/shot-').join(`src="/assets/shots/${lang}/shot-`)
 
   // Korean breaks between words, never inside one. Japanese has no spaces to break at, so: never start a
   // line with 。or、, balance headings so one character is not left alone on a line, and a slightly smaller

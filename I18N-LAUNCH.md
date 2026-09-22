@@ -1,9 +1,8 @@
-# Korean and Japanese pages — branch `i18n-ko-ja`, NOT live
+# Korean and Japanese pages — branch `i18n-ko-ja`
 
-Built 2026-09-20. **Do not merge to `master` before app v1.3.0 is released.**
-`master` is what Cloudflare Pages serves, and pages that promise a Korean or
-Japanese app while the app is still English are worse than no pages. The rule
-is the same one the store listing follows: the site ships WITH the app.
+Built 2026-09-20. `master` is what Cloudflare Pages serves. The original plan
+was to merge only when v1.3.0 was released; on 2026-09-22 Andrew decided the
+site may go live first (see "Before merging"). Merge on his OK.
 
 ## What is here
 
@@ -20,6 +19,18 @@ is the same one the store listing follows: the site ships WITH the app.
   renders a newline between two Japanese characters as a visible space.
 
 ## Before merging (launch day)
+
+**2026-09-22 — the order changed.** Andrew: the site may go live BEFORE the
+app is approved ("whoever installed the app via the website and started to
+make complaints, I would be rather happy"). So this branch merges as soon as
+he OKs the push, while 1.3.0 is in review. Done the same day, on this branch:
+`[DATE]` = 2026-09-22 in both policies; the English pages carry the language
+switcher (한국어 · 日本語 in the header, the other two languages on the
+generated pages) and reciprocal `hreflang` + `x-default` (item 2 below); the
+galleries use the Korean and Japanese store captures (`assets/shots/ko|ja/`,
+item 3 below). What still waits for the release: nothing on the site. The
+emails (Supabase) can be pasted any time after the merge; Supabase Pro and
+the App Store release keep their order in NEXT.md.
 
 1. **Privacy policies — DRAFTED 2026-09-21, not final.** `privacy.ko.md` and
    `privacy.ja.md` are NOT translations of `privacy.md`: the Korean one follows

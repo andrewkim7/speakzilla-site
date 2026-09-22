@@ -6,6 +6,7 @@
 <link rel="alternate" hreflang="en" href="https://speakzilla.app/">
 <link rel="alternate" hreflang="ko" href="https://speakzilla.app/ko/">
 <link rel="alternate" hreflang="ja" href="https://speakzilla.app/ja/">
+<link rel="alternate" hreflang="x-default" href="https://speakzilla.app/">
 <title>SpeakZilla — 영어 발음, 무엇을 고칠지 정확히 알려 드려요</title>
 <meta name="description" content="문장을 소리 내어 읽으면 SpeakZilla가 듣고 발음을 단어 하나하나 채점해요. 영국식 또는 미국식 코치를 골라, 한 번에 알아듣게 말할 수 있을 때까지 연습하세요.">
 <link rel="icon" href="/assets/icon.png">
@@ -34,6 +35,8 @@
   .brand img{width:32px;height:32px;border-radius:9px}
   .brand span{font-family:Fredoka,sans-serif;font-size:19px;font-weight:700}
   .bar a.nav{color:rgba(255,255,255,.6);text-decoration:none;font-size:14px}
+  .bar a.lang{font-size:13px;opacity:.85}
+  @media (max-width:420px){.bar{gap:12px}.bar a.nav{font-size:13px}}
 
   .hero{background:var(--ink);color:#fff;padding:56px 0 72px;text-align:center}
   .hero img.mark{width:104px;height:104px;border-radius:26px;margin-bottom:22px}
@@ -117,6 +120,8 @@
     <a class="brand" href="/ko/"><img src="/assets/icon.png" alt=""><span>SpeakZilla</span></a>
     <a class="nav" href="/ko/support.html">도움말</a>
     <a class="nav" href="/ko/privacy.html">개인정보</a>
+    <a class="nav lang" href="/" lang="en">English</a>
+    <a class="nav lang" href="/ja/" lang="ja">日本語</a>
   </div>
 </header>
 
@@ -141,12 +146,12 @@
     <div class="gallery-wrap">
       <button class="gnav prev" type="button" aria-label="이전 화면">‹</button>
       <div class="gallery" id="gallery">
-        <img src="/assets/shots/shot-1.jpg" width="720" height="1558" loading="lazy" alt="단어 하나하나 채점된 문장, 점수와 단어별 색">
-        <img src="/assets/shots/shot-2.jpg" width="720" height="1558" loading="lazy" alt="영국식 또는 미국식 코치 고르기">
-        <img src="/assets/shots/shot-3.jpg" width="720" height="1558" loading="lazy" alt="발음 맵 — 영어의 40가지 소리를 얼마나 잘 내는지 색으로 표시">
-        <img src="/assets/shots/shot-4.jpg" width="720" height="1558" loading="lazy" alt="소리 하나에 대한 코칭 팁">
-        <img src="/assets/shots/shot-5.jpg" width="720" height="1558" loading="lazy" alt="첫 단어부터 원어민 수준까지 이어지는 레슨 맵">
-        <img src="/assets/shots/shot-6.jpg" width="720" height="1558" loading="lazy" alt="진도 — 정확도 변화와 최근 학습">
+        <img src="/assets/shots/ko/shot-1.jpg" width="720" height="1558" loading="lazy" alt="단어 하나하나 채점된 문장, 점수와 단어별 색">
+        <img src="/assets/shots/ko/shot-2.jpg" width="720" height="1558" loading="lazy" alt="영국식 또는 미국식 코치 고르기">
+        <img src="/assets/shots/ko/shot-3.jpg" width="720" height="1558" loading="lazy" alt="발음 맵 — 영어의 40가지 소리를 얼마나 잘 내는지 색으로 표시">
+        <img src="/assets/shots/ko/shot-4.jpg" width="720" height="1558" loading="lazy" alt="소리 하나에 대한 코칭 팁">
+        <img src="/assets/shots/ko/shot-5.jpg" width="720" height="1558" loading="lazy" alt="첫 단어부터 원어민 수준까지 이어지는 레슨 맵">
+        <img src="/assets/shots/ko/shot-6.jpg" width="720" height="1558" loading="lazy" alt="진도 — 정확도 변화와 최근 학습">
       </div>
       <button class="gnav next" type="button" aria-label="다음 화면">›</button>
     </div>

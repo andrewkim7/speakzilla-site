@@ -6,6 +6,7 @@
 <link rel="alternate" hreflang="en" href="https://speakzilla.app/">
 <link rel="alternate" hreflang="ko" href="https://speakzilla.app/ko/">
 <link rel="alternate" hreflang="ja" href="https://speakzilla.app/ja/">
+<link rel="alternate" hreflang="x-default" href="https://speakzilla.app/">
 <title>SpeakZilla — 英語の発音、何を直せばいいかが正確にわかる</title>
 <meta name="description" content="文を声に出して読むと、SpeakZillaが聞き取り、発音を単語ひとつひとつ採点します。イギリス式またはアメリカ式のコーチを選んで、一度で伝わるようになるまで練習しましょう。">
 <link rel="icon" href="/assets/icon.png">
@@ -34,6 +35,8 @@
   .brand img{width:32px;height:32px;border-radius:9px}
   .brand span{font-family:Fredoka,sans-serif;font-size:19px;font-weight:700}
   .bar a.nav{color:rgba(255,255,255,.6);text-decoration:none;font-size:14px}
+  .bar a.lang{font-size:13px;opacity:.85}
+  @media (max-width:420px){.bar{gap:12px}.bar a.nav{font-size:13px}}
 
   .hero{background:var(--ink);color:#fff;padding:56px 0 72px;text-align:center}
   .hero img.mark{width:104px;height:104px;border-radius:26px;margin-bottom:22px}
@@ -119,6 +122,8 @@
     <a class="brand" href="/ja/"><img src="/assets/icon.png" alt=""><span>SpeakZilla</span></a>
     <a class="nav" href="/ja/support.html">サポート</a>
     <a class="nav" href="/ja/privacy.html">プライバシー</a>
+    <a class="nav lang" href="/" lang="en">English</a>
+    <a class="nav lang" href="/ko/" lang="ko">한국어</a>
   </div>
 </header>
 
@@ -142,12 +147,12 @@
     <div class="gallery-wrap">
       <button class="gnav prev" type="button" aria-label="前の画面">‹</button>
       <div class="gallery" id="gallery">
-        <img src="/assets/shots/shot-1.jpg" width="720" height="1558" loading="lazy" alt="単語ひとつひとつ採点された文、スコアと単語ごとの色">
-        <img src="/assets/shots/shot-2.jpg" width="720" height="1558" loading="lazy" alt="イギリス式またはアメリカ式のコーチを選ぶ">
-        <img src="/assets/shots/shot-3.jpg" width="720" height="1558" loading="lazy" alt="発音マップ — 英語の40の音を、どれくらい言えているかで色分け">
-        <img src="/assets/shots/shot-4.jpg" width="720" height="1558" loading="lazy" alt="ひとつの音についてのコーチングのヒント">
-        <img src="/assets/shots/shot-5.jpg" width="720" height="1558" loading="lazy" alt="最初の単語からネイティブに近いレベルまで続くレッスンマップ">
-        <img src="/assets/shots/shot-6.jpg" width="720" height="1558" loading="lazy" alt="進度 — 正確度の変化と最近の学習">
+        <img src="/assets/shots/ja/shot-1.jpg" width="720" height="1558" loading="lazy" alt="単語ひとつひとつ採点された文、スコアと単語ごとの色">
+        <img src="/assets/shots/ja/shot-2.jpg" width="720" height="1558" loading="lazy" alt="イギリス式またはアメリカ式のコーチを選ぶ">
+        <img src="/assets/shots/ja/shot-3.jpg" width="720" height="1558" loading="lazy" alt="発音マップ — 英語の40の音を、どれくらい言えているかで色分け">
+        <img src="/assets/shots/ja/shot-4.jpg" width="720" height="1558" loading="lazy" alt="ひとつの音についてのコーチングのヒント">
+        <img src="/assets/shots/ja/shot-5.jpg" width="720" height="1558" loading="lazy" alt="最初の単語からネイティブに近いレベルまで続くレッスンマップ">
+        <img src="/assets/shots/ja/shot-6.jpg" width="720" height="1558" loading="lazy" alt="進度 — 正確度の変化と最近の学習">
       </div>
       <button class="gnav next" type="button" aria-label="次の画面">›</button>
     </div>
