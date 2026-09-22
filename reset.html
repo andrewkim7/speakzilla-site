@@ -36,6 +36,8 @@
   .done{text-align:center}
   .done .tick{font-size:44px;color:var(--ok);line-height:1}
   a{color:var(--accent)}
+  :lang(ko) main{word-break:keep-all}
+  :lang(ja) h1,:lang(ja) p{text-wrap:pretty}
 </style>
 </head>
 <body>
@@ -45,11 +47,11 @@
 
 <div class="wrap">
   <main id="card">
-    <h1>Set a new password</h1>
-    <p class="lede">Choose a new password for your SpeakZilla account, then sign in on the app.</p>
+    <h1 id="t-title">Set a new password</h1>
+    <p class="lede" id="t-lede">Choose a new password for your SpeakZilla account, then sign in on the app.</p>
 
     <form id="form">
-      <label for="pw">New password</label>
+      <label for="pw" id="t-label">New password</label>
       <input id="pw" type="password" autocomplete="new-password" minlength="8" required>
       <p class="hint" id="rules">At least 8 characters, one number and one special character.</p>
       <button id="go" type="submit">Update password</button>
@@ -70,6 +72,73 @@ const token = hash.get('access_token');
 const errDesc = hash.get('error_description');
 history.replaceState(null, '', location.pathname);
 
+// Which language? These pages are reached from an email, not from /ko/ or /ja/, so they decide for
+// themselves. The account's language (user_metadata.locale, set by the app) rides inside the token
+// Supabase passes in the fragment; when there is no token -- an expired link -- the browser's
+// language is the next best guess. Decoded for display only; nothing here trusts the token.
+function pickLang(jwt) {
+  try {
+    const p = JSON.parse(atob(jwt.split('.')[1].replace(/-/g, '+').replace(/_/g, '/')));
+    const l = p && p.user_metadata && p.user_metadata.locale;
+    if (l === 'en' || l === 'ko' || l === 'ja') return l;
+  } catch (e) {}
+  for (const n of (navigator.languages || [navigator.language || 'en'])) {
+    const l = String(n).slice(0, 2).toLowerCase();
+    if (l === 'ko' || l === 'ja' || l === 'en') return l;
+  }
+  return 'en';
+}
+
+// English is the default table AND what the HTML above already says, so the page reads correctly
+// with scripts off. The words match the app's sign-up screen (speakzilla-mobile locales: auth.*).
+const TEXT = {
+  en: {
+    go: 'Update password', going: 'Updating…',
+    newLink: ' — request a new link from the app.',
+    noToken: 'This link is missing its reset token. Open the most recent link from your email, or request a new one in the app.',
+    need: ['Your password needs at least 8 characters.', 'Your password needs a number.', 'Your password needs a special character.'],
+    failed: 'Could not update the password',
+    expired: 'That reset link has expired. Request a new one from the app.',
+    doneTitle: 'Password updated', doneBody: 'Open SpeakZilla and sign in with your new password.', back: 'Back to speakzilla.app',
+  },
+  ko: {
+    doc: '새 비밀번호 설정 — SpeakZilla',
+    title: '새 비밀번호 설정', lede: 'SpeakZilla 계정의 새 비밀번호를 정한 뒤 앱에서 로그인하세요.',
+    label: '새 비밀번호', rules: '8자 이상, 숫자와 특수문자를 하나씩 포함해야 해요.',
+    go: '비밀번호 변경', going: '변경 중…',
+    linkFailed: '링크가 작동하지 않았어요. 앱에서 새 링크를 요청해 주세요.',
+    noToken: '이 링크에는 재설정 정보가 없어요. 메일로 받은 가장 최근 링크를 열거나 앱에서 새 링크를 요청해 주세요.',
+    need: ['비밀번호는 8자 이상이어야 해요.', '비밀번호에 숫자를 넣어 주세요.', '비밀번호에 특수문자를 넣어 주세요.'],
+    failed: '비밀번호를 변경하지 못했어요. 다시 시도해 주세요.',
+    expired: '재설정 링크가 만료됐어요. 앱에서 새 링크를 요청해 주세요.',
+    doneTitle: '비밀번호를 변경했어요', doneBody: 'SpeakZilla를 열고 새 비밀번호로 로그인하세요.', back: 'speakzilla.app으로 돌아가기',
+  },
+  ja: {
+    doc: '新しいパスワードの設定 — SpeakZilla',
+    title: '新しいパスワードの設定', lede: 'SpeakZillaアカウントの新しいパスワードを決めてから、アプリでログインしてください。',
+    label: '新しいパスワード', rules: '8文字以上で、数字と記号をそれぞれ1つ以上含めてください。',
+    go: 'パスワードを変更', going: '変更中…',
+    linkFailed: 'リンクが正しく動作しませんでした。アプリから新しいリンクをリクエストしてください。',
+    noToken: 'このリンクには再設定の情報がありません。メールで届いた最新のリンクを開くか、アプリから新しいリンクをリクエストしてください。',
+    need: ['パスワードは8文字以上にしてください。', 'パスワードに数字を入れてください。', 'パスワードに記号を入れてください。'],
+    failed: 'パスワードを変更できませんでした。もう一度お試しください。',
+    expired: '再設定リンクの有効期限が切れました。アプリから新しいリンクをリクエストしてください。',
+    doneTitle: 'パスワードを変更しました', doneBody: 'SpeakZillaを開いて、新しいパスワードでログインしてください。', back: 'speakzilla.appに戻る',
+  },
+};
+const lang = pickLang(token || '');
+const L = TEXT[lang];
+if (lang !== 'en') {
+  document.documentElement.lang = lang;
+  document.title = L.doc;
+  document.getElementById('t-title').textContent = L.title;
+  document.getElementById('t-lede').textContent = L.lede;
+  document.getElementById('t-label').textContent = L.label;
+  document.getElementById('rules').textContent = L.rules;
+  document.getElementById('go').textContent = L.go;
+  document.querySelector('.brand').href = '/' + lang + '/';
+}
+
 const msg = document.getElementById('msg');
 const form = document.getElementById('form');
 const go = document.getElementById('go');
@@ -78,10 +147,11 @@ function fail(text) { msg.className = 'msg bad'; msg.textContent = text; }
 
 if (errDesc) {
   form.style.display = 'none';
-  fail(errDesc + ' — request a new link from the app.');
+  // Supabase's error text is English only; a translated page says its own sentence instead.
+  fail(L.newLink ? errDesc + L.newLink : L.linkFailed);
 } else if (!token) {
   form.style.display = 'none';
-  fail('This link is missing its reset token. Open the most recent link from your email, or request a new one in the app.');
+  fail(L.noToken);
 }
 
 form.addEventListener('submit', async (e) => {
@@ -90,14 +160,10 @@ form.addEventListener('submit', async (e) => {
   // Same list the app enforces on sign-up (PASSWORD_RULES in App.tsx) and the
   // same one Supabase enforces server-side. Checked here only so the failure
   // reads as a sentence rather than a raw API error.
-  const unmet = [
-    ['at least 8 characters', pw.length >= 8],
-    ['a number', /\d/.test(pw)],
-    ['a special character', /[^A-Za-z0-9]/.test(pw)],
-  ].find(([, ok]) => !ok);
-  if (unmet) { fail('Your password needs ' + unmet[0] + '.'); return; }
+  const unmet = [pw.length >= 8, /\d/.test(pw), /[^A-Za-z0-9]/.test(pw)].indexOf(false);
+  if (unmet >= 0) { fail(L.need[unmet]); return; }
 
-  go.disabled = true; go.textContent = 'Updating…';
+  go.disabled = true; go.textContent = L.going;
   msg.textContent = '';
   try {
     const res = await fetch(SUPABASE_URL + '/auth/v1/user', {
@@ -110,19 +176,18 @@ form.addEventListener('submit', async (e) => {
       body: JSON.stringify({ password: pw }),
     });
     const j = await res.json().catch(() => ({}));
-    if (!res.ok) throw new Error(j.msg || j.error_description || j.message || 'Could not update the password');
+    if (!res.ok) throw new Error(j.msg || j.error_description || j.message || L.failed);
 
     document.getElementById('card').innerHTML =
       '<div class="done"><div class="tick">&#10003;</div>' +
-      '<h1>Password updated</h1>' +
-      '<p class="lede">Open SpeakZilla and sign in with your new password.</p>' +
-      '<p><a href="/">Back to speakzilla.app</a></p></div>';
+      '<h1>' + L.doneTitle + '</h1>' +
+      '<p class="lede">' + L.doneBody + '</p>' +
+      '<p><a href="' + (lang === 'en' ? '/' : '/' + lang + '/') + '">' + L.back + '</a></p></div>';
   } catch (err) {
-    go.disabled = false; go.textContent = 'Update password';
+    go.disabled = false; go.textContent = L.go;
     // A link that has expired reads as an auth failure; say so plainly.
-    fail(/expired|invalid|JWT/i.test(err.message)
-      ? 'That reset link has expired. Request a new one from the app.'
-      : err.message);
+    // The server's own message is English; outside English, a translated sentence beats a raw one.
+    fail(/expired|invalid|JWT/i.test(err.message) ? L.expired : (lang === 'en' ? err.message : L.failed));
   }
 });
 </script>

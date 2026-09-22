@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="ko">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -7,12 +7,12 @@
 <link rel="alternate" hreflang="ko" href="https://speakzilla.app/ko/">
 <link rel="alternate" hreflang="ja" href="https://speakzilla.app/ja/">
 <link rel="alternate" hreflang="x-default" href="https://speakzilla.app/">
-<title>SpeakZilla — Speak English, know exactly what to fix</title>
-<meta name="description" content="SpeakZilla listens as you read a sentence aloud and scores your pronunciation word by word. Choose a British or American coach and practise until you are understood the first time.">
-<link rel="icon" href="assets/icon.png">
-<meta property="og:title" content="SpeakZilla — Speak English, know exactly what to fix">
-<meta property="og:description" content="Word-by-word pronunciation feedback with a British or American coach.">
-<meta property="og:image" content="assets/icon.png">
+<title>SpeakZilla — 영어 발음, 무엇을 고칠지 정확히 알려 드려요</title>
+<meta name="description" content="문장을 소리 내어 읽으면 SpeakZilla가 듣고 발음을 단어 하나하나 채점해요. 영국식 또는 미국식 코치를 골라, 한 번에 알아듣게 말할 수 있을 때까지 연습하세요.">
+<link rel="icon" href="/assets/icon.png">
+<meta property="og:title" content="SpeakZilla — 영어 발음, 무엇을 고칠지 정확히 알려 드려요">
+<meta property="og:description" content="영국식 또는 미국식 코치와 함께하는, 단어 하나하나 발음 채점.">
+<meta property="og:image" content="/assets/icon.png">
 <meta property="og:type" content="website">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -111,95 +111,96 @@
   footer .row{display:flex;gap:18px;flex-wrap:wrap;justify-content:space-between}
   footer a{color:var(--muted)}
   footer .social{margin-top:12px}
+  body{word-break:keep-all}
 </style>
 </head>
 <body>
 
 <header>
   <div class="wrap bar">
-    <a class="brand" href="/"><img src="assets/icon.png" alt=""><span>SpeakZilla</span></a>
-    <a class="nav" href="/support.html">Support</a>
-    <a class="nav" href="/privacy.html">Privacy</a>
-    <a class="nav lang" href="/ko/" lang="ko">한국어</a>
+    <a class="brand" href="/ko/"><img src="/assets/icon.png" alt=""><span>SpeakZilla</span></a>
+    <a class="nav" href="/ko/support.html">도움말</a>
+    <a class="nav" href="/ko/privacy.html">개인정보</a>
+    <a class="nav lang" href="/" lang="en">English</a>
     <a class="nav lang" href="/ja/" lang="ja">日本語</a>
   </div>
 </header>
 
 <div class="hero">
   <div class="wrap">
-    <img class="mark" src="assets/icon.png" alt="SpeakZilla">
-    <h1>Speak English.<br>Know <em>exactly</em> what to fix.</h1>
-    <p>SpeakZilla listens as you read a sentence aloud and scores your pronunciation
-       word by word — so instead of guessing, you can see which sounds landed and which need another try.</p>
+    <img class="mark" src="/assets/icon.png" alt="SpeakZilla">
+    <h1>소리 내어 말해 보세요.<br>무엇을 고칠지 <em>정확히</em> 알려 드려요.</h1>
+    <p>문장을 소리 내어 읽으면 SpeakZilla가 듣고 발음을 단어 하나하나 채점해요.
+       그래서 짐작하는 대신, 어떤 소리가 잘 전달됐고 어떤 소리를 다시 해 봐야 하는지 볼 수 있어요.</p>
     <div class="badges">
-      <a class="dl" href="https://apps.apple.com/app/id6805255043">Download on the App Store</a>
-      <div class="badge">Android — coming soon</div>
+      <a class="dl" href="https://apps.apple.com/kr/app/id6805255043">App Store에서 다운로드</a>
+      <div class="badge">Android — 준비 중</div>
     </div>
-    <p class="watch">Not ready to install? Watch a short lesson on <a href="https://www.youtube.com/@speakzilla" target="_blank" rel="noopener">YouTube</a> or <a href="https://www.tiktok.com/@speakzilla.app" target="_blank" rel="noopener">TikTok</a>.</p>
+    <p class="watch">아직 설치가 망설여지나요? 짧은 레슨 영상을 먼저 보세요: <a href="https://www.youtube.com/@speakzilla" target="_blank" rel="noopener">YouTube</a> · <a href="https://www.tiktok.com/@speakzilla.app" target="_blank" rel="noopener">TikTok</a> (영어)</p>
   </div>
 </div>
 
 <section class="shots">
   <div class="wrap">
-    <h2>See it in action</h2>
-    <p class="lede">Real screens — a scored sentence, your coach, a map of forty sounds, and your progress.</p>
+    <h2>이렇게 보여요</h2>
+    <p class="lede">실제 화면이에요. 채점된 문장, 코치, 40가지 소리 지도, 그리고 나의 진도.</p>
     <div class="gallery-wrap">
-      <button class="gnav prev" type="button" aria-label="Previous screenshot">‹</button>
+      <button class="gnav prev" type="button" aria-label="이전 화면">‹</button>
       <div class="gallery" id="gallery">
-        <img src="assets/shots/shot-1.jpg" width="720" height="1558" loading="lazy" alt="A sentence scored word by word, with a percentage and per-word colours">
-        <img src="assets/shots/shot-2.jpg" width="720" height="1558" loading="lazy" alt="Choosing a British or American coach">
-        <img src="assets/shots/shot-3.jpg" width="720" height="1558" loading="lazy" alt="The Sound Map — forty English sounds coloured by how well you say each">
-        <img src="assets/shots/shot-4.jpg" width="720" height="1558" loading="lazy" alt="A coaching tip for a specific sound">
-        <img src="assets/shots/shot-5.jpg" width="720" height="1558" loading="lazy" alt="The lesson map, from first words to near-native">
-        <img src="assets/shots/shot-6.jpg" width="720" height="1558" loading="lazy" alt="Progress — accuracy over time and recent attempts">
+        <img src="/assets/shots/ko/shot-1.jpg" width="720" height="1558" loading="lazy" alt="단어 하나하나 채점된 문장, 점수와 단어별 색">
+        <img src="/assets/shots/ko/shot-2.jpg" width="720" height="1558" loading="lazy" alt="영국식 또는 미국식 코치 고르기">
+        <img src="/assets/shots/ko/shot-3.jpg" width="720" height="1558" loading="lazy" alt="발음 맵 — 영어의 40가지 소리를 얼마나 잘 내는지 색으로 표시">
+        <img src="/assets/shots/ko/shot-4.jpg" width="720" height="1558" loading="lazy" alt="소리 하나에 대한 코칭 팁">
+        <img src="/assets/shots/ko/shot-5.jpg" width="720" height="1558" loading="lazy" alt="첫 단어부터 원어민 수준까지 이어지는 레슨 맵">
+        <img src="/assets/shots/ko/shot-6.jpg" width="720" height="1558" loading="lazy" alt="진도 — 정확도 변화와 최근 학습">
       </div>
-      <button class="gnav next" type="button" aria-label="Next screenshot">›</button>
+      <button class="gnav next" type="button" aria-label="다음 화면">›</button>
     </div>
-    <div class="dots" id="dots" role="tablist" aria-label="Screenshot navigation"></div>
+    <div class="dots" id="dots" role="tablist" aria-label="화면 이동"></div>
   </div>
 </section>
 
 <section class="wrap hiw">
-  <h2>How it works</h2>
-  <p class="lede">Three steps, seconds each.</p>
+  <h2>이렇게 진행돼요</h2>
+  <p class="lede">세 단계, 각각 몇 초면 돼요.</p>
   <div class="steps">
     <div class="step">
       <div class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9v6h4l5 4V5L8 9H4z"/><path d="M16 8.5a4 4 0 0 1 0 7"/></svg></div>
-      <h3>Listen</h3>
-      <p>Your coach reads the sentence, so you know what it should sound like.</p>
+      <h3>듣기</h3>
+      <p>코치가 문장을 읽어 줘요. 어떻게 들려야 하는지 먼저 알 수 있어요.</p>
     </div>
     <div class="step">
       <div class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0"/><path d="M12 18v3"/></svg></div>
-      <h3>Speak</h3>
-      <p>Read it aloud. SpeakZilla listens while you talk, not after.</p>
+      <h3>말하기</h3>
+      <p>소리 내어 읽으세요. SpeakZilla는 말이 끝난 뒤가 아니라 말하는 동안 들어요.</p>
     </div>
     <div class="step">
       <div class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 20v-6M12 20V5M18 20v-9"/></svg></div>
-      <h3>See the detail</h3>
-      <p>Every word is scored and colour-coded, so you know precisely what to work on.</p>
+      <h3>자세히 보기</h3>
+      <p>모든 단어를 채점해 색으로 보여 줘요. 무엇을 연습해야 하는지 정확히 알 수 있어요.</p>
     </div>
   </div>
 </section>
 
 <section class="wrap">
-  <h2>Choose your accent</h2>
-  <p class="lede">Two coaches, two accents. Whichever you pick speaks every example you practise —
-     so you train the English you actually want to sound like.</p>
+  <h2>원하는 억양을 고르세요</h2>
+  <p class="lede">두 명의 코치, 두 가지 억양. 고른 코치가 연습하는 모든 예문을 읽어 줘요.
+     그래서 정말로 닮고 싶은 영어를 연습하게 돼요.</p>
   <div class="coaches">
     <div class="coach">
-      <img src="assets/alex.png" alt="Alex" style="border-color:var(--indigo)">
+      <img src="/assets/alex.png" alt="알렉스" style="border-color:var(--indigo)">
       <div>
-        <h3>Alex</h3>
-        <div class="accent" style="color:var(--indigo)">British English</div>
-        <p>Calm and precise — good for clean, crisp consonants.</p>
+        <h3>알렉스</h3>
+        <div class="accent" style="color:var(--indigo)">영국식 영어</div>
+        <p>차분하고 정확해요. 또렷하고 깔끔한 자음을 익히기에 좋아요.</p>
       </div>
     </div>
     <div class="coach">
-      <img src="assets/sofia.png" alt="Sofia" style="border-color:var(--accent)">
+      <img src="/assets/sofia.png" alt="소피아" style="border-color:var(--accent)">
       <div>
-        <h3>Sofia</h3>
-        <div class="accent" style="color:var(--accent)">American English</div>
-        <p>Warm and encouraging — natural, everyday rhythm.</p>
+        <h3>소피아</h3>
+        <div class="accent" style="color:var(--accent)">미국식 영어</div>
+        <p>따뜻하게 격려해 줘요. 자연스러운 일상 리듬을 익히기에 좋아요.</p>
       </div>
     </div>
   </div>
@@ -207,15 +208,15 @@
 
 <section class="wrap">
   <div class="cta">
-    <h2>Android is on the way</h2>
-    <p>SpeakZilla is live on iPhone — grab it from the App Store above. The Android
-       version is coming to Google Play; leave your email and we'll tell you the moment
-       it lands. Nothing else, ever.</p>
+    <h2>Android도 준비 중이에요</h2>
+    <p>SpeakZilla는 지금 iPhone에서 쓸 수 있어요. 위의 App Store에서 받으세요. Android 버전은
+       Google Play에 나올 예정이에요. 이메일을 남겨 주시면 나오는 순간 알려 드릴게요.
+       그 외에는 아무것도 보내지 않아요.</p>
     <form id="notify" class="notify" novalidate>
       <input id="email" type="email" required placeholder="you@example.com"
-             autocomplete="email" aria-label="Email address">
+             autocomplete="email" aria-label="이메일 주소">
       <input class="hp" type="text" id="website" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
-      <button type="submit">Notify me</button>
+      <button type="submit">알림 받기</button>
     </form>
     <p id="notify-msg" class="notify-msg" role="status" aria-live="polite"></p>
   </div>
@@ -225,13 +226,13 @@
   <div class="wrap row">
     <div>© <span id="y"></span> SpeakZilla</div>
     <div>
-      <a href="/support.html">Support</a> &nbsp;·&nbsp;
-      <a href="/privacy.html">Privacy policy</a> &nbsp;·&nbsp;
+      <a href="/ko/support.html">도움말</a> &nbsp;·&nbsp;
+      <a href="/ko/privacy.html">개인정보 처리방침</a> &nbsp;·&nbsp;
       <a href="mailto:support@speakzilla.app">support@speakzilla.app</a>
     </div>
   </div>
   <div class="wrap social">
-    Short lessons: <a href="https://www.youtube.com/@speakzilla" target="_blank" rel="noopener">YouTube</a> &nbsp;·&nbsp; <a href="https://www.tiktok.com/@speakzilla.app" target="_blank" rel="noopener">TikTok</a>
+    짧은 레슨 영상 (영어): <a href="https://www.youtube.com/@speakzilla" target="_blank" rel="noopener">YouTube</a> &nbsp;·&nbsp; <a href="https://www.tiktok.com/@speakzilla.app" target="_blank" rel="noopener">TikTok</a>
   </div>
 </footer>
 
@@ -259,7 +260,7 @@
   for (var k = 0; k < n; k++) (function (i) {
     var d = document.createElement('button');
     d.className = 'dot'; d.type = 'button';
-    d.setAttribute('aria-label', 'Go to screenshot ' + (i + 1));
+    d.setAttribute('aria-label', '화면 ' + (i + 1));
     d.addEventListener('click', function () {
       g.scrollTo({ left: n > 1 ? (i / (n - 1)) * maxScroll() : 0, behavior: 'smooth' });
     });
@@ -299,23 +300,23 @@
   var btn = form.querySelector('button');
   form.addEventListener('submit', function (e) {
     e.preventDefault();
-    if (document.getElementById('website').value) { done("You're on the list. We'll email you when Android lands."); return; } // honeypot
+    if (document.getElementById('website').value) { done("등록됐어요. Android 버전이 나오면 메일로 알려 드릴게요."); return; } // honeypot
     var email = document.getElementById('email').value.trim();
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { msg.className = 'notify-msg'; msg.textContent = 'Please enter a valid email address.'; return; }
-    btn.disabled = true; btn.textContent = 'Sending…'; msg.textContent = '';
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { msg.className = 'notify-msg'; msg.textContent = '올바른 이메일 주소를 입력해 주세요.'; return; }
+    btn.disabled = true; btn.textContent = '보내는 중…'; msg.textContent = '';
     fetch(SB_URL + '/rest/v1/waitlist', {
       method: 'POST',
       headers: { apikey: SB_KEY, Authorization: 'Bearer ' + SB_KEY, 'Content-Type': 'application/json', Prefer: 'return=minimal' },
-      body: JSON.stringify({ email: email, platform: 'android', source: 'site' })
+      body: JSON.stringify({ email: email, platform: 'android', source: 'site-ko' })
     }).then(function (res) {
-      if (res.ok) done("You're on the list. We'll email you the moment it's live.");
-      else if (res.status === 409) done("You're already on the list — talk soon.");
+      if (res.ok) done("등록됐어요. 나오는 순간 메일로 알려 드릴게요.");
+      else if (res.status === 409) done("이미 등록되어 있어요. 곧 소식 전할게요.");
       else fail();
     }).catch(fail);
   });
   function done(text) { form.style.display = 'none'; msg.className = 'notify-msg ok'; msg.textContent = text; }
-  function fail() { btn.disabled = false; btn.textContent = 'Notify me'; msg.className = 'notify-msg';
-    msg.textContent = 'Something went wrong — please try again, or email support@speakzilla.app.'; }
+  function fail() { btn.disabled = false; btn.textContent = '알림 받기'; msg.className = 'notify-msg';
+    msg.textContent = '문제가 생겼어요. 다시 시도하거나 support@speakzilla.app으로 메일을 보내 주세요.'; }
 })();
 </script>
 </body>

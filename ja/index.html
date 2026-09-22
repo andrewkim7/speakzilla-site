@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="ja">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -7,12 +7,12 @@
 <link rel="alternate" hreflang="ko" href="https://speakzilla.app/ko/">
 <link rel="alternate" hreflang="ja" href="https://speakzilla.app/ja/">
 <link rel="alternate" hreflang="x-default" href="https://speakzilla.app/">
-<title>SpeakZilla — Speak English, know exactly what to fix</title>
-<meta name="description" content="SpeakZilla listens as you read a sentence aloud and scores your pronunciation word by word. Choose a British or American coach and practise until you are understood the first time.">
-<link rel="icon" href="assets/icon.png">
-<meta property="og:title" content="SpeakZilla — Speak English, know exactly what to fix">
-<meta property="og:description" content="Word-by-word pronunciation feedback with a British or American coach.">
-<meta property="og:image" content="assets/icon.png">
+<title>SpeakZilla — 英語の発音、何を直せばいいかが正確にわかる</title>
+<meta name="description" content="文を声に出して読むと、SpeakZillaが聞き取り、発音を単語ひとつひとつ採点します。イギリス式またはアメリカ式のコーチを選んで、一度で伝わるようになるまで練習しましょう。">
+<link rel="icon" href="/assets/icon.png">
+<meta property="og:title" content="SpeakZilla — 英語の発音、何を直せばいいかが正確にわかる">
+<meta property="og:description" content="イギリス式またはアメリカ式のコーチと、単語ひとつひとつの発音採点。">
+<meta property="og:image" content="/assets/icon.png">
 <meta property="og:type" content="website">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -111,95 +111,96 @@
   footer .row{display:flex;gap:18px;flex-wrap:wrap;justify-content:space-between}
   footer a{color:var(--muted)}
   footer .social{margin-top:12px}
+  body{line-break:strict}
+  h1,h2,h3,.lede{text-wrap:balance}
+  .hero h1{font-size:clamp(25px,5.6vw,46px)}
 </style>
 </head>
 <body>
 
 <header>
   <div class="wrap bar">
-    <a class="brand" href="/"><img src="assets/icon.png" alt=""><span>SpeakZilla</span></a>
-    <a class="nav" href="/support.html">Support</a>
-    <a class="nav" href="/privacy.html">Privacy</a>
+    <a class="brand" href="/ja/"><img src="/assets/icon.png" alt=""><span>SpeakZilla</span></a>
+    <a class="nav" href="/ja/support.html">サポート</a>
+    <a class="nav" href="/ja/privacy.html">プライバシー</a>
+    <a class="nav lang" href="/" lang="en">English</a>
     <a class="nav lang" href="/ko/" lang="ko">한국어</a>
-    <a class="nav lang" href="/ja/" lang="ja">日本語</a>
   </div>
 </header>
 
 <div class="hero">
   <div class="wrap">
-    <img class="mark" src="assets/icon.png" alt="SpeakZilla">
-    <h1>Speak English.<br>Know <em>exactly</em> what to fix.</h1>
-    <p>SpeakZilla listens as you read a sentence aloud and scores your pronunciation
-       word by word — so instead of guessing, you can see which sounds landed and which need another try.</p>
+    <img class="mark" src="/assets/icon.png" alt="SpeakZilla">
+    <h1>声に出して言ってみよう。<br>直す場所が<em>正確に</em>わかる。</h1>
+    <p>文を声に出して読むと、SpeakZillaが聞き取り、発音を単語ひとつひとつ採点します。だから当てずっぽうではなく、どの音が伝わり、どの音をもう一度やるべきかが見えます。</p>
     <div class="badges">
-      <a class="dl" href="https://apps.apple.com/app/id6805255043">Download on the App Store</a>
-      <div class="badge">Android — coming soon</div>
+      <a class="dl" href="https://apps.apple.com/jp/app/id6805255043">App Storeでダウンロード</a>
+      <div class="badge">Android — 準備中</div>
     </div>
-    <p class="watch">Not ready to install? Watch a short lesson on <a href="https://www.youtube.com/@speakzilla" target="_blank" rel="noopener">YouTube</a> or <a href="https://www.tiktok.com/@speakzilla.app" target="_blank" rel="noopener">TikTok</a>.</p>
+    <p class="watch">まだインストールを迷っていますか？ 短いレッスン動画をどうぞ：<a href="https://www.youtube.com/@speakzilla" target="_blank" rel="noopener">YouTube</a> · <a href="https://www.tiktok.com/@speakzilla.app" target="_blank" rel="noopener">TikTok</a>（英語）</p>
   </div>
 </div>
 
 <section class="shots">
   <div class="wrap">
-    <h2>See it in action</h2>
-    <p class="lede">Real screens — a scored sentence, your coach, a map of forty sounds, and your progress.</p>
+    <h2>実際の画面</h2>
+    <p class="lede">実際の画面です。採点された文、コーチ、40の音のマップ、そしてあなたの進度。</p>
     <div class="gallery-wrap">
-      <button class="gnav prev" type="button" aria-label="Previous screenshot">‹</button>
+      <button class="gnav prev" type="button" aria-label="前の画面">‹</button>
       <div class="gallery" id="gallery">
-        <img src="assets/shots/shot-1.jpg" width="720" height="1558" loading="lazy" alt="A sentence scored word by word, with a percentage and per-word colours">
-        <img src="assets/shots/shot-2.jpg" width="720" height="1558" loading="lazy" alt="Choosing a British or American coach">
-        <img src="assets/shots/shot-3.jpg" width="720" height="1558" loading="lazy" alt="The Sound Map — forty English sounds coloured by how well you say each">
-        <img src="assets/shots/shot-4.jpg" width="720" height="1558" loading="lazy" alt="A coaching tip for a specific sound">
-        <img src="assets/shots/shot-5.jpg" width="720" height="1558" loading="lazy" alt="The lesson map, from first words to near-native">
-        <img src="assets/shots/shot-6.jpg" width="720" height="1558" loading="lazy" alt="Progress — accuracy over time and recent attempts">
+        <img src="/assets/shots/ja/shot-1.jpg" width="720" height="1558" loading="lazy" alt="単語ひとつひとつ採点された文、スコアと単語ごとの色">
+        <img src="/assets/shots/ja/shot-2.jpg" width="720" height="1558" loading="lazy" alt="イギリス式またはアメリカ式のコーチを選ぶ">
+        <img src="/assets/shots/ja/shot-3.jpg" width="720" height="1558" loading="lazy" alt="発音マップ — 英語の40の音を、どれくらい言えているかで色分け">
+        <img src="/assets/shots/ja/shot-4.jpg" width="720" height="1558" loading="lazy" alt="ひとつの音についてのコーチングのヒント">
+        <img src="/assets/shots/ja/shot-5.jpg" width="720" height="1558" loading="lazy" alt="最初の単語からネイティブに近いレベルまで続くレッスンマップ">
+        <img src="/assets/shots/ja/shot-6.jpg" width="720" height="1558" loading="lazy" alt="進度 — 正確度の変化と最近の学習">
       </div>
-      <button class="gnav next" type="button" aria-label="Next screenshot">›</button>
+      <button class="gnav next" type="button" aria-label="次の画面">›</button>
     </div>
-    <div class="dots" id="dots" role="tablist" aria-label="Screenshot navigation"></div>
+    <div class="dots" id="dots" role="tablist" aria-label="画面の切り替え"></div>
   </div>
 </section>
 
 <section class="wrap hiw">
-  <h2>How it works</h2>
-  <p class="lede">Three steps, seconds each.</p>
+  <h2>使い方</h2>
+  <p class="lede">3つのステップ、それぞれ数秒です。</p>
   <div class="steps">
     <div class="step">
       <div class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9v6h4l5 4V5L8 9H4z"/><path d="M16 8.5a4 4 0 0 1 0 7"/></svg></div>
-      <h3>Listen</h3>
-      <p>Your coach reads the sentence, so you know what it should sound like.</p>
+      <h3>聞く</h3>
+      <p>コーチが文を読み上げます。どう聞こえるべきかが先にわかります。</p>
     </div>
     <div class="step">
       <div class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0"/><path d="M12 18v3"/></svg></div>
-      <h3>Speak</h3>
-      <p>Read it aloud. SpeakZilla listens while you talk, not after.</p>
+      <h3>話す</h3>
+      <p>声に出して読みます。SpeakZillaは、話し終えたあとではなく、話している間に聞き取ります。</p>
     </div>
     <div class="step">
       <div class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 20v-6M12 20V5M18 20v-9"/></svg></div>
-      <h3>See the detail</h3>
-      <p>Every word is scored and colour-coded, so you know precisely what to work on.</p>
+      <h3>詳しく見る</h3>
+      <p>すべての単語を採点して色で示します。何を練習すべきかが正確にわかります。</p>
     </div>
   </div>
 </section>
 
 <section class="wrap">
-  <h2>Choose your accent</h2>
-  <p class="lede">Two coaches, two accents. Whichever you pick speaks every example you practise —
-     so you train the English you actually want to sound like.</p>
+  <h2>アクセントを選ぶ</h2>
+  <p class="lede">2人のコーチ、2つのアクセント。選んだコーチが、練習するすべての例文を読み上げます。だから、本当に近づきたい英語を練習できます。</p>
   <div class="coaches">
     <div class="coach">
-      <img src="assets/alex.png" alt="Alex" style="border-color:var(--indigo)">
+      <img src="/assets/alex.png" alt="アレックス" style="border-color:var(--indigo)">
       <div>
-        <h3>Alex</h3>
-        <div class="accent" style="color:var(--indigo)">British English</div>
-        <p>Calm and precise — good for clean, crisp consonants.</p>
+        <h3>アレックス</h3>
+        <div class="accent" style="color:var(--indigo)">イギリス英語</div>
+        <p>落ち着いていて正確。くっきりとした子音を身につけるのにぴったりです。</p>
       </div>
     </div>
     <div class="coach">
-      <img src="assets/sofia.png" alt="Sofia" style="border-color:var(--accent)">
+      <img src="/assets/sofia.png" alt="ソフィア" style="border-color:var(--accent)">
       <div>
-        <h3>Sofia</h3>
-        <div class="accent" style="color:var(--accent)">American English</div>
-        <p>Warm and encouraging — natural, everyday rhythm.</p>
+        <h3>ソフィア</h3>
+        <div class="accent" style="color:var(--accent)">アメリカ英語</div>
+        <p>あたたかく励ましてくれます。自然な日常のリズムを身につけるのにぴったりです。</p>
       </div>
     </div>
   </div>
@@ -207,15 +208,13 @@
 
 <section class="wrap">
   <div class="cta">
-    <h2>Android is on the way</h2>
-    <p>SpeakZilla is live on iPhone — grab it from the App Store above. The Android
-       version is coming to Google Play; leave your email and we'll tell you the moment
-       it lands. Nothing else, ever.</p>
+    <h2>Android版も準備中です</h2>
+    <p>SpeakZillaは今、iPhoneで使えます。上のApp Storeから入手してください。Android版はGoogle Playに登場予定です。メールアドレスを残していただければ、公開されたらすぐにお知らせします。それ以外は何も送りません。</p>
     <form id="notify" class="notify" novalidate>
       <input id="email" type="email" required placeholder="you@example.com"
-             autocomplete="email" aria-label="Email address">
+             autocomplete="email" aria-label="メールアドレス">
       <input class="hp" type="text" id="website" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
-      <button type="submit">Notify me</button>
+      <button type="submit">知らせてもらう</button>
     </form>
     <p id="notify-msg" class="notify-msg" role="status" aria-live="polite"></p>
   </div>
@@ -225,13 +224,13 @@
   <div class="wrap row">
     <div>© <span id="y"></span> SpeakZilla</div>
     <div>
-      <a href="/support.html">Support</a> &nbsp;·&nbsp;
-      <a href="/privacy.html">Privacy policy</a> &nbsp;·&nbsp;
+      <a href="/ja/support.html">サポート</a> &nbsp;·&nbsp;
+      <a href="/ja/privacy.html">プライバシーポリシー</a> &nbsp;·&nbsp;
       <a href="mailto:support@speakzilla.app">support@speakzilla.app</a>
     </div>
   </div>
   <div class="wrap social">
-    Short lessons: <a href="https://www.youtube.com/@speakzilla" target="_blank" rel="noopener">YouTube</a> &nbsp;·&nbsp; <a href="https://www.tiktok.com/@speakzilla.app" target="_blank" rel="noopener">TikTok</a>
+    ショート動画（英語）：<a href="https://www.youtube.com/@speakzilla" target="_blank" rel="noopener">YouTube</a> &nbsp;·&nbsp; <a href="https://www.tiktok.com/@speakzilla.app" target="_blank" rel="noopener">TikTok</a>
   </div>
 </footer>
 
@@ -259,7 +258,7 @@
   for (var k = 0; k < n; k++) (function (i) {
     var d = document.createElement('button');
     d.className = 'dot'; d.type = 'button';
-    d.setAttribute('aria-label', 'Go to screenshot ' + (i + 1));
+    d.setAttribute('aria-label', '画面 ' + (i + 1));
     d.addEventListener('click', function () {
       g.scrollTo({ left: n > 1 ? (i / (n - 1)) * maxScroll() : 0, behavior: 'smooth' });
     });
@@ -299,23 +298,23 @@
   var btn = form.querySelector('button');
   form.addEventListener('submit', function (e) {
     e.preventDefault();
-    if (document.getElementById('website').value) { done("You're on the list. We'll email you when Android lands."); return; } // honeypot
+    if (document.getElementById('website').value) { done("登録しました。Android版が公開されたらメールでお知らせします。"); return; } // honeypot
     var email = document.getElementById('email').value.trim();
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { msg.className = 'notify-msg'; msg.textContent = 'Please enter a valid email address.'; return; }
-    btn.disabled = true; btn.textContent = 'Sending…'; msg.textContent = '';
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { msg.className = 'notify-msg'; msg.textContent = '正しいメールアドレスを入力してください。'; return; }
+    btn.disabled = true; btn.textContent = '送信中…'; msg.textContent = '';
     fetch(SB_URL + '/rest/v1/waitlist', {
       method: 'POST',
       headers: { apikey: SB_KEY, Authorization: 'Bearer ' + SB_KEY, 'Content-Type': 'application/json', Prefer: 'return=minimal' },
-      body: JSON.stringify({ email: email, platform: 'android', source: 'site' })
+      body: JSON.stringify({ email: email, platform: 'android', source: 'site-ja' })
     }).then(function (res) {
-      if (res.ok) done("You're on the list. We'll email you the moment it's live.");
-      else if (res.status === 409) done("You're already on the list — talk soon.");
+      if (res.ok) done("登録しました。公開されたらすぐにメールでお知らせします。");
+      else if (res.status === 409) done("すでに登録されています。近いうちにお知らせします。");
       else fail();
     }).catch(fail);
   });
   function done(text) { form.style.display = 'none'; msg.className = 'notify-msg ok'; msg.textContent = text; }
-  function fail() { btn.disabled = false; btn.textContent = 'Notify me'; msg.className = 'notify-msg';
-    msg.textContent = 'Something went wrong — please try again, or email support@speakzilla.app.'; }
+  function fail() { btn.disabled = false; btn.textContent = '知らせてもらう'; msg.className = 'notify-msg';
+    msg.textContent = '問題が発生しました。もう一度試すか、support@speakzilla.app までメールでご連絡ください。'; }
 })();
 </script>
 </body>

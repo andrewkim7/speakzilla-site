@@ -3,6 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="alternate" hreflang="en" href="https://speakzilla.app/privacy">
+<link rel="alternate" hreflang="ko" href="https://speakzilla.app/ko/privacy">
+<link rel="alternate" hreflang="ja" href="https://speakzilla.app/ja/privacy">
+<link rel="alternate" hreflang="x-default" href="https://speakzilla.app/privacy">
 <title>Privacy policy — SpeakZilla</title>
 <meta name="robots" content="index,follow">
 <link rel="icon" href="assets/icon.png">
@@ -17,6 +21,9 @@
   .bar nav{display:flex;gap:18px}
   .bar a.nav{color:rgba(255,255,255,.6);text-decoration:none;font-size:14px}
   .bar a.nav:hover{color:#fff}
+  .bar a.lang{font-size:13px;opacity:.85}
+  .bar nav a{white-space:nowrap}
+  @media (max-width:420px){.bar nav{gap:10px}.bar a.nav{font-size:13px}.brand span{display:none}}
   footer{border-top:1px solid var(--border);padding:28px 0 44px;color:var(--muted);font-size:14px}
   footer .row{display:flex;gap:18px;flex-wrap:wrap;justify-content:space-between}
   footer a{color:var(--muted)}
@@ -51,6 +58,8 @@
     <nav>
       <a class="nav" href="/support.html">Support</a>
       <a class="nav" href="/privacy.html">Privacy</a>
+      <a class="nav lang" href="/ko/privacy" lang="ko">한국어</a>
+      <a class="nav lang" href="/ja/privacy" lang="ja">日本語</a>
     </nav>
   </div>
 </header>
