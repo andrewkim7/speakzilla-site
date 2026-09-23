@@ -68,7 +68,7 @@ SpeakZilla는 캐나다에서 운영되며, 대한민국 이용자의 개인정�
 | **Microsoft Corporation** — Azure AI Speech (https://privacy.microsoft.com) | 캐나다(Azure 캐나다 중부 리전에서 처리합니다. Microsoft의 본사는 미국에 있습니다) | 연습 중 말한 음성, 읽을 문장 | 연습할 때마다 암호화된 통신으로 실시간 전송 | 음성 인식과 발음 평가 | 서버의 메모리에서만 처리하며 저장하지 않습니다. 처리 뒤 바로 폐기됩니다 |
 | **Resend, Inc.** (https://resend.com/legal/privacy-policy) | 미국 | 이메일 주소, 메일 내용 | 계정 메일을 보낼 때 암호화된 통신으로 전송 | 계정 메일(주소 확인, 비밀번호 재설정) 발송 | 메일 내용과 발송 기록은 30일 동안 보관된 뒤 삭제됩니다 |
 | **Cloudflare, Inc.** (privacyquestions@cloudflare.com) | 미국과 이용자에게 가까운 데이터센터가 있는 국가 | IP 주소, 접속 기록 | 웹사이트(speakzilla.app)를 방문할 때 | 웹사이트 제공과 보안 | Cloudflare의 로그 보관 주기에 따릅니다 |
-| **650 Industries, Inc.** — Expo (https://expo.dev/privacy) | 미국 | IP 주소, 앱 버전, 기기의 운영체제 종류. 계정 정보는 전송되지 않습니다 | 앱을 열 때 업데이트를 확인하면서 전송 | 앱 업데이트 전달 | Expo의 로그 보관 주기에 따릅니다 |
+| **650 Industries, Inc.** — Expo (https://expo.dev/privacy) | 미국 | IP 주소, 앱 버전, 기기의 운영체제 종류, 업데이트 내려받기를 세기 위한 익명의 설치 식별자. 계정 정보는 전송되지 않습니다 | 앱을 열 때 업데이트를 확인하면서 전송 | 앱 업데이트 전달 | Expo의 로그 보관 주기에 따릅니다 |
 
 **국외 이전을 거부하는 방법과 그 효과.** 국외 이전을 원하지 않으면 계정을 만들지 않거나, 앱의 프로필 → 계정 삭제로 계정을 삭제하시면 됩니다. SpeakZilla의 모든 처리는 국외에서 이루어지므로, 이전을 거부하면 서비스를 이용하실 수 없습니다.
 

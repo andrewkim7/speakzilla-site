@@ -1,7 +1,7 @@
 # SpeakZilla Privacy Policy
 
 **Effective date:** 19 August 2026
-**Last updated:** 21 September 2026
+**Last updated:** 23 September 2026
 
 SpeakZilla ("SpeakZilla", "we", "us") is a pronunciation-practice app
 operated by Andrew Kim, Ontario, Canada. This policy explains
@@ -91,7 +91,7 @@ processes data on our behalf under their own terms and security controls:
 | **Microsoft Azure AI Speech** | Speech recognition + pronunciation assessment; text-to-speech | Audio clips and reference text |
 | **Cloudflare** | Website hosting and delivery | Technical/log data (e.g. IP) |
 | **Resend** | Delivering account email (confirming your address, password resets) | Your email address and the message |
-| **Expo (EAS Update)** | Delivering app updates | Technical data (e.g. IP, app version, device platform). No account data |
+| **Expo (EAS Update)** | Delivering app updates | Technical data (e.g. IP, app version, device platform) and an anonymous per-install identifier used to count update downloads. No account data |
 
 Please review each provider's own privacy documentation:
 - Supabase: https://supabase.com/privacy
