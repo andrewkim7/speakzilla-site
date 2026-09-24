@@ -40,7 +40,17 @@ For the record: on Go 1.26 the plain `eq .Data.locale "ko"` also survives a
 missing key and only errors on a non-string value. The `printf` costs nothing
 and does not depend on which Go version Supabase happens to run.
 
-Anything that is not `ko` or `ja` gets English.
+Anything that is not `ko`, `ja`, `zh-Hans` or `zh-Hant` gets English.
+
+**Chinese, 2026-09-24.** Both templates and both subjects gained Simplified and Traditional
+branches (the app stores `zh-Hans` / `zh-Hant` — by script, never a bare `zh`). Wording
+follows the app: 邮箱 / 重置 / 链接 in Simplified, 電子郵件 / 重設 / 連結 in Traditional.
+The footer's site and policy links now go to the reader's own language for all four
+(the Korean and Japanese policy link used to open the English policy). Re-tested the same
+way, under Go 1.26 `text/template` and `html/template`: both files and both subjects against
+thirteen account shapes — the nine above plus `zh-Hans`, `zh-Hant`, a bare `zh` and a
+lower-case `zh-hans` (both of which must, and do, fall to English): 104 runs, no errors,
+exactly one language per mail.
 
 ### Subjects
 
@@ -48,11 +58,11 @@ The subject field is a template as well. Paste one line each:
 
 Confirm signup:
 
-    {{ $lang := printf "%v" .Data.locale }}{{ if eq $lang "ko" }}SpeakZilla 계정을 확인해 주세요{{ else if eq $lang "ja" }}SpeakZillaアカウントの確認{{ else }}Confirm your SpeakZilla account{{ end }}
+    {{ $lang := printf "%v" .Data.locale }}{{ if eq $lang "ko" }}SpeakZilla 계정을 확인해 주세요{{ else if eq $lang "ja" }}SpeakZillaアカウントの確認{{ else if eq $lang "zh-Hans" }}确认你的 SpeakZilla 账号{{ else if eq $lang "zh-Hant" }}確認你的 SpeakZilla 帳號{{ else }}Confirm your SpeakZilla account{{ end }}
 
 Reset Password:
 
-    {{ $lang := printf "%v" .Data.locale }}{{ if eq $lang "ko" }}SpeakZilla 비밀번호 재설정{{ else if eq $lang "ja" }}SpeakZillaパスワードの再設定{{ else }}Reset your SpeakZilla password{{ end }}
+    {{ $lang := printf "%v" .Data.locale }}{{ if eq $lang "ko" }}SpeakZilla 비밀번호 재설정{{ else if eq $lang "ja" }}SpeakZillaパスワードの再設定{{ else if eq $lang "zh-Hans" }}重置你的 SpeakZilla 密码{{ else if eq $lang "zh-Hant" }}重設你的 SpeakZilla 密碼{{ else }}Reset your SpeakZilla password{{ end }}
 
 **Verified 2026-09-22:** the subject field accepts the conditionals — the send
 test below produced an English, a Korean and a Japanese subject. Pasted into
@@ -80,13 +90,19 @@ in the dashboard (Add user, auto-confirm) with a `+alias` address.
 3. Sign up with a fresh address while the app is in 日本語: Japanese
    confirmation, and `/confirmed` opens in Japanese.
 
+4. **Chinese (2026-09-24 paste):** in the app switch to 简体中文, sign out, request a
+   reset: Simplified subject and body, and `/reset` opens in Simplified. Then the
+   same in 繁體中文. Step 1 again first — it is still the one that matters.
+
 If step 1 fails, paste the `master` version of the template back first and
-investigate second.
+investigate second. (The Korean/Japanese-only version of 2026-09-22 is commit
+`ed38d74` in this repo.)
 
 ### The pages the emails open
 
 `confirmed.html` and `reset.html` are reached from an email, not from `/ko/`
-or `/ja/`, so they pick their own language: the account's `locale`, read from
+or `/ja/`, so they pick their own language (Chinese too since 2026-09-24; a
+browser tag with Hant, TW, HK or MO means Traditional): the account's `locale`, read from
 the token Supabase passes in the URL fragment (for display only — nothing
 trusts it), else the browser's first supported language, else English. English
 is what the HTML itself says, so the pages read correctly with scripts off.

@@ -71,14 +71,19 @@ function pickLang(jwt) {
   try {
     const p = JSON.parse(atob(jwt.split('.')[1].replace(/-/g, '+').replace(/_/g, '/')));
     const l = p && p.user_metadata && p.user_metadata.locale;
-    if (l === 'en' || l === 'ko' || l === 'ja') return l;
+    if (l === 'en' || l === 'ko' || l === 'ja' || l === 'zh-Hans' || l === 'zh-Hant') return l;
   } catch (e) {}
   for (const n of (navigator.languages || [navigator.language || 'en'])) {
-    const l = String(n).slice(0, 2).toLowerCase();
+    const tag = String(n).toLowerCase();
+    const l = tag.slice(0, 2);
     if (l === 'ko' || l === 'ja' || l === 'en') return l;
+    // Chinese by script, as in the app: Hant when the tag says so or names Taiwan, Hong Kong or Macau.
+    if (l === 'zh') return /hant|-tw|-hk|-mo/.test(tag) ? 'zh-Hant' : 'zh-Hans';
   }
   return 'en';
 }
+// The site's folder for a language: /zh-hans/, /zh-hant/ are lower-case, like the others.
+const dirOf = (l) => l.toLowerCase();
 
 // English lives in the HTML above, so the page still reads correctly with scripts off.
 const TEXT = {
@@ -106,6 +111,30 @@ const TEXT = {
     failedBody: 'メールアドレスの確認中に問題が発生しました。SpeakZillaを開いて、もう一度お試しください。',
     stuck: '解決しない場合は、<a href="mailto:support@speakzilla.app">support@speakzilla.app</a>までメールでご連絡ください。',
   },
+  'zh-Hans': {
+    doc: '邮箱已确认 — SpeakZilla',
+    title: '邮箱已确认',
+    lede: '你的 SpeakZilla 账号已经准备好了。',
+    next: '<b>下一步：</b>在手机上打开 SpeakZilla，用刚才的邮箱和密码登录。',
+    test: '先做一个简短的水平测试，让教练知道从哪里开始。大约 2 分钟，随时可以重做。',
+    expiredTitle: '链接已过期',
+    expiredBody: '确认链接只能使用一次，而且有时间限制。打开 SpeakZilla，用同一个邮箱重新注册，就能收到新的链接。',
+    failedTitle: '链接无法使用',
+    failedBody: '确认邮箱时出了问题。请打开 SpeakZilla 再试一次。',
+    stuck: '还是不行？发邮件到 <a href="mailto:support@speakzilla.app">support@speakzilla.app</a>，我们来帮你解决。',
+  },
+  'zh-Hant': {
+    doc: '電子郵件已確認 — SpeakZilla',
+    title: '電子郵件已確認',
+    lede: '你的 SpeakZilla 帳號已經準備好了。',
+    next: '<b>下一步：</b>在手機上開啟 SpeakZilla，用剛才的電子郵件和密碼登入。',
+    test: '先做一個簡短的程度測驗，讓教練知道從哪裡開始。大約 2 分鐘，隨時可以重做。',
+    expiredTitle: '連結已過期',
+    expiredBody: '確認連結只能使用一次，而且有時間限制。開啟 SpeakZilla，用同一個電子郵件重新註冊，就能收到新的連結。',
+    failedTitle: '連結無法使用',
+    failedBody: '確認電子郵件時發生問題。請開啟 SpeakZilla 再試一次。',
+    stuck: '還是不行？寄信到 <a href="mailto:support@speakzilla.app">support@speakzilla.app</a>，我們來幫你解決。',
+  },
 };
 const lang = pickLang(token);
 const L = TEXT[lang];
@@ -116,7 +145,7 @@ if (L) {
   document.getElementById('t-lede').textContent = L.lede;
   document.getElementById('t-next').innerHTML = L.next;
   document.getElementById('t-test').innerHTML = L.test;
-  document.querySelector('.brand').href = '/' + lang + '/';
+  document.querySelector('.brand').href = '/' + dirOf(lang) + '/';
 }
 
 if (errDesc || errCode) {

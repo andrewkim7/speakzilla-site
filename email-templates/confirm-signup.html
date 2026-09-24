@@ -1,4 +1,4 @@
-<!-- SpeakZilla — "Confirm signup" template. English, Korean, Japanese in one file.
+<!-- SpeakZilla — "Confirm signup" template. English, Korean, Japanese, Chinese (Simplified, Traditional) in one file.
      Paste into Supabase → Authentication → Email Templates → Confirm signup.
      Subject: see README.md (it is a template too).
 
@@ -21,6 +21,8 @@
       <div style="display:none;max-height:0;overflow:hidden;opacity:0;">
         {{ if eq $lang "ko" }}한 번만 누르면 끝나요. 코치를 고르고 바로 연습을 시작하세요.
         {{ else if eq $lang "ja" }}ワンタップで完了です。コーチを選んで、すぐに練習を始めましょう。
+        {{ else if eq $lang "zh-Hans" }}点一下就完成。然后选好教练，马上开始练习。
+        {{ else if eq $lang "zh-Hant" }}點一下就完成。接著選好教練，馬上開始練習。
         {{ else }}One tap and you are in — then pick your coach and start practising.{{ end }}
       </div>
 
@@ -42,11 +44,15 @@
             <h1 style="margin:0 0 10px;font-size:22px;line-height:1.3;color:#0f0e17;">
               {{ if eq $lang "ko" }}계정을 확인해 주세요
               {{ else if eq $lang "ja" }}アカウントを確認してください
+              {{ else if eq $lang "zh-Hans" }}确认你的账号
+              {{ else if eq $lang "zh-Hant" }}確認你的帳號
               {{ else }}Confirm your account{{ end }}
             </h1>
             <p style="margin:0 0 22px;font-size:15px;line-height:1.6;color:#4a4956;word-break:keep-all;">
               {{ if eq $lang "ko" }}SpeakZilla에 오신 것을 환영해요. 이메일 주소를 확인하면 코치 알렉스 또는 소피아를 고르고 바로 연습을 시작할 수 있어요.
               {{ else if eq $lang "ja" }}SpeakZillaへようこそ。メールアドレスを確認すると、コーチ（アレックスまたはソフィア）を選んで、すぐに練習を始められます。
+              {{ else if eq $lang "zh-Hans" }}欢迎来到 SpeakZilla。确认邮箱地址后，就可以选择教练（亚历克斯或索菲亚），马上开始练习。
+              {{ else if eq $lang "zh-Hant" }}歡迎來到 SpeakZilla。確認電子郵件地址後，就可以選擇教練（艾力克斯或蘇菲亞），馬上開始練習。
               {{ else }}Welcome to SpeakZilla. Confirm your email address and you can choose your
               coach — Alex or Sofia — and start practising straight away.{{ end }}
             </p>
@@ -61,7 +67,7 @@
                   <a href="{{ .ConfirmationURL }}"
                      style="display:inline-block;padding:15px 34px;font-size:16px;font-weight:700;
                             color:#ffffff;text-decoration:none;border-radius:12px;">
-                    {{ if eq $lang "ko" }}이메일 확인하기{{ else if eq $lang "ja" }}メールアドレスを確認{{ else }}Confirm my email{{ end }}
+                    {{ if eq $lang "ko" }}이메일 확인하기{{ else if eq $lang "ja" }}メールアドレスを確認{{ else if eq $lang "zh-Hans" }}确认邮箱{{ else if eq $lang "zh-Hant" }}確認電子郵件{{ else }}Confirm my email{{ end }}
                   </a>
                 </td>
               </tr>
@@ -74,6 +80,8 @@
             <p style="margin:0 0 6px;font-size:13px;line-height:1.6;color:#6e6d7a;">
               {{ if eq $lang "ko" }}버튼이 눌리지 않으면 아래 주소를 브라우저에 붙여 넣으세요.
               {{ else if eq $lang "ja" }}ボタンが使えない場合は、次のURLをブラウザに貼り付けてください。
+              {{ else if eq $lang "zh-Hans" }}如果按钮无法使用，请把下面的链接粘贴到浏览器中：
+              {{ else if eq $lang "zh-Hant" }}如果按鈕無法使用，請將下方連結貼到瀏覽器中：
               {{ else }}If the button does not work, paste this into your browser:{{ end }}
             </p>
             <p style="margin:0 0 22px;font-size:12px;line-height:1.5;word-break:break-all;">
@@ -82,6 +90,8 @@
             <p style="margin:0;font-size:13px;line-height:1.6;color:#8a8896;border-top:1px solid #e5e4ef;padding-top:18px;word-break:keep-all;">
               {{ if eq $lang "ko" }}SpeakZilla 계정을 만든 적이 없다면 이 메일은 무시하셔도 돼요. 아무 일도 일어나지 않아요.
               {{ else if eq $lang "ja" }}SpeakZillaのアカウントを作成した覚えがない場合は、このメールを無視してください。何も起こりません。
+              {{ else if eq $lang "zh-Hans" }}如果你没有注册过 SpeakZilla 账号，可以忽略这封邮件，什么都不会发生。
+              {{ else if eq $lang "zh-Hant" }}如果你沒有註冊過 SpeakZilla 帳號，可以忽略這封郵件，不會有任何影響。
               {{ else }}If you did not create a SpeakZilla account, you can ignore this email —
               nothing will happen.{{ end }}
             </p>
@@ -93,9 +103,9 @@
         <tr>
           <td align="center" style="padding:18px 12px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif;
                                     font-size:12px;color:#8a8896;line-height:1.6;">
-            <a href="https://speakzilla.app{{ if eq $lang "ko" }}/ko/{{ else if eq $lang "ja" }}/ja/{{ end }}" style="color:#8a8896;">speakzilla.app</a>
+            <a href="https://speakzilla.app{{ if eq $lang "ko" }}/ko/{{ else if eq $lang "ja" }}/ja/{{ else if eq $lang "zh-Hans" }}/zh-hans/{{ else if eq $lang "zh-Hant" }}/zh-hant/{{ end }}" style="color:#8a8896;">speakzilla.app</a>
             &nbsp;·&nbsp;
-            <a href="https://speakzilla.app/privacy" style="color:#8a8896;">{{ if eq $lang "ko" }}개인정보 처리방침{{ else if eq $lang "ja" }}プライバシーポリシー{{ else }}Privacy{{ end }}</a>
+            <a href="https://speakzilla.app{{ if eq $lang "ko" }}/ko{{ else if eq $lang "ja" }}/ja{{ else if eq $lang "zh-Hans" }}/zh-hans{{ else if eq $lang "zh-Hant" }}/zh-hant{{ end }}/privacy" style="color:#8a8896;">{{ if eq $lang "ko" }}개인정보 처리방침{{ else if eq $lang "ja" }}プライバシーポリシー{{ else if eq $lang "zh-Hans" }}隐私政策{{ else if eq $lang "zh-Hant" }}隱私權政策{{ else }}Privacy{{ end }}</a>
             &nbsp;·&nbsp;
             <a href="mailto:support@speakzilla.app" style="color:#8a8896;">support@speakzilla.app</a>
           </td>
