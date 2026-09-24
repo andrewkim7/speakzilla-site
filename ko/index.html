@@ -6,6 +6,8 @@
 <link rel="alternate" hreflang="en" href="https://speakzilla.app/">
 <link rel="alternate" hreflang="ko" href="https://speakzilla.app/ko/">
 <link rel="alternate" hreflang="ja" href="https://speakzilla.app/ja/">
+<link rel="alternate" hreflang="zh-Hans" href="https://speakzilla.app/zh-hans/">
+<link rel="alternate" hreflang="zh-Hant" href="https://speakzilla.app/zh-hant/">
 <link rel="alternate" hreflang="x-default" href="https://speakzilla.app/">
 <title>SpeakZilla — 영어 발음, 무엇을 고칠지 정확히 알려 드려요</title>
 <meta name="description" content="문장을 소리 내어 읽으면 SpeakZilla가 듣고 발음을 단어 하나하나 채점해요. 영국식 또는 미국식 코치를 골라, 한 번에 알아듣게 말할 수 있을 때까지 연습하세요.">
@@ -34,10 +36,24 @@
   .brand{display:flex;align-items:center;gap:10px;color:#fff;text-decoration:none}
   .brand img{width:32px;height:32px;border-radius:9px}
   .brand span{font-family:Fredoka,sans-serif;font-size:19px;font-weight:700}
-  .bar a.nav{color:rgba(255,255,255,.6);text-decoration:none;font-size:14px}
-  .bar a.lang{font-size:13px;opacity:.85}
-  .bar a.nav{white-space:nowrap}
-  @media (max-width:420px){.bar{gap:10px}.bar a.nav{font-size:13px}.brand span{display:none}}
+  .bar a.nav{color:rgba(255,255,255,.6);text-decoration:none;font-size:14px;white-space:nowrap}
+  .bar nav{display:flex;align-items:center;gap:18px}
+  .bar a.nav:hover{color:#fff}
+  /* Language menu: one entry in the bar however many languages there are. */
+  .lang-menu{position:relative}
+  .lang-menu summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:5px;
+                     color:rgba(255,255,255,.6);font-size:14px;white-space:nowrap}
+  .lang-menu summary::-webkit-details-marker{display:none}
+  .lang-menu summary:hover,.lang-menu[open] summary{color:#fff}
+  .lang-menu summary svg{width:15px;height:15px;flex:none}
+  .lang-list{position:absolute;right:0;top:calc(100% + 12px);background:#1d1b29;border:1px solid rgba(255,255,255,.14);
+             border-radius:12px;padding:6px;min-width:150px;box-shadow:0 14px 40px rgba(0,0,0,.45);z-index:20}
+  .lang-list a{display:block;padding:8px 12px;border-radius:8px;color:rgba(255,255,255,.8);text-decoration:none;
+               font-size:14px;white-space:nowrap}
+  .lang-list a:hover{background:rgba(255,255,255,.08);color:#fff}
+  .lang-list a[aria-current]{color:#fff;font-weight:600}
+  .lang-list a[aria-current]::after{content:" ✓";color:var(--accent)}
+  @media (max-width:420px){.bar nav{gap:12px}.bar a.nav,.lang-menu summary{font-size:13px}.brand span{display:none}}
 
   .hero{background:var(--ink);color:#fff;padding:56px 0 72px;text-align:center}
   .hero img.mark{width:104px;height:104px;border-radius:26px;margin-bottom:22px}
@@ -135,10 +151,22 @@
 <header>
   <div class="wrap bar">
     <a class="brand" href="/ko/"><img src="/assets/icon.png" alt=""><span>SpeakZilla</span></a>
-    <a class="nav" href="/ko/support.html">도움말</a>
-    <a class="nav" href="/ko/privacy.html">개인정보</a>
-    <a class="nav lang" href="/" lang="en">English</a>
-    <a class="nav lang" href="/ja/" lang="ja">日本語</a>
+    <nav>
+      <a class="nav" href="/ko/support.html">도움말</a>
+      <a class="nav" href="/ko/privacy.html">개인정보</a>
+      <!-- lang:start -->
+      <details class="lang-menu">
+        <summary aria-label="언어: 한국어"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.7 3.8 5.7 3.8 9s-1.3 6.3-3.8 9c-2.5-2.7-3.8-5.7-3.8-9S9.5 5.7 12 3z"/></svg>한국어</summary>
+        <div class="lang-list">
+          <a href="/" lang="en">English</a>
+          <a href="/ko/" lang="ko" aria-current="page">한국어</a>
+          <a href="/ja/" lang="ja">日本語</a>
+          <a href="/zh-hans/" lang="zh-Hans">简体中文</a>
+          <a href="/zh-hant/" lang="zh-Hant">繁體中文</a>
+        </div>
+      </details>
+      <!-- lang:end -->
+    </nav>
   </div>
 </header>
 
@@ -261,6 +289,15 @@
 </footer>
 
 <script>document.getElementById('y').textContent = new Date().getFullYear()</script>
+<script>
+// Language menu: a click anywhere else, or Esc, closes it.
+document.addEventListener('click', function (e) {
+  document.querySelectorAll('details.lang-menu[open]').forEach(function (d) { if (!d.contains(e.target)) d.removeAttribute('open') })
+})
+document.addEventListener('keydown', function (e) {
+  if (e.key === 'Escape') document.querySelectorAll('details.lang-menu[open]').forEach(function (d) { d.removeAttribute('open') })
+})
+</script>
 
 <script>
 // Screenshot gallery: dots + looping arrows instead of a scrollbar.

@@ -18,8 +18,40 @@ import { fileURLToPath } from 'node:url'
 
 const root = path.dirname(fileURLToPath(import.meta.url))
 const LANGS = {
-  ko: { html: 'ko', name: '한국어', store: 'https://apps.apple.com/kr/app/id6805255043' },
-  ja: { html: 'ja', name: '日本語', store: 'https://apps.apple.com/jp/app/id6805255043' },
+  ko: { html: 'ko', dir: 'ko', name: '한국어', store: 'https://apps.apple.com/kr/app/id6805255043' },
+  ja: { html: 'ja', dir: 'ja', name: '日本語', store: 'https://apps.apple.com/jp/app/id6805255043' },
+  // Chinese by SCRIPT (as in the app), never a bare zh. No China storefront (the app is not offered there);
+  // Traditional links the Taiwan store. Their text is not in the ko/ja columns below but in i18n-zh.json,
+  // keyed by the English snippet -- same exact-match rule, and a snippet with no Chinese stops the build.
+  'zh-Hans': { html: 'zh-Hans', dir: 'zh-hans', name: '简体中文', store: 'https://apps.apple.com/app/id6805255043' },
+  'zh-Hant': { html: 'zh-Hant', dir: 'zh-hant', name: '繁體中文', store: 'https://apps.apple.com/tw/app/id6805255043' },
+}
+// `node build-i18n.mjs --dump-zh <file>`: write every English snippet the Chinese pages need (with the
+// Korean and Japanese beside it for reference) instead of building. That is the translator's worksheet.
+const DUMP = process.argv.includes('--dump-zh') ? new Map() : null
+const ZH = fs.existsSync(path.join(root, 'i18n-zh.json')) ? JSON.parse(fs.readFileSync(path.join(root, 'i18n-zh.json'), 'utf8')) : {}
+
+// The header's language menu, the same on every page in every language (English included, so the source
+// pages are filled here too). Each entry links to the same page in that language.
+const MENU = [['en', '', 'English'], ['ko', 'ko', '한국어'], ['ja', 'ja', '日本語'], ['zh-Hans', 'zh-hans', '简体中文'], ['zh-Hant', 'zh-hant', '繁體中文']]
+const MENU_LABEL = { en: 'Language', ko: '언어', ja: '言語', 'zh-Hans': '语言', 'zh-Hant': '語言' }
+const GLOBE = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.7 3.8 5.7 3.8 9s-1.3 6.3-3.8 9c-2.5-2.7-3.8-5.7-3.8-9S9.5 5.7 12 3z"/></svg>'
+function fillMenu(html, lang, page) {
+  const tail = page === 'index.html' ? '' : page.replace('.html', '')
+  const name = MENU.find((m) => m[0] === lang)[2]
+  const block = [
+    '      <!-- lang:start -->',
+    '      <details class="lang-menu">',
+    `        <summary aria-label="${MENU_LABEL[lang]}: ${name}">${GLOBE}${name}</summary>`,
+    '        <div class="lang-list">',
+    ...MENU.map(([code, dir, nm]) => `          <a href="/${dir ? dir + '/' : ''}${tail}" lang="${code}"${code === lang ? ' aria-current="page"' : ''}>${nm}</a>`),
+    '        </div>',
+    '      </details>',
+    '      <!-- lang:end -->',
+  ].join('\n')
+  const a = html.indexOf('      <!-- lang:start -->'), b = html.indexOf('<!-- lang:end -->')
+  if (a < 0 || b < 0 || html.indexOf('<!-- lang:start -->', a + 30) >= 0) throw new Error(`${page} [${lang}]: language menu markers missing or doubled`)
+  return html.slice(0, a) + block + html.slice(b + '<!-- lang:end -->'.length)
 }
 // A language has its own policy when its SOURCE exists (privacy.<lang>.md). These are not translations of
 // privacy.md: the Korean one follows PIPA's prescribed contents and the Japanese one APPI's, which is what
@@ -360,7 +392,10 @@ function applyAll(text, table, col, file) {
   for (const [en, ko, ja, count = 1] of table) {
     const n = text.split(en).length - 1
     if (n !== count) throw new Error(`${file}: expected ${count}× but found ${n}×:\n${en}`)
-    text = text.split(en).join(col === 'ko' ? ko : ja)
+    let to = col === 'ko' ? ko : col === 'ja' ? ja : ZH[col]?.[en]
+    if (to == null && DUMP) { DUMP.set(en, { ko, ja }); to = en }
+    if (to == null) throw new Error(`${file} [${col}]: no translation in i18n-zh.json for:\n${en}`)
+    text = text.split(en).join(to)
   }
   return text
 }
@@ -368,7 +403,7 @@ function applyAll(text, table, col, file) {
 // Links, assets and language metadata, the same for every page.
 function localize(html, lang, page) {
   const L = LANGS[lang]
-  const privacy = privacyReady(lang) ? `/${lang}/privacy.html` : '/privacy.html'
+  const privacy = privacyReady(lang) ? `/${L.dir}/privacy.html` : '/privacy.html'
   const once = (a, b, count = 1) => {
     const n = html.split(a).length - 1
     if (n !== count) throw new Error(`${page} [${lang}]: expected ${count}× but found ${n}×:\n${a}`)
@@ -377,22 +412,19 @@ function localize(html, lang, page) {
   once('<html lang="en">', `<html lang="${L.html}">`)
   // Absolute, so the same markup works one directory down.
   html = html.split('href="assets/').join('href="/assets/').split('src="assets/').join('src="/assets/').split('content="assets/').join('content="/assets/')
-  once('<a class="brand" href="/">', `<a class="brand" href="/${lang}/">`)
-  html = html.split('href="/support.html"').join(`href="/${lang}/support.html"`)
+  once('<a class="brand" href="/">', `<a class="brand" href="/${L.dir}/">`)
+  html = html.split('href="/support.html"').join(`href="/${L.dir}/support.html"`)
   html = html.split('href="/privacy.html"').join(`href="${privacy}"`)
   html = html.split('https://apps.apple.com/app/id6805255043').join(L.store)
-  // hreflang tags: the English source carries all three (plus x-default) and they are absolute, so
-  // they pass through unchanged. The header's language switcher lists the OTHER two languages.
-  const tail = page === 'index.html' ? '' : page.replace('.html', '')
-  const sw = (l) => l === 'en' ? `<a class="nav lang" href="/${tail}" lang="en">English</a>`
-    : l === 'ko' ? `<a class="nav lang" href="/ko/${tail}" lang="ko">한국어</a>` : `<a class="nav lang" href="/ja/${tail}" lang="ja">日本語</a>`
-  const ind = page === 'index.html' ? '    ' : '      '
-  once(`${ind}${sw('ko')}\n${ind}${sw('ja')}\n`, `${ind}${sw('en')}\n${ind}${sw(lang === 'ko' ? 'ja' : 'ko')}\n`)
-  if (page === 'index.html') html = html.split('src="/assets/shots/shot-').join(`src="/assets/shots/${lang}/shot-`)
+  // hreflang tags: the English source carries every language (plus x-default) and they are absolute, so
+  // they pass through unchanged. The header's language menu is filled by fillMenu.
+  html = fillMenu(html, lang, page)
+  if (page === 'index.html') html = html.split('src="/assets/shots/shot-').join(`src="/assets/shots/${L.dir}/shot-`)
 
   // Korean breaks between words, never inside one. Japanese has no spaces to break at, so: never start a
   // line with 。or、, balance headings so one character is not left alone on a line, and a slightly smaller
   // headline -- at phone width the English size fits eleven characters across and the headline has twelve.
+  // Chinese, like Japanese, has no spaces to break at.
   const css = lang === 'ko'
     ? '  body{word-break:keep-all}\n'
     : '  body{line-break:strict}\n  h1,h2,h3,.lede{text-wrap:balance}\n  .hero h1{font-size:clamp(25px,5.6vw,46px)}\n'
@@ -401,7 +433,7 @@ function localize(html, lang, page) {
   // A browser renders a newline in the source as a SPACE. English and Korean want that; between two
   // Japanese characters it is a visible gap in the middle of a sentence. The prose here is wrapped for
   // readability, so join those lines back up for Japanese.
-  if (lang === 'ja') {
+  if (lang !== 'ko') {
     const J = '\\u3040-\\u30FF\\u3400-\\u9FFF\\uFF01-\\uFF60\\u3000-\\u303F'
     html = html
       .replace(new RegExp(`([${J}])\\n[ \\t]*(?=[${J}A-Za-z0-9<])`, 'g'), '$1')
@@ -421,22 +453,22 @@ for (const lang of Object.keys(LANGS)) {
   let idx = fs.readFileSync(path.join(root, 'index.html'), 'utf8').replace(/\r\n/g, '\n')
   idx = applyAll(idx, INDEX, lang, 'index.html')
   idx = applyAll(idx, [
-    ['<a class="nav" href="/support.html">Support</a>\n    <a class="nav" href="/privacy.html">Privacy</a>',
-      `<a class="nav" href="/support.html">${footerWords.ko[0]}</a>\n    <a class="nav" href="/privacy.html">개인정보</a>`,
-      `<a class="nav" href="/support.html">${footerWords.ja[0]}</a>\n    <a class="nav" href="/privacy.html">プライバシー</a>`],
+    ['<a class="nav" href="/support.html">Support</a>\n      <a class="nav" href="/privacy.html">Privacy</a>',
+      `<a class="nav" href="/support.html">${footerWords.ko[0]}</a>\n      <a class="nav" href="/privacy.html">개인정보</a>`,
+      `<a class="nav" href="/support.html">${footerWords.ja[0]}</a>\n      <a class="nav" href="/privacy.html">プライバシー</a>`],
     ['<a href="/support.html">Support</a> &nbsp;·&nbsp;\n      <a href="/privacy.html">Privacy policy</a> &nbsp;·&nbsp;',
       `<a href="/support.html">${footerWords.ko[0]}</a> &nbsp;·&nbsp;\n      <a href="/privacy.html">${footerWords.ko[1]}${note}</a> &nbsp;·&nbsp;`,
       `<a href="/support.html">${footerWords.ja[0]}</a> &nbsp;·&nbsp;\n      <a href="/privacy.html">${footerWords.ja[1]}${note}</a> &nbsp;·&nbsp;`],
     ['Short lessons: ', '짧은 레슨 영상 (영어): ', 'ショート動画（英語）：'],
   ], lang, 'index.html')
   idx = localize(idx, lang, 'index.html')
-  outputs.push([path.join(root, lang, 'index.html'), idx])
+  outputs.push([path.join(root, LANGS[lang].dir, 'index.html'), idx])
 
   // ── support ──
   let sup = fs.readFileSync(path.join(root, 'support.html'), 'utf8').replace(/\r\n/g, '\n')
   const start = '<!-- content:start -->\n', end = '<!-- content:end -->'
   if (sup.split(start).length !== 2 || sup.split(end).length !== 2) throw new Error('support.html: content markers missing')
-  sup = sup.slice(0, sup.indexOf(start) + start.length) + SUPPORT_BODY[lang] + '\n' + sup.slice(sup.indexOf(end))
+  sup = sup.slice(0, sup.indexOf(start) + start.length) + (SUPPORT_BODY[lang] ?? ZH[lang]?.__support_body__) + '\n' + sup.slice(sup.indexOf(end))
   sup = applyAll(sup, SUPPORT_HEAD, lang, 'support.html')
   sup = applyAll(sup, [
     ['<a class="nav" href="/support.html">Support</a>\n      <a class="nav" href="/privacy.html">Privacy</a>',
@@ -449,7 +481,7 @@ for (const lang of Object.keys(LANGS)) {
   ], lang, 'support.html')
   sup = sup.split('%PRIVACY_NOTE%').join(note).split('%PRIVACY%').join('/privacy.html')
   sup = localize(sup, lang, 'support.html')
-  outputs.push([path.join(root, lang, 'support.html'), sup])
+  outputs.push([path.join(root, LANGS[lang].dir, 'support.html'), sup])
 
   // ── privacy ── its own text (privacy.<lang>.md) inside the English page's shell.
   if (privacyReady(lang)) {
@@ -470,13 +502,24 @@ for (const lang of Object.keys(LANGS)) {
       ['Short lessons: ', '짧은 레슨 영상 (영어): ', 'ショート動画（英語）：'],
       // Six-column tables (Korea's transfer table) need room to scroll sideways on a phone.
       // (The row has one column per language; the CSS is the same in both.)
-      ['</style>', TABLE_CSS, TABLE_CSS],
     ], lang, 'privacy.html')
+    pv = pv.replace('</style>', TABLE_CSS)
     pv = localize(pv, lang, 'privacy.html')
     const left = [...new Set((body.match(/<mark>\[[^\]]+\]<\/mark>/g) || []).map((x) => x.replace(/<[^>]+>/g, '')))]
     console.log(`  ${lang}/privacy.html: ${left.length ? 'placeholders left: ' + left.join(' ') : 'no placeholders left'}`)
-    outputs.push([path.join(root, lang, 'privacy.html'), pv])
+    outputs.push([path.join(root, LANGS[lang].dir, 'privacy.html'), pv])
   }
+}
+
+for (const page of ['index.html', 'support.html', 'privacy.html']) {
+  outputs.push([path.join(root, page), fillMenu(fs.readFileSync(path.join(root, page), 'utf8').replace(/\r\n/g, '\n'), 'en', page)])
+}
+
+if (DUMP) {
+  const out = process.argv[process.argv.indexOf('--dump-zh') + 1]
+  fs.writeFileSync(out, JSON.stringify([...DUMP].map(([en, r]) => ({ en, ...r })), null, 2))
+  console.log(`${DUMP.size} snippets -> ${out}`)
+  process.exit(0)
 }
 
 // Nothing above threw: write everything.

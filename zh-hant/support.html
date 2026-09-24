@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="zh-Hant">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -9,10 +9,10 @@
 <link rel="alternate" hreflang="zh-Hans" href="https://speakzilla.app/zh-hans/support">
 <link rel="alternate" hreflang="zh-Hant" href="https://speakzilla.app/zh-hant/support">
 <link rel="alternate" hreflang="x-default" href="https://speakzilla.app/support">
-<title>Support — SpeakZilla</title>
-<meta name="description" content="Help with SpeakZilla: microphone, audio, scoring, daily lessons, accounts and data.">
+<title>支援 — SpeakZilla</title>
+<meta name="description" content="SpeakZilla 支援：麥克風、音訊、評分、每日課程、帳號與資料。">
 <meta name="robots" content="index,follow">
-<link rel="icon" href="assets/icon.png">
+<link rel="icon" href="/assets/icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@600;700&display=swap" rel="stylesheet">
@@ -65,24 +65,27 @@
   .email{font-family:Fredoka,sans-serif;font-size:20px;font-weight:700}
   .muted{color:var(--muted);font-size:14.5px}
   .back{display:inline-block;margin-top:28px;color:var(--muted);text-decoration:none;font-size:14px}
+  body{line-break:strict}
+  h1,h2,h3,.lede{text-wrap:balance}
+  .hero h1{font-size:clamp(25px,5.6vw,46px)}
 </style>
 </head>
 <body>
 <header>
   <div class="wrap bar">
-    <a class="brand" href="/"><img src="assets/icon.png" alt=""><span>SpeakZilla</span></a>
+    <a class="brand" href="/zh-hant/"><img src="/assets/icon.png" alt=""><span>SpeakZilla</span></a>
     <nav>
-      <a class="nav" href="/support.html">Support</a>
-      <a class="nav" href="/privacy.html">Privacy</a>
+      <a class="nav" href="/zh-hant/support.html">支援</a>
+      <a class="nav" href="/zh-hant/privacy.html">隱私權</a>
       <!-- lang:start -->
       <details class="lang-menu">
-        <summary aria-label="Language: English"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.7 3.8 5.7 3.8 9s-1.3 6.3-3.8 9c-2.5-2.7-3.8-5.7-3.8-9S9.5 5.7 12 3z"/></svg>English</summary>
+        <summary aria-label="語言: 繁體中文"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.7 3.8 5.7 3.8 9s-1.3 6.3-3.8 9c-2.5-2.7-3.8-5.7-3.8-9S9.5 5.7 12 3z"/></svg>繁體中文</summary>
         <div class="lang-list">
-          <a href="/support" lang="en" aria-current="page">English</a>
+          <a href="/support" lang="en">English</a>
           <a href="/ko/support" lang="ko">한국어</a>
           <a href="/ja/support" lang="ja">日本語</a>
           <a href="/zh-hans/support" lang="zh-Hans">简体中文</a>
-          <a href="/zh-hant/support" lang="zh-Hant">繁體中文</a>
+          <a href="/zh-hant/support" lang="zh-Hant" aria-current="page">繁體中文</a>
         </div>
       </details>
       <!-- lang:end -->
@@ -93,115 +96,72 @@
 <div class="wrap">
   <main>
 <!-- content:start -->
-    <h1>Support</h1>
+    <h1>支援</h1>
     <p class="lead">
-      SpeakZilla is made by one person. Write to me directly — there is no
-      ticket queue and no bot in between.
-    </p>
+      SpeakZilla 是一個人做的。直接寫信給我就好，沒有客服排隊系統，中間也沒有機器人。用中文寫信也沒問題。</p>
 
     <div class="card">
       <p class="email"><a href="mailto:support@speakzilla.app">support@speakzilla.app</a></p>
       <p class="muted">
-        I usually reply within two working days. If you are reporting something
-        that went wrong, telling me your phone model and what you were doing at
-        the time will nearly always get it fixed faster.
-      </p>
+        我通常會在兩個工作天內回覆。如果你要回報問題，告訴我你的手機型號，以及當時正在做什麼，幾乎都能讓問題更快解決。</p>
     </div>
 
-    <h2>Common questions</h2>
+    <h2>常見問題</h2>
 
-    <h3>The app is not hearing me</h3>
+    <h3>App 聽不到我的聲音</h3>
     <p>
-      SpeakZilla needs microphone access to score your speech. If you declined
-      the prompt, turn it back on in <strong>Settings → SpeakZilla →
-      Microphone</strong>. It also needs an internet connection: scoring happens
-      on a server, not on the phone, so lessons will not work offline.
-    </p>
+      SpeakZilla 需要麥克風權限才能為你的發音評分。如果你當初拒絕了權限要求，請到<strong>設定 → SpeakZilla → 麥克風</strong>重新開啟。另外也需要網路連線：評分是在伺服器上進行，而不是在手機上，所以離線時無法上課。</p>
 
-    <h3>The example audio is silent or very quiet</h3>
+    <h3>示範音訊沒有聲音或很小聲</h3>
     <p>
-      Lessons play even when your phone's silent switch is on, because hearing
-      the example is the point of the app. If a clip is still quiet, close the
-      app fully and reopen it — that resets the audio session. Bluetooth
-      headphones that are connected but idle are the other usual culprit.
-    </p>
+      即使手機切到靜音模式，課程還是會播放聲音，因為聽示範正是這個 App 的重點。如果某段音訊還是很小聲，請完全關閉 App 再重新開啟，這樣就能重設音訊。另一個常見原因，是已連線但沒有在使用的藍牙耳機。</p>
 
-    <h3>My score seems lower than I expected</h3>
+    <h3>我的分數比預期低</h3>
     <p>
-      The score measures <strong>pronunciation accuracy only</strong> — how
-      close each sound was, not how fluent or fast you were. It is deliberately
-      strict, because a score that congratulates everyone teaches nothing. Tap
-      any word after a result to see how it was heard.
-    </p>
+      分數<strong>只衡量發音準確度</strong>，也就是每個音唸得有多接近，而不是你說得多流利或多快。評分刻意從嚴，因為對誰都說好的分數，什麼也教不了你。看到結果後，點任何一個單字，就能看到它被聽成什麼。</p>
     <p>
-      If you only say part of a sentence, SpeakZilla will not score it at all.
-      It will tell you how many words it heard and ask for the whole sentence,
-      because half an attempt is not a pronunciation problem — it is an
-      unfinished attempt.
-    </p>
+      如果你只唸了句子的一部分，SpeakZilla 完全不會評分。它會告訴你聽到了幾個單字，並請你把整句唸完，因為只唸一半不是發音問題，而是還沒完成的嘗試。</p>
 
-    <h3>Why can I only do three lessons a day?</h3>
+    <h3>為什麼一天只能上三課？</h3>
     <p>
-      New lessons are limited to three a day to keep practice regular rather
-      than crammed — short and daily beats long and occasional. Your first ten
-      lessons are uncapped so you can settle in, and after that:
-    </p>
+      新課每天限三課，是為了讓練習保持規律，而不是臨時抱佛腳。每天短短練一下，勝過偶爾練很久。前十課沒有上限，讓你慢慢熟悉，之後則是：</p>
     <ul>
-      <li>Replaying lessons you have finished is always free and unlimited</li>
-      <li>Sound drills never count against the limit</li>
-      <li>You can spend eggs to open one or two more on any given day</li>
+      <li>重練已完成的課永遠免費，次數不限</li>
+      <li>發音練習從不計入上限</li>
+      <li>任何一天都可以花蛋多解鎖一到兩課</li>
     </ul>
 
-    <h3>What are eggs for?</h3>
+    <h3>蛋有什麼用？</h3>
     <p>
-      Eggs are earned by practising — finishing a lesson, completing daily
-      missions, keeping a streak. They buy extra lessons and streak freezes.
-      They cannot be bought with money.
-    </p>
+      蛋是靠練習賺來的：完成一課、完成每日任務、維持連續打卡都能拿到。蛋可以用來購買額外的課和打卡保護卡，但無法用錢購買。</p>
 
-    <h3>I lost my streak</h3>
+    <h3>我的連續打卡中斷了</h3>
     <p>
-      A streak counts days you finished at least one lesson, and it resets if
-      you miss a day. A <strong>streak freeze</strong>, bought with eggs, covers
-      one missed day automatically. Streaks, daily limits and missions roll over
-      at your own midnight — the time zone your phone is set to.
-    </p>
+      連續打卡計算的是你至少完成一課的天數，只要漏掉一天就會歸零。用蛋購買的<strong>打卡保護卡</strong>會自動幫你補上漏掉的一天。連續打卡、每日上限和每日任務，都會在你自己的午夜更新，也就是依你手機設定的時區。</p>
 
-    <h3>I forgot my password</h3>
+    <h3>我忘記密碼了</h3>
     <p>
-      Use <strong>Forgot password</strong> on the sign-in screen and follow the
-      emailed link. If the email does not arrive within a few minutes, check
-      spam — and write to me if it still has not.
-    </p>
+      在登入畫面點<strong>忘記密碼？</strong>，然後依照電子郵件中的連結操作。如果幾分鐘後還沒收到信，請檢查垃圾郵件匣；如果還是沒有，再寫信給我。</p>
 
-    <h3>How do I delete my account and my data?</h3>
+    <h3>如何刪除我的帳號和資料？</h3>
     <p>
-      In the app: <strong>Profile → Delete account</strong>. This permanently
-      removes your account, your progress and any recordings. It cannot be
-      undone, and you do not need to contact me to do it.
-    </p>
+      在 App 裡點<strong>我的 → 刪除帳號</strong>。這會永久刪除你的帳號、進度和所有錄音。刪除後無法復原，而且你不需要聯絡我，自己就能完成。</p>
     <p>
-      What is stored and for how long is set out in the
-      <a href="/privacy.html">privacy policy</a>.
-    </p>
+      儲存哪些資料、保存多久，都寫在<a href="/zh-hant/privacy.html">隱私權政策</a>中。</p>
 
-    <h3>Which accent should I choose?</h3>
+    <h3>我該選哪種口音？</h3>
     <p>
-      Alex is British, Sofia is American. Neither is more correct — pick the one
-      you would rather sound like. You can change coach at any time in Profile,
-      and your progress carries across.
-    </p>
+      艾力克斯說英式英語，蘇菲亞說美式英語。沒有哪一種比較正確，選你比較想學的那一種就好。你隨時可以到我的頁面更換教練，進度也會完整保留。</p>
+
+    <h3>翻譯讀起來怪怪的</h3>
+    <p>
+      請告訴我。在 App 裡點<strong>我的 → 翻譯讀起來怪怪的？告訴我們</strong>，就會開啟一封郵件。寫下是哪個畫面的哪一句，我就會修正。</p>
 
     <hr>
 
-    <h2>Reporting a problem</h2>
+    <h2>回報問題</h2>
     <p>
-      Bug reports are genuinely welcome and get read by the person who can fix
-      them. The most useful ones say what you expected, what happened instead,
-      and roughly when. If you can, include the version line from
-      <strong>Profile → About</strong> — it identifies exactly which build you
-      are running.
-    </p>
+      非常歡迎你回報錯誤，而且會由能修好它的人親自閱讀。最有幫助的回報會說明：你預期會發生什麼、實際發生了什麼，以及大約是什麼時候。可以的話，請附上<strong>我的</strong>頁面最下方 SpeakZilla 那一行的版本資訊，它能準確指出你用的是哪一個版本。</p>
 
     <p class="muted">
       SpeakZilla — Andrew Kim, 774 Solarium Ave, Ottawa K4M 0R7, Canada.
@@ -215,13 +175,13 @@
   <div class="wrap row">
     <div>&copy; <span id="y"></span> SpeakZilla</div>
     <div>
-      <a href="/support.html">Support</a> &nbsp;&middot;&nbsp;
-      <a href="/privacy.html">Privacy policy</a> &nbsp;&middot;&nbsp;
+      <a href="/zh-hant/support.html">支援</a> &nbsp;&middot;&nbsp;
+      <a href="/zh-hant/privacy.html">隱私權政策</a> &nbsp;&middot;&nbsp;
       <a href="mailto:support@speakzilla.app">support@speakzilla.app</a>
     </div>
   </div>
   <div class="wrap social">
-    Short lessons: <a href="https://www.youtube.com/@speakzilla" target="_blank" rel="noopener">YouTube</a> &nbsp;&middot;&nbsp; <a href="https://www.tiktok.com/@speakzilla.app" target="_blank" rel="noopener">TikTok</a>
+    短片課程（英文）：<a href="https://www.youtube.com/@speakzilla" target="_blank" rel="noopener">YouTube</a> &nbsp;&middot;&nbsp; <a href="https://www.tiktok.com/@speakzilla.app" target="_blank" rel="noopener">TikTok</a>
   </div>
 </footer>
 <script>document.getElementById('y').textContent = new Date().getFullYear()</script>
