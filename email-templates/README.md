@@ -93,7 +93,8 @@ in the dashboard (Add user, auto-confirm) with a `+alias` address.
 3. Sign up with a fresh address while the app is in 日本語: Japanese
    confirmation, and `/confirmed` opens in Japanese.
 
-4. **Chinese (2026-09-24 paste):** in the app switch to 简体中文, sign out, request a
+4. **Chinese (2026-09-24 paste — PASSED the same day, with steps 1 and 2 again; pasted with the
+   compact subjects):** in the app switch to 简体中文, sign out, request a
    reset: Simplified subject and body, and `/reset` opens in Simplified. Then the
    same in 繁體中文. Step 1 again first — it is still the one that matters.
 
