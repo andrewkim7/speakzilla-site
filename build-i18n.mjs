@@ -73,8 +73,9 @@ const INDEX = [
   ['</a> or <a href="https://www.tiktok.com/@speakzilla.app" target="_blank" rel="noopener">TikTok</a>.</p>', '</a> · <a href="https://www.tiktok.com/@speakzilla.app" target="_blank" rel="noopener">TikTok</a> (영어)</p>', '</a> · <a href="https://www.tiktok.com/@speakzilla.app" target="_blank" rel="noopener">TikTok</a>（英語）</p>'],
   ['<h2>See it in action</h2>', '<h2>이렇게 보여요</h2>', '<h2>実際の画面</h2>'],
   ['<p class="lede">Real screens — a scored sentence, your coach, a map of forty sounds, and your progress.</p>', '<p class="lede">실제 화면이에요. 채점된 문장, 코치, 40가지 소리 지도, 그리고 나의 진도.</p>', '<p class="lede">実際の画面です。採点された文、コーチ、40の音のマップ、そしてあなたの進度。</p>'],
-  ['aria-label="Previous screenshot"', 'aria-label="이전 화면"', 'aria-label="前の画面"'],
-  ['aria-label="Next screenshot"', 'aria-label="다음 화면"', 'aria-label="次の画面"'],
+  ['aria-label="Previous screenshot"', 'aria-label="이전 화면"', 'aria-label="前の画面"', 2],   // gallery + viewer
+  ['aria-label="Next screenshot"', 'aria-label="다음 화면"', 'aria-label="次の画面"', 2],
+  ['aria-label="Close"', 'aria-label="닫기"', 'aria-label="閉じる"'],
   ['aria-label="Screenshot navigation"', 'aria-label="화면 이동"', 'aria-label="画面の切り替え"'],
   ['alt="A sentence scored word by word, with a percentage and per-word colours"', 'alt="단어 하나하나 채점된 문장, 점수와 단어별 색"', 'alt="単語ひとつひとつ採点された文、スコアと単語ごとの色"'],
   ['alt="Choosing a British or American coach"', 'alt="영국식 또는 미국식 코치 고르기"', 'alt="イギリス式またはアメリカ式のコーチを選ぶ"'],
