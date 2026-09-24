@@ -54,15 +54,18 @@ exactly one language per mail.
 
 ### Subjects
 
-The subject field is a template as well. Paste one line each:
+The subject field is a template as well, and Supabase caps it at **255 characters** -- the
+five-language lines are written compactly for that (no spaces inside `{{ }}`, `$l`, `print`
+instead of `printf "%v"`: same nil-safety, it still turns anything into a string). Confirm is
+237 characters, Reset 234. Paste one line each:
 
 Confirm signup:
 
-    {{ $lang := printf "%v" .Data.locale }}{{ if eq $lang "ko" }}SpeakZilla 계정을 확인해 주세요{{ else if eq $lang "ja" }}SpeakZillaアカウントの確認{{ else if eq $lang "zh-Hans" }}确认你的 SpeakZilla 账号{{ else if eq $lang "zh-Hant" }}確認你的 SpeakZilla 帳號{{ else }}Confirm your SpeakZilla account{{ end }}
+    {{$l:=print .Data.locale}}{{if eq $l "ko"}}SpeakZilla 계정을 확인해 주세요{{else if eq $l "ja"}}SpeakZillaアカウントの確認{{else if eq $l "zh-Hans"}}确认 SpeakZilla 账号{{else if eq $l "zh-Hant"}}確認 SpeakZilla 帳號{{else}}Confirm your SpeakZilla account{{end}}
 
 Reset Password:
 
-    {{ $lang := printf "%v" .Data.locale }}{{ if eq $lang "ko" }}SpeakZilla 비밀번호 재설정{{ else if eq $lang "ja" }}SpeakZillaパスワードの再設定{{ else if eq $lang "zh-Hans" }}重置你的 SpeakZilla 密码{{ else if eq $lang "zh-Hant" }}重設你的 SpeakZilla 密碼{{ else }}Reset your SpeakZilla password{{ end }}
+    {{$l:=print .Data.locale}}{{if eq $l "ko"}}SpeakZilla 비밀번호 재설정{{else if eq $l "ja"}}SpeakZillaパスワードの再設定{{else if eq $l "zh-Hans"}}重置 SpeakZilla 密码{{else if eq $l "zh-Hant"}}重設 SpeakZilla 密碼{{else}}Reset your SpeakZilla password{{end}}
 
 **Verified 2026-09-22:** the subject field accepts the conditionals — the send
 test below produced an English, a Korean and a Japanese subject. Pasted into
