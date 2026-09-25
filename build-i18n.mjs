@@ -102,7 +102,7 @@ const INDEX = [
   ['>Download on the App Store</a>', '>App Store에서 다운로드</a>', '>App Storeでダウンロード</a>'],
   ['<div class="badge">Android — coming soon</div>', '<div class="badge">Android — 준비 중</div>', '<div class="badge">Android — 準備中</div>'],
   ['Not ready to install? Watch a short lesson on ', '아직 설치가 망설여지나요? 짧은 레슨 영상을 먼저 보세요: ', 'まだインストールを迷っていますか？ 短いレッスン動画をどうぞ：'],
-  ['</a> or <a href="https://www.tiktok.com/@speakzilla.app" target="_blank" rel="noopener">TikTok</a>.</p>', '</a> · <a href="https://www.tiktok.com/@speakzilla.app" target="_blank" rel="noopener">TikTok</a> (영어)</p>', '</a> · <a href="https://www.tiktok.com/@speakzilla.app" target="_blank" rel="noopener">TikTok</a>（英語）</p>'],
+  ['</a>, <a href="https://www.tiktok.com/@speakzilla.app" target="_blank" rel="noopener">TikTok</a> or <a href="https://www.instagram.com/speakzilla/" target="_blank" rel="noopener">Instagram</a>.</p>', '</a> · <a href="https://www.tiktok.com/@speakzilla.app" target="_blank" rel="noopener">TikTok</a> · <a href="https://www.instagram.com/speakzilla/" target="_blank" rel="noopener">Instagram</a> (영어)</p>', '</a> · <a href="https://www.tiktok.com/@speakzilla.app" target="_blank" rel="noopener">TikTok</a> · <a href="https://www.instagram.com/speakzilla/" target="_blank" rel="noopener">Instagram</a>（英語）</p>'],
   ['<h2>See it in action</h2>', '<h2>이렇게 보여요</h2>', '<h2>実際の画面</h2>'],
   ['<p class="lede">Real screens — a scored sentence, your coach, a map of forty sounds, and your progress.</p>', '<p class="lede">실제 화면이에요. 채점된 문장, 코치, 40가지 소리 지도, 그리고 나의 진도.</p>', '<p class="lede">実際の画面です。採点された文、コーチ、40の音のマップ、そしてあなたの進度。</p>'],
   ['aria-label="Previous screenshot"', 'aria-label="이전 화면"', 'aria-label="前の画面"', 2],   // gallery + viewer
