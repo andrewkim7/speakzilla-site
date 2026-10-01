@@ -82,6 +82,9 @@ function mdToHtml(src) {
   closeList(); if (inTbl) out.push('</table></div>')
   return out.join('\n')
     .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+    // [text](url), as build-privacy.py has it: without this the Traditional Chinese page showed its
+    // "[英文版](https://...)" literally. Before the bare-URL rule, which skips anything already in an href.
+    .replace(/\[([^\]]+)\]\((https?:\/\/[^\s)]+)\)/g, '<a href="$2">$1</a>')
     .replace(/(?<!href=")(https?:\/\/[^\s<)）]+)/g, '<a href="$1">$1</a>')
     .replace(/\[([A-Z][A-Z /—-]*[A-Z])\]/g, '<mark>[$1]</mark>')
 }
