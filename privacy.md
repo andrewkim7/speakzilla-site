@@ -1,7 +1,7 @@
 # SpeakZilla Privacy Policy
 
 **Effective date:** 19 August 2026
-**Last updated:** 1 October 2026
+**Last updated:** 6 October 2026
 
 SpeakZilla ("SpeakZilla", "we", "us") is a pronunciation-practice app
 operated by Andrew Kim, Ontario, Canada. This policy explains
@@ -62,12 +62,16 @@ recording your voice. Specifically:
 - **Processing:** your speech is streamed to **Microsoft Azure AI Speech**,
   which transcribes it and assesses pronunciation accuracy in real time and
   returns the scores. See Microsoft's terms for how they handle audio.
-- **Storage:** the mobile app does **not** keep your recordings. What we store
-  is the resulting transcript and the scores (overall, per word, and per
+- **Storage:** we do **not** keep your recordings from the mobile app. What we
+  store is the resulting transcript and the scores (overall, per word, and per
   sound), so you can review progress and so features like spaced repetition
   can resurface sounds you find difficult. Where a recording is stored (for
   example if you use SpeakZilla on the web), it is deleted automatically after
   90 days.
+- **Hearing your own attempt:** so that you can play back what you just said,
+  the mobile app holds your most recent attempt on your own device. It is not
+  sent anywhere for this, and it is discarded when you record again or leave
+  the sentence.
 
 You control this data — see **Your rights** (Section 7). If you do not want
 your voice recorded, you should not use the practice features, as they
@@ -129,9 +133,11 @@ will notify you where required.
 
 We keep your account and progress data for as long as your account is active.
 
-**The mobile app does not store your voice recordings at all.** Your speech is
-streamed for scoring and discarded; only the transcript and the scores are
-kept. Where a recording is stored — currently only if you practise on the web —
+**We do not store your voice recordings from the mobile app at all.** Your
+speech is streamed for scoring and discarded; only the transcript and the
+scores are kept. The copy of your most recent attempt that the app holds so
+you can play it back stays on your device, and is discarded when you record
+again or leave the sentence. Where a recording is stored — currently only if you practise on the web —
 it is deleted automatically after **90 days**.
 
 **Sentences you write yourself** are kept until you delete them or your account. The copy of the text that ElevenLabs records when it generates the coach's voice is deleted by us immediately afterwards; ElevenLabs states that it may remain in its backups for up to 30 days. The generated audio exists only on your device and is removed when you delete the sentence or the app.
