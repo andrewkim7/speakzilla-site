@@ -1,7 +1,7 @@
 # SpeakZilla Privacy Policy
 
 **Effective date:** 19 August 2026
-**Last updated:** 6 October 2026
+**Last updated:** 12 October 2026
 
 SpeakZilla ("SpeakZilla", "we", "us") is a pronunciation-practice app
 operated by Andrew Kim, Ontario, Canada. This policy explains
@@ -30,6 +30,7 @@ on the web or in our mobile apps.
 **b) Learning activity and progress**
 - Your lesson progress, scores, accuracy history, streaks, points, tokens,
   daily missions, and which lessons you've completed.
+- A brief record of what happens when you practise: which lesson, drill or test you opened, that a speaking attempt started, and whether it was scored or, if it was not, the reason as a short code (for example: the microphone was not allowed, too little of the sentence was heard, or the connection failed), along with whether you are on iPhone or Android and which app version you have. It never includes audio or any of the words you said. We use it to find and fix problems in the app, and each entry is deleted after 90 days.
 
 **c) Your speech, and the transcript of it** *(the most important category —
 see Section 3)*
@@ -132,6 +133,8 @@ will notify you where required.
 ## 6. Data retention
 
 We keep your account and progress data for as long as your account is active.
+
+The record of speaking attempts described in Section 2(b) is kept for **90 days**, then deleted automatically.
 
 **We do not store your voice recordings from the mobile app at all.** Your
 speech is streamed for scoring and discarded; only the transcript and the
