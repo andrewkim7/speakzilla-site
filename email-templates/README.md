@@ -52,6 +52,11 @@ thirteen account shapes — the nine above plus `zh-Hans`, `zh-Hant`, a bare `zh
 lower-case `zh-hans` (both of which must, and do, fall to English): 104 runs, no errors,
 exactly one language per mail.
 
+**Zilla's colours, 2026-10-14.** Colours only, no wording or template logic: the header bar is
+Zilla's teal `#12C4B8` with the wordmark in dark text (white on that teal is too faint) and a white
+edge on the icon; the page behind the card is `#F2F8F8` instead of lavender; the greys lost their
+purple tint. Same as the app and the site. The `english-only` fallbacks got the same change.
+
 ### Subjects
 
 The subject field is a template as well, and Supabase caps it at **255 characters** -- the
