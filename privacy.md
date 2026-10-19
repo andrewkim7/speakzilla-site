@@ -1,7 +1,7 @@
 # SpeakZilla Privacy Policy
 
 **Effective date:** 19 August 2026
-**Last updated:** 12 October 2026
+**Last updated:** 20 October 2026
 
 SpeakZilla ("SpeakZilla", "we", "us") is a pronunciation-practice app
 operated by Andrew Kim, Ontario, Canada. This policy explains
@@ -41,7 +41,7 @@ see Section 3)*
   see Section 3.
 
 **d) Sentences you write yourself** *(the "Sentences" feature — see Section 3a)*
-- The text of each sentence you type or paste to practise, when you created it, which voice read it to you, and your scores for it.
+- The text of each sentence you type or paste to practise, when you created it, which voice read it to you, your scores for it, and, where your coach read it, the audio of that reading.
 - This is your own text, so it contains whatever you put in it. Please do not include sensitive information (such as health details, passwords, or other people's private information).
 - If you ask to be told when a paid plan becomes available, we record that you asked, and when.
 
@@ -85,7 +85,7 @@ The "Sentences" feature lets you practise a sentence you write yourself. Specifi
 - **Storage:** the sentence and your scores for it are stored with your account, so you can practise it again. You can delete any sentence at any time in the app; it is then removed from our database.
 - **The voice that reads it to you:** to let you hear the sentence, its text is sent to a speech-generation service. Where the sentence is read in your coach's voice, the text is sent to **ElevenLabs**; otherwise it is sent to **Microsoft Azure AI Speech**. Only the text of the sentence is sent — not your name, email address or account identifier.
 - **What ElevenLabs keeps:** ElevenLabs records each request in our account with them. We delete that record as soon as the audio has been generated, and we have opted out of ElevenLabs using it to train their models. ElevenLabs states that deleted items may remain in its backups for up to 30 days.
-- **The audio:** the generated audio is saved on your own device only, so the sentence can be replayed. We do not store it on our servers.
+- **The audio:** where your coach reads a sentence, we keep that audio with your account, so the sentence sounds the same on every device and after you reinstall the app. It is your coach's voice reading your text, never your own voice. It is stored privately: only you can play it. It is deleted when you delete the sentence or your account. Audio in the standard voice is saved on your own device only.
 - **Scoring:** when you say the sentence, your speech is scored exactly as described in Section 3, with your sentence as the reference text.
 
 ## 4. How we use your information
@@ -108,7 +108,7 @@ processes data on our behalf under their own terms and security controls:
 
 | Provider | Purpose | What it handles |
 | --- | --- | --- |
-| **Supabase** | Database, authentication, file storage | Account, progress and transcripts. Audio recordings only from the web app; the mobile app uploads none |
+| **Supabase** | Database, authentication, file storage | Account, progress and transcripts, and the coach's readings of sentences you write yourself. Recordings of your own voice only from the web app; the mobile app uploads none |
 | **Microsoft Azure AI Speech** | Speech recognition + pronunciation assessment; text-to-speech | Audio clips and reference text, including the text of sentences you write yourself |
 | **ElevenLabs** | Generating the coach's voice for sentences you write yourself | The text of the sentence only. No name, email address or account identifier |
 | **Cloudflare** | Website hosting and delivery | Technical/log data (e.g. IP) |
@@ -143,7 +143,7 @@ you can play it back stays on your device, and is discarded when you record
 again or leave the sentence. Where a recording is stored — currently only if you practise on the web —
 it is deleted automatically after **90 days**.
 
-**Sentences you write yourself** are kept until you delete them or your account. The copy of the text that ElevenLabs records when it generates the coach's voice is deleted by us immediately afterwards; ElevenLabs states that it may remain in its backups for up to 30 days. The generated audio exists only on your device and is removed when you delete the sentence or the app.
+**Sentences you write yourself** are kept until you delete them or your account. The copy of the text that ElevenLabs records when it generates the coach's voice is deleted by us immediately afterwards; ElevenLabs states that it may remain in its backups for up to 30 days. The coach's reading of a sentence is kept with your account until you delete the sentence or your account. Audio in the standard voice exists only on your device and is removed when you delete the sentence or the app.
 
 When you delete your account, we delete or anonymise your personal data within
 **30 days**, except where we must retain some data to comply with legal
@@ -176,7 +176,7 @@ absolute security.
 
 ## 9. International data transfers
 
-SpeakZilla is operated from **Canada**. Your account, progress and transcripts
+SpeakZilla is operated from **Canada**. Your account, progress, transcripts and the coach's readings of your sentences
 are stored by Supabase in the **United States**. Your speech is processed by
 Microsoft Azure AI Speech in **Canada** (the Canada Central region). The text of sentences you write yourself is sent to ElevenLabs in the **United States** when your coach's voice reads them. Microsoft,
 ElevenLabs, Resend, Expo and Cloudflare are United States companies; Cloudflare serves the website from the
