@@ -22,7 +22,7 @@
 <style>
   :root{
     --ink:#0f0e17; --paper:#f2f8f8; --surface:#fff; --muted:#6e6d7a;
-    --accent:#ff6b35; --teal:#00c9a7; --alex:#12c4b8; --border:#e1eaea;
+    --accent:#ff6b35; --teal:#00c9a7; --alex:#12c4b8; --fiona:#6fae2c; --daniel:#0a8077; --border:#e1eaea;
   }
   *{box-sizing:border-box}
   body{margin:0;background:var(--paper);color:var(--ink);
@@ -77,11 +77,14 @@
   .step h3{font-size:17px;margin-bottom:6px}
   .step p{margin:0;color:var(--muted);font-size:15px}
 
-  .coaches{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;margin-top:32px}
+  .coaches{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;margin-top:32px}
+  @media(max-width:640px){.coaches{grid-template-columns:1fr}}   /* British pair on top, American below */
   .coach{background:var(--surface);border-radius:20px;padding:24px;display:flex;gap:20px;align-items:center}
   .coach img{width:124px;height:124px;border-radius:50%;flex:none;border:4px solid var(--border)}
   .coach h3{font-size:22px}
   .coach .accent{font-size:13px;font-weight:700;margin:3px 0 7px}
+  .coach .city{white-space:nowrap}   /* never split a city name (Japanese breaks anywhere) */
+  .coach .city{white-space:nowrap}   /* never split a city name (Japanese breaks anywhere) */
   .coach p{margin:0;color:var(--muted);font-size:14px}
 
   .cta{background:var(--ink);color:#fff;border-radius:24px;padding:44px 28px;text-align:center;margin:0 0 64px}
@@ -188,16 +191,16 @@
 <section class="shots">
   <div class="wrap">
     <h2>實際畫面</h2>
-    <p class="lede">真實的 App 畫面：評分後的句子、你的教練、四十個音的發音地圖，還有你的進度。</p>
+    <p class="lede">真實的 App 畫面：評分後的句子、四位教練、我的句子、四十個音的發音地圖，還有你的進度。</p>
     <div class="gallery-wrap">
       <button class="gnav prev" type="button" aria-label="上一張截圖">‹</button>
       <div class="gallery" id="gallery">
-        <img src="/assets/shots/zh-hant/shot-1.jpg" width="720" height="1558" loading="lazy" alt="逐字評分的句子，附上百分比，每個單字都標上顏色">
-        <img src="/assets/shots/zh-hant/shot-2.jpg" width="720" height="1558" loading="lazy" alt="選擇英式或美式教練">
-        <img src="/assets/shots/zh-hant/shot-3.jpg" width="720" height="1558" loading="lazy" alt="發音地圖：四十個英文發音，依你唸得好不好標上顏色">
-        <img src="/assets/shots/zh-hant/shot-4.jpg" width="720" height="1558" loading="lazy" alt="針對某個發音的教練提示">
-        <img src="/assets/shots/zh-hant/shot-5.jpg" width="720" height="1558" loading="lazy" alt="課程地圖，從第一個單字一路到接近母語程度">
-        <img src="/assets/shots/zh-hant/shot-6.jpg" width="720" height="1558" loading="lazy" alt="進度：準確度的變化和最近的練習">
+        <img src="/assets/shots/zh-hant/shot-1.jpg" width="720" height="1482" loading="lazy" alt="逐字評分的句子，附上百分比，每個單字都標上顏色">
+        <img src="/assets/shots/zh-hant/shot-2.jpg" width="720" height="1482" loading="lazy" alt="從四位教練中選擇：兩位英式、兩位美式">
+        <img src="/assets/shots/zh-hant/shot-3.jpg" width="720" height="1482" loading="lazy" alt="我的句子：換幾個詞，練習你要說的話">
+        <img src="/assets/shots/zh-hant/shot-4.jpg" width="720" height="1482" loading="lazy" alt="發音地圖：四十個英文發音，依你唸得好不好標上顏色">
+        <img src="/assets/shots/zh-hant/shot-5.jpg" width="720" height="1482" loading="lazy" alt="分辨兩個相近的音，例如 z 和 s">
+        <img src="/assets/shots/zh-hant/shot-6.jpg" width="720" height="1482" loading="lazy" alt="進度：從開始到現在，你的發音進步了多少">
       </div>
       <button class="gnav next" type="button" aria-label="下一張截圖">›</button>
     </div>
@@ -236,23 +239,39 @@
 </section>
 
 <section class="wrap">
-  <h2>選擇你的口音</h2>
-  <p class="lede">兩位教練，兩種口音。你選的教練會唸出你練習的每一個示範，讓你練的正是你真正想說的那種英文。</p>
+  <h2>選擇你的教練</h2>
+  <p class="lede">四位教練，兩種口音。你選的教練會唸出你練習的每一個示範，讓你練的正是你真正想說的那種英文。</p>
   <div class="coaches">
     <div class="coach">
       <img src="/assets/alex.png" alt="艾力克斯" style="border-color:var(--alex)">
       <div>
         <h3>艾力克斯</h3>
-        <div class="accent" style="color:var(--alex)">英式英語</div>
-        <p>沉穩精準——很適合練出乾淨俐落的子音。</p>
+        <div class="accent" style="color:var(--alex)">英式英語 <span class="city">· 倫敦</span></div>
+        <p>沉穩精準——最適合練出乾淨俐落的子音。</p>
+      </div>
+    </div>
+    <div class="coach">
+      <img src="/assets/fiona.png" alt="菲歐娜" style="border-color:var(--fiona)">
+      <div>
+        <h3>菲歐娜</h3>
+        <div class="accent" style="color:var(--fiona)">英式英語（蘇格蘭） <span class="city">· 愛丁堡</span></div>
+        <p>沉穩溫暖——帶你練捲舌的 r 和穩穩的母音。</p>
       </div>
     </div>
     <div class="coach">
       <img src="/assets/sofia.png" alt="蘇菲亞" style="border-color:var(--accent)">
       <div>
         <h3>蘇菲亞</h3>
-        <div class="accent" style="color:var(--accent)">美式英語</div>
+        <div class="accent" style="color:var(--accent)">美式英語 <span class="city">· 洛杉磯</span></div>
         <p>溫暖又愛鼓勵人——帶你練出自然的日常節奏。</p>
+      </div>
+    </div>
+    <div class="coach">
+      <img src="/assets/daniel.png" alt="丹尼爾" style="border-color:var(--daniel)">
+      <div>
+        <h3>丹尼爾</h3>
+        <div class="accent" style="color:var(--daniel)">美式英語 <span class="city">· 紐約</span></div>
+        <p>活力十足、乾脆俐落——帶你用日常語速練出清楚的母音。</p>
       </div>
     </div>
   </div>

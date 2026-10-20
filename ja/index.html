@@ -22,7 +22,7 @@
 <style>
   :root{
     --ink:#0f0e17; --paper:#f2f8f8; --surface:#fff; --muted:#6e6d7a;
-    --accent:#ff6b35; --teal:#00c9a7; --alex:#12c4b8; --border:#e1eaea;
+    --accent:#ff6b35; --teal:#00c9a7; --alex:#12c4b8; --fiona:#6fae2c; --daniel:#0a8077; --border:#e1eaea;
   }
   *{box-sizing:border-box}
   body{margin:0;background:var(--paper);color:var(--ink);
@@ -77,11 +77,14 @@
   .step h3{font-size:17px;margin-bottom:6px}
   .step p{margin:0;color:var(--muted);font-size:15px}
 
-  .coaches{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;margin-top:32px}
+  .coaches{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;margin-top:32px}
+  @media(max-width:640px){.coaches{grid-template-columns:1fr}}   /* British pair on top, American below */
   .coach{background:var(--surface);border-radius:20px;padding:24px;display:flex;gap:20px;align-items:center}
   .coach img{width:124px;height:124px;border-radius:50%;flex:none;border:4px solid var(--border)}
   .coach h3{font-size:22px}
   .coach .accent{font-size:13px;font-weight:700;margin:3px 0 7px}
+  .coach .city{white-space:nowrap}   /* never split a city name (Japanese breaks anywhere) */
+  .coach .city{white-space:nowrap}   /* never split a city name (Japanese breaks anywhere) */
   .coach p{margin:0;color:var(--muted);font-size:14px}
 
   .cta{background:var(--ink);color:#fff;border-radius:24px;padding:44px 28px;text-align:center;margin:0 0 64px}
@@ -188,16 +191,16 @@
 <section class="shots">
   <div class="wrap">
     <h2>実際の画面</h2>
-    <p class="lede">実際の画面です。採点された文、コーチ、40の音のマップ、そしてあなたの進度。</p>
+    <p class="lede">実際の画面です。採点された文、4人のコーチ、自分の文、40の音のマップ、そしてあなたの進度。</p>
     <div class="gallery-wrap">
       <button class="gnav prev" type="button" aria-label="前の画面">‹</button>
       <div class="gallery" id="gallery">
-        <img src="/assets/shots/ja/shot-1.jpg" width="720" height="1558" loading="lazy" alt="単語ひとつひとつ採点された文、スコアと単語ごとの色">
-        <img src="/assets/shots/ja/shot-2.jpg" width="720" height="1558" loading="lazy" alt="イギリス式またはアメリカ式のコーチを選ぶ">
-        <img src="/assets/shots/ja/shot-3.jpg" width="720" height="1558" loading="lazy" alt="発音マップ — 英語の40の音を、どれくらい言えているかで色分け">
-        <img src="/assets/shots/ja/shot-4.jpg" width="720" height="1558" loading="lazy" alt="ひとつの音についてのコーチングのヒント">
-        <img src="/assets/shots/ja/shot-5.jpg" width="720" height="1558" loading="lazy" alt="最初の単語からネイティブに近いレベルまで続くレッスンマップ">
-        <img src="/assets/shots/ja/shot-6.jpg" width="720" height="1558" loading="lazy" alt="進度 — 正確度の変化と最近の学習">
+        <img src="/assets/shots/ja/shot-1.jpg" width="720" height="1482" loading="lazy" alt="単語ひとつひとつ採点された文、スコアと単語ごとの色">
+        <img src="/assets/shots/ja/shot-2.jpg" width="720" height="1482" loading="lazy" alt="イギリス式2人、アメリカ式2人の4人のコーチから選ぶ">
+        <img src="/assets/shots/ja/shot-3.jpg" width="720" height="1482" loading="lazy" alt="自分の文：使いたい文の単語を入れ替えて練習">
+        <img src="/assets/shots/ja/shot-4.jpg" width="720" height="1482" loading="lazy" alt="発音マップ — 英語の40の音を、どれくらい言えているかで色分け">
+        <img src="/assets/shots/ja/shot-5.jpg" width="720" height="1482" loading="lazy" alt="zとsのような似た2つの音を聞き分ける">
+        <img src="/assets/shots/ja/shot-6.jpg" width="720" height="1482" loading="lazy" alt="進度：始めた頃からどれだけ発音が上達したか">
       </div>
       <button class="gnav next" type="button" aria-label="次の画面">›</button>
     </div>
@@ -236,23 +239,39 @@
 </section>
 
 <section class="wrap">
-  <h2>アクセントを選ぶ</h2>
-  <p class="lede">2人のコーチ、2つのアクセント。選んだコーチが、練習するすべての例文を読み上げます。だから、本当に近づきたい英語を練習できます。</p>
+  <h2>コーチを選ぶ</h2>
+  <p class="lede">4人のコーチ、2つのアクセント。選んだコーチが、練習するすべての例文を読み上げます。だから、本当に近づきたい英語を練習できます。</p>
   <div class="coaches">
     <div class="coach">
       <img src="/assets/alex.png" alt="アレックス" style="border-color:var(--alex)">
       <div>
         <h3>アレックス</h3>
-        <div class="accent" style="color:var(--alex)">イギリス英語</div>
+        <div class="accent" style="color:var(--alex)">イギリス英語 <span class="city">· ロンドン</span></div>
         <p>落ち着いていて正確。くっきりとした子音を身につけるのにぴったりです。</p>
+      </div>
+    </div>
+    <div class="coach">
+      <img src="/assets/fiona.png" alt="フィオナ" style="border-color:var(--fiona)">
+      <div>
+        <h3>フィオナ</h3>
+        <div class="accent" style="color:var(--fiona)">イギリス英語（スコットランド） <span class="city">· エディンバラ</span></div>
+        <p>落ち着いていてあたたかい。巻き舌のrと、ぶれない母音を身につけるのにぴったりです。</p>
       </div>
     </div>
     <div class="coach">
       <img src="/assets/sofia.png" alt="ソフィア" style="border-color:var(--accent)">
       <div>
         <h3>ソフィア</h3>
-        <div class="accent" style="color:var(--accent)">アメリカ英語</div>
+        <div class="accent" style="color:var(--accent)">アメリカ英語 <span class="city">· ロサンゼルス</span></div>
         <p>あたたかく励ましてくれます。自然な日常のリズムを身につけるのにぴったりです。</p>
+      </div>
+    </div>
+    <div class="coach">
+      <img src="/assets/daniel.png" alt="ダニエル" style="border-color:var(--daniel)">
+      <div>
+        <h3>ダニエル</h3>
+        <div class="accent" style="color:var(--daniel)">アメリカ英語 <span class="city">· ニューヨーク</span></div>
+        <p>明るくてテンポがいい。はっきりした母音を日常の速さで身につけるのにぴったりです。</p>
       </div>
     </div>
   </div>
