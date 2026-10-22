@@ -64,9 +64,10 @@ five-language lines are written compactly for that (no spaces inside `{{ }}`, `$
 instead of `printf "%v"`: same nil-safety, it still turns anything into a string). Confirm is
 237 characters, Reset 234. Paste one line each:
 
-Confirm signup:
+Confirm signup (since 2026-10-22 the 6-digit code is in the subject, so it shows in the
+notification and the inbox list; 228 characters):
 
-    {{$l:=print .Data.locale}}{{if eq $l "ko"}}SpeakZilla 계정을 확인해 주세요{{else if eq $l "ja"}}SpeakZillaアカウントの確認{{else if eq $l "zh-Hans"}}确认 SpeakZilla 账号{{else if eq $l "zh-Hant"}}確認 SpeakZilla 帳號{{else}}Confirm your SpeakZilla account{{end}}
+    {{$l:=print .Data.locale}}{{if eq $l "ko"}}인증 코드 {{.Token}}{{else if eq $l "ja"}}確認コード {{.Token}}{{else if eq $l "zh-Hans"}}验证码 {{.Token}}{{else if eq $l "zh-Hant"}}驗證碼 {{.Token}}{{else}}Your code: {{.Token}}{{end}} · SpeakZilla
 
 Reset Password:
 
