@@ -99,15 +99,6 @@
   .cta{background:var(--night);color:#fff;border-radius:24px;padding:44px 28px;text-align:center;margin:0 0 64px}
   .cta h2{font-size:clamp(22px,4vw,30px)}
   .cta p{color:rgba(255,255,255,.6);margin:12px auto 0;max-width:560px}
-  .notify{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;max-width:460px;margin:22px auto 0}
-  .notify input{flex:1 1 240px;min-width:0;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);
-    border-radius:12px;padding:13px 15px;color:#fff;font-size:16px}
-  .notify input::placeholder{color:rgba(255,255,255,.45)}
-  .notify button{background:var(--accent);color:#fff;border:0;border-radius:12px;padding:13px 22px;
-    font-size:16px;font-weight:700;cursor:pointer}
-  .notify button:disabled{opacity:.6;cursor:default}
-  .notify-msg{min-height:20px;font-size:14px;margin-top:14px}
-  .notify-msg.ok{color:var(--teal)}
   .hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
 
   .dl{background:#fff;color:var(--ink);text-decoration:none;font-family:Fredoka,sans-serif;
@@ -209,7 +200,7 @@
        그래서 짐작하는 대신, 어떤 소리가 잘 전달됐고 어떤 소리를 다시 해 봐야 하는지 볼 수 있어요.</p>
     <div class="badges">
       <a class="dl" href="https://apps.apple.com/kr/app/id6805255043">App Store에서 다운로드</a>
-      <div class="badge">Android — 준비 중</div>
+      <a class="dl" href="https://play.google.com/store/apps/details?id=com.speakzilla.app">Google Play에서 다운로드</a>
     </div>
     <p class="watch">아직 설치가 망설여지나요? 짧은 레슨 영상을 먼저 보세요: <a href="https://www.youtube.com/@speakzilla" target="_blank" rel="noopener">YouTube</a> · <a href="https://www.tiktok.com/@speakzilla.app" target="_blank" rel="noopener">TikTok</a> · <a href="https://www.instagram.com/speakzilla/" target="_blank" rel="noopener">Instagram</a> (영어)</p>
   </div>
@@ -314,17 +305,12 @@
 
 <section class="wrap">
   <div class="cta">
-    <h2>Android도 준비 중이에요</h2>
-    <p>SpeakZilla는 지금 iPhone에서 쓸 수 있어요. 위의 App Store에서 받으세요. Android 버전은
-       Google Play에 나올 예정이에요. 이메일을 남겨 주시면 나오는 순간 알려 드릴게요.
-       그 외에는 아무것도 보내지 않아요.</p>
-    <form id="notify" class="notify" novalidate>
-      <input id="email" type="email" required placeholder="you@example.com"
-             autocomplete="email" aria-label="이메일 주소">
-      <input class="hp" type="text" id="website" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
-      <button type="submit">알림 받기</button>
-    </form>
-    <p id="notify-msg" class="notify-msg" role="status" aria-live="polite"></p>
+    <h2>이제 iPhone과 Android에서</h2>
+    <p>둘 다 무료이고 광고도 없어요. SpeakZilla를 설치하고 1분 안에 첫 문장을 읽어 보세요.</p>
+    <div class="badges">
+      <a class="dl" href="https://apps.apple.com/kr/app/id6805255043">App Store에서 다운로드</a>
+      <a class="dl" href="https://play.google.com/store/apps/details?id=com.speakzilla.app">Google Play에서 다운로드</a>
+    </div>
   </div>
 </section>
 
@@ -471,36 +457,5 @@ document.addEventListener('keydown', function (e) {
 })();
 </script>
 
-<script>
-// Launch waitlist. Writes straight to Supabase with the publishable key
-// (insert-only under RLS, so the list can be added to but never read back from
-// here). return=minimal because the anon role has no read on the table.
-(function () {
-  var SB_URL = 'https://xfgrmhstzvrryexsosiz.supabase.co';
-  var SB_KEY = 'sb_publishable_Gy_fvxYEMZrIUE_gqh2e3Q_l8sK_xkz';
-  var form = document.getElementById('notify');
-  var msg = document.getElementById('notify-msg');
-  var btn = form.querySelector('button');
-  form.addEventListener('submit', function (e) {
-    e.preventDefault();
-    if (document.getElementById('website').value) { done("등록됐어요. Android 버전이 나오면 메일로 알려 드릴게요."); return; } // honeypot
-    var email = document.getElementById('email').value.trim();
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { msg.className = 'notify-msg'; msg.textContent = '올바른 이메일 주소를 입력해 주세요.'; return; }
-    btn.disabled = true; btn.textContent = '보내는 중…'; msg.textContent = '';
-    fetch(SB_URL + '/rest/v1/waitlist', {
-      method: 'POST',
-      headers: { apikey: SB_KEY, Authorization: 'Bearer ' + SB_KEY, 'Content-Type': 'application/json', Prefer: 'return=minimal' },
-      body: JSON.stringify({ email: email, platform: 'android', source: 'site-ko' })
-    }).then(function (res) {
-      if (res.ok) done("등록됐어요. 나오는 순간 메일로 알려 드릴게요.");
-      else if (res.status === 409) done("이미 등록되어 있어요. 곧 소식 전할게요.");
-      else fail();
-    }).catch(fail);
-  });
-  function done(text) { form.style.display = 'none'; msg.className = 'notify-msg ok'; msg.textContent = text; }
-  function fail() { btn.disabled = false; btn.textContent = '알림 받기'; msg.className = 'notify-msg';
-    msg.textContent = '문제가 생겼어요. 다시 시도하거나 support@speakzilla.app으로 메일을 보내 주세요.'; }
-})();
-</script>
 </body>
 </html>
