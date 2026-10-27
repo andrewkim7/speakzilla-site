@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Every public page in all five languages, for Google Search Console. The pages also link each other
+     with hreflang; confirmed, reset and the archived privacy versions are left out on purpose. -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://speakzilla.app/</loc>
+    <lastmod>2026-10-27</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://speakzilla.app/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://speakzilla.app/ko/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://speakzilla.app/ja/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://speakzilla.app/zh-hans/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://speakzilla.app/zh-hant/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://speakzilla.app/"/>
+  </url>
+  <url>
+    <loc>https://speakzilla.app/ko/</loc>
+    <lastmod>2026-10-27</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://speakzilla.app/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://speakzilla.app/ko/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://speakzilla.app/ja/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://speakzilla.app/zh-hans/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://speakzilla.app/zh-hant/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://speakzilla.app/"/>
+  </url>
+  <url>
+    <loc>https://speakzilla.app/ja/</loc>
+    <lastmod>2026-10-27</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://speakzilla.app/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://speakzilla.app/ko/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://speakzilla.app/ja/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://speakzilla.app/zh-hans/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://speakzilla.app/zh-hant/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://speakzilla.app/"/>
+  </url>
+  <url>
+    <loc>https://speakzilla.app/zh-hans/</loc>
+    <lastmod>2026-10-27</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://speakzilla.app/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://speakzilla.app/ko/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://speakzilla.app/ja/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://speakzilla.app/zh-hans/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://speakzilla.app/zh-hant/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://speakzilla.app/"/>
+  </url>
+  <url>
+    <loc>https://speakzilla.app/zh-hant/</loc>
+    <lastmod>2026-10-27</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://speakzilla.app/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://speakzilla.app/ko/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://speakzilla.app/ja/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://speakzilla.app/zh-hans/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://speakzilla.app/zh-hant/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://speakzilla.app/"/>
+  </url>
+  <url>
+    <loc>https://speakzilla.app/support</loc>
+    <lastmod>2026-10-27</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://speakzilla.app/support"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://speakzilla.app/ko/support"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://speakzilla.app/ja/support"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://speakzilla.app/zh-hans/support"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://speakzilla.app/zh-hant/support"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://speakzilla.app/support"/>
+  </url>
+  <url>
+    <loc>https://speakzilla.app/ko/support</loc>
+    <lastmod>2026-10-27</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://speakzilla.app/support"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://speakzilla.app/ko/support"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://speakzilla.app/ja/support"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://speakzilla.app/zh-hans/support"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://speakzilla.app/zh-hant/support"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://speakzilla.app/support"/>
+  </url>
+  <url>
+    <loc>https://speakzilla.app/ja/support</loc>
+    <lastmod>2026-10-27</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://speakzilla.app/support"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://speakzilla.app/ko/support"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://speakzilla.app/ja/support"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://speakzilla.app/zh-hans/support"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://speakzilla.app/zh-hant/support"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://speakzilla.app/support"/>
+  </url>
+  <url>
+    <loc>https://speakzilla.app/zh-hans/support</loc>
+    <lastmod>2026-10-27</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://speakzilla.app/support"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://speakzilla.app/ko/support"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://speakzilla.app/ja/support"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://speakzilla.app/zh-hans/support"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://speakzilla.app/zh-hant/support"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://speakzilla.app/support"/>
+  </url>
+  <url>
+    <loc>https://speakzilla.app/zh-hant/support</loc>
+    <lastmod>2026-10-27</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://speakzilla.app/support"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://speakzilla.app/ko/support"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://speakzilla.app/ja/support"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://speakzilla.app/zh-hans/support"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://speakzilla.app/zh-hant/support"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://speakzilla.app/support"/>
+  </url>
+  <url>
+    <loc>https://speakzilla.app/privacy</loc>
+    <lastmod>2026-10-27</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://speakzilla.app/privacy"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://speakzilla.app/ko/privacy"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://speakzilla.app/ja/privacy"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://speakzilla.app/zh-hans/privacy"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://speakzilla.app/zh-hant/privacy"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://speakzilla.app/privacy"/>
+  </url>
+  <url>
+    <loc>https://speakzilla.app/ko/privacy</loc>
+    <lastmod>2026-10-27</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://speakzilla.app/privacy"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://speakzilla.app/ko/privacy"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://speakzilla.app/ja/privacy"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://speakzilla.app/zh-hans/privacy"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://speakzilla.app/zh-hant/privacy"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://speakzilla.app/privacy"/>
+  </url>
+  <url>
+    <loc>https://speakzilla.app/ja/privacy</loc>
+    <lastmod>2026-10-27</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://speakzilla.app/privacy"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://speakzilla.app/ko/privacy"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://speakzilla.app/ja/privacy"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://speakzilla.app/zh-hans/privacy"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://speakzilla.app/zh-hant/privacy"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://speakzilla.app/privacy"/>
+  </url>
+  <url>
+    <loc>https://speakzilla.app/zh-hans/privacy</loc>
+    <lastmod>2026-10-27</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://speakzilla.app/privacy"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://speakzilla.app/ko/privacy"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://speakzilla.app/ja/privacy"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://speakzilla.app/zh-hans/privacy"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://speakzilla.app/zh-hant/privacy"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://speakzilla.app/privacy"/>
+  </url>
+  <url>
+    <loc>https://speakzilla.app/zh-hant/privacy</loc>
+    <lastmod>2026-10-27</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://speakzilla.app/privacy"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://speakzilla.app/ko/privacy"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://speakzilla.app/ja/privacy"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://speakzilla.app/zh-hans/privacy"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://speakzilla.app/zh-hant/privacy"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://speakzilla.app/privacy"/>
+  </url>
+</urlset>
