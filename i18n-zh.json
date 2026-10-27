@@ -52,7 +52,9 @@
     "alt=\"Four coaches to choose from, two British and two American\"": "alt=\"从四位教练中选择：两位英式、两位美式\"",
     "alt=\"My lines: a sentence you need, with words you can swap\"": "alt=\"我的句子：换几个词，练你要说的话\"",
     "alt=\"Telling two close sounds apart, like z and s\"": "alt=\"分辨两个相近的音，比如 z 和 s\"",
-    "alt=\"Progress: how far your sounds have come since you started\"": "alt=\"进度：从开始到现在，你的发音进步了多少\""
+    "alt=\"Progress: how far your sounds have come since you started\"": "alt=\"进度：从开始到现在，你的发音进步了多少\"",
+    "aria-label=\"Play the video: Meet your four coaches\"": "aria-label=\"播放视频：认识你的四位教练\"",
+    "<p class=\"vcap\">Meet your four coaches: a five-minute tour of the app. Plays from YouTube.</p>": "<p class=\"vcap\">认识你的四位教练：5 分钟带你看懂这个 App。附简体中文字幕，在 YouTube 上播放。</p>"
   },
   "zh-Hant": {
     "<title>SpeakZilla — Speak English, know exactly what to fix</title>": "<title>SpeakZilla — 開口說英文，精準知道哪裡要改</title>",
@@ -107,6 +109,8 @@
     "alt=\"Four coaches to choose from, two British and two American\"": "alt=\"從四位教練中選擇：兩位英式、兩位美式\"",
     "alt=\"My lines: a sentence you need, with words you can swap\"": "alt=\"我的句子：換幾個詞，練習你要說的話\"",
     "alt=\"Telling two close sounds apart, like z and s\"": "alt=\"分辨兩個相近的音，例如 z 和 s\"",
-    "alt=\"Progress: how far your sounds have come since you started\"": "alt=\"進度：從開始到現在，你的發音進步了多少\""
+    "alt=\"Progress: how far your sounds have come since you started\"": "alt=\"進度：從開始到現在，你的發音進步了多少\"",
+    "aria-label=\"Play the video: Meet your four coaches\"": "aria-label=\"播放影片：認識你的四位教練\"",
+    "<p class=\"vcap\">Meet your four coaches: a five-minute tour of the app. Plays from YouTube.</p>": "<p class=\"vcap\">認識你的四位教練：5 分鐘帶你看懂這個 App。附繁體中文字幕，在 YouTube 上播放。</p>"
   }
 }

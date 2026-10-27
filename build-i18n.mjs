@@ -107,6 +107,8 @@ const INDEX = [
   ['Not ready to install? Watch a short lesson on ', '아직 설치가 망설여지나요? 짧은 레슨 영상을 먼저 보세요: ', 'まだインストールを迷っていますか？ 短いレッスン動画をどうぞ：'],
   ['</a>, <a href="https://www.tiktok.com/@speakzilla.app" target="_blank" rel="noopener">TikTok</a> or <a href="https://www.instagram.com/speakzilla/" target="_blank" rel="noopener">Instagram</a>.</p>', '</a> · <a href="https://www.tiktok.com/@speakzilla.app" target="_blank" rel="noopener">TikTok</a> · <a href="https://www.instagram.com/speakzilla/" target="_blank" rel="noopener">Instagram</a> (영어)</p>', '</a> · <a href="https://www.tiktok.com/@speakzilla.app" target="_blank" rel="noopener">TikTok</a> · <a href="https://www.instagram.com/speakzilla/" target="_blank" rel="noopener">Instagram</a>（英語）</p>'],
   ['<h2>See it in action</h2>', '<h2>이렇게 보여요</h2>', '<h2>実際の画面</h2>'],
+  ['aria-label="Play the video: Meet your four coaches"', 'aria-label="영상 재생: 네 명의 코치를 만나 보세요"', 'aria-label="動画を再生：4人のコーチに会おう"'],
+  ['<p class="vcap">Meet your four coaches: a five-minute tour of the app. Plays from YouTube.</p>', '<p class="vcap">네 명의 코치를 만나 보세요. 5분 만에 둘러보는 앱 소개예요. 한국어 자막과 함께 YouTube에서 재생돼요.</p>', '<p class="vcap">4人のコーチに会いましょう。5分でわかるアプリ紹介です。日本語字幕つきでYouTubeから再生されます。</p>'],
   ['<p class="lede">Real screens: a scored sentence, four coaches, your own lines, a map of forty sounds, and your progress.</p>', '<p class="lede">실제 화면이에요. 채점된 문장, 네 명의 코치, 내 문장, 40가지 소리 지도, 그리고 나의 진도.</p>', '<p class="lede">実際の画面です。採点された文、4人のコーチ、自分の文、40の音のマップ、そしてあなたの進度。</p>'],
   ['aria-label="Previous screenshot"', 'aria-label="이전 화면"', 'aria-label="前の画面"', 2],   // gallery + viewer
   ['aria-label="Next screenshot"', 'aria-label="다음 화면"', 'aria-label="次の画面"', 2],

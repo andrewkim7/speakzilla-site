@@ -107,6 +107,22 @@
   .shots{background:#0f171c;padding:64px 0}
   .shots h2{color:#fff}
   .shots .lede{color:rgba(255,255,255,.6)}
+  /* The coaches video. Our own thumbnail until it is pressed: nothing loads from YouTube before that. */
+  .video{position:relative;aspect-ratio:16/9;margin-top:28px;border-radius:22px;overflow:hidden;
+         background:#000;box-shadow:0 20px 50px rgba(0,0,0,.5)}
+  .video button,.video iframe{position:absolute;inset:0;width:100%;height:100%;border:0;padding:0;margin:0}
+  .video button{background:none;cursor:pointer;display:block}
+  .video img{width:100%;height:100%;object-fit:cover;display:block}
+  .video .play{position:absolute;left:50%;top:50%;width:84px;height:84px;margin:-42px 0 0 -42px;border-radius:50%;
+               background:var(--accent);box-shadow:0 10px 30px rgba(0,0,0,.45);display:flex;align-items:center;
+               justify-content:center;transition:transform .15s}
+  .video .play svg{width:34px;height:34px;margin-left:5px}
+  .video button:hover .play,.video button:focus-visible .play{transform:scale(1.08)}
+  .video button:focus-visible{outline:3px solid #fff;outline-offset:-3px}
+  @media(max-width:640px){.video{border-radius:16px}.video .play{width:64px;height:64px;margin:-32px 0 0 -32px}
+                          .video .play svg{width:26px;height:26px}}
+  .vcap{color:rgba(255,255,255,.6);font-size:14.5px;margin:12px 0 0;text-align:center;text-wrap:balance}
+  .shots .video + .vcap + .lede{margin-top:40px}
   .gallery-wrap{position:relative;margin-top:30px}
   .gallery{display:flex;gap:18px;overflow-x:auto;padding:4px;scroll-snap-type:x mandatory;
            scrollbar-width:none;-ms-overflow-style:none}
@@ -191,6 +207,13 @@
 <section class="shots">
   <div class="wrap">
     <h2>实际效果</h2>
+    <div class="video" id="video" data-id="WEqLg6ilxkE">
+      <button type="button" aria-label="播放视频：认识你的四位教练">
+        <img src="/assets/coaches-video.jpg" width="1280" height="720" alt="">
+        <span class="play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="#fff"><path d="M7 4.5v15l13-7.5z"/></svg></span>
+      </button>
+    </div>
+    <p class="vcap">认识你的四位教练：5 分钟带你看懂这个 App。附简体中文字幕，在 YouTube 上播放。</p>
     <p class="lede">都是真实界面：逐词打分的句子、四位教练、我的句子、40 个音的发音地图，还有你的进度。</p>
     <div class="gallery-wrap">
       <button class="gnav prev" type="button" aria-label="上一张截图">‹</button>
@@ -314,6 +337,29 @@ document.addEventListener('click', function (e) {
 document.addEventListener('keydown', function (e) {
   if (e.key === 'Escape') document.querySelectorAll('details.lang-menu[open]').forEach(function (d) { d.removeAttribute('open') })
 })
+</script>
+
+<script>
+// The coaches video: the thumbnail is swapped for YouTube's player only when pressed (youtube-nocookie).
+// The page's language picks the player's language and switches on the subtitles in it, so a Korean page
+// plays with Korean subtitles and the Korean title. English plays without.
+(function () {
+  var box = document.getElementById('video');
+  if (!box) return;
+  var btn = box.querySelector('button');
+  btn.addEventListener('click', function () {
+    var lang = document.documentElement.lang;
+    var hl = { 'zh-Hans': 'zh-CN', 'zh-Hant': 'zh-TW' }[lang] || lang;
+    var q = 'autoplay=1&rel=0&playsinline=1&hl=' + hl;
+    if (lang !== 'en') q += '&cc_load_policy=1&cc_lang_pref=' + lang;
+    var f = document.createElement('iframe');
+    f.src = 'https://www.youtube-nocookie.com/embed/' + box.dataset.id + '?' + q;
+    f.title = btn.getAttribute('aria-label');
+    f.allow = 'autoplay; encrypted-media; picture-in-picture; fullscreen';
+    f.allowFullscreen = true;
+    box.replaceChild(f, btn);
+  });
+})();
 </script>
 
 <script>
