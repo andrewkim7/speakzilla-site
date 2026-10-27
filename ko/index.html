@@ -197,8 +197,8 @@
 
 <div class="hero">
   <div class="wrap">
-    <video class="zilla" id="zilla" src="/assets/zilla-hello.mp4" poster="/assets/zilla-hello.jpg" width="480" height="480"
-           muted playsinline preload="auto" aria-hidden="true"></video>
+    <video class="zilla" id="zilla" data-src="/assets/zilla-hello.mp4" poster="/assets/zilla-hello.jpg" width="480" height="480"
+           muted playsinline preload="none" aria-hidden="true"></video>
     <h1>소리 내어 말해 보세요.<br>무엇을 고칠지 <em>정확히</em> 알려 드려요.</h1>
     <p>문장을 소리 내어 읽으면 SpeakZilla가 듣고 발음을 단어 하나하나 채점해요.
        그래서 짐작하는 대신, 어떤 소리가 잘 전달됐고 어떤 소리를 다시 해 봐야 하는지 볼 수 있어요.</p>
@@ -341,12 +341,20 @@
 <script>
 // Zilla waves once as the page opens, then rests on the last frame. Not with "reduce motion" on: the still
 // (the poster) stays. Muted and inline, so phones let it start by itself.
+// The clip is fetched whole and played from memory: Safari on iPhone asks a video's server for byte ranges
+// and will not play from one that sends the whole file instead, which Cloudflare Pages does (2026-10-27).
+// 230 KB; if anything fails, the still simply stays.
 (function () {
   var v = document.getElementById('zilla');
   if (!v || (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches)) return;
-  v.muted = true;
-  var p = v.play();
-  if (p && p.catch) p.catch(function () {});
+  if (!window.fetch || !window.URL || !URL.createObjectURL) return;
+  fetch(v.getAttribute('data-src')).then(function (r) { return r.ok ? r.blob() : null }).then(function (b) {
+    if (!b) return;
+    v.muted = true;
+    v.src = URL.createObjectURL(b);
+    var p = v.play();
+    if (p && p.catch) p.catch(function () {});
+  }).catch(function () {});
 })();
 </script>
 <script>
