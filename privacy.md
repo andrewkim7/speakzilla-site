@@ -1,7 +1,7 @@
 # SpeakZilla Privacy Policy
 
 **Effective date:** 19 August 2026
-**Last updated:** 3 November 2026
+**Last updated:** 2 November 2026
 
 SpeakZilla ("SpeakZilla", "we", "us") is a pronunciation-practice app
 operated by Andrew Kim, Ontario, Canada. This policy explains
