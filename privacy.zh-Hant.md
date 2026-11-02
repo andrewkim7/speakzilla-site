@@ -3,7 +3,7 @@
 本文件為英文版隱私權政策的中文翻譯；如中文版與英文版內容有任何不一致，以[英文版](https://speakzilla.app/privacy)為準。
 
 **生效日期：** 2026年8月19日
-**最後更新：** 2026年10月20日
+**最後更新：** 2026年11月3日
 
 SpeakZilla（以下簡稱 SpeakZilla 或我們）是一款發音練習 App，由加拿大安大略省的 Andrew Kim 經營。本政策說明我們蒐集哪些個人資料、蒐集的原因、與誰分享，以及你擁有的選擇與權利。
 
@@ -39,7 +39,12 @@ SpeakZilla（以下簡稱 SpeakZilla 或我們）是一款發音練習 App，由
 **e) 自動蒐集的資訊**
 - 營運及保護服務所需的基本技術資料（例如 IP 位址、裝置／瀏覽器類型及時間戳記），由我們的主機代管及後端服務供應商透過標準伺服器紀錄檔蒐集。
 
-我們**不會**蒐集付款資訊、精確位置、你的聯絡人，也不會從 Apple 或 Google 帳號蒐集 (a) 所列內容以外的任何資訊。
+**f) SpeakZilla Premium** *（僅在你開啟 Premium 頁面或訂閱時）*
+- 如果你訂閱：你選擇的方案、價格和幣別、你的 App Store 或 Google Play 帳號所在的國家或地區、訂閱開始、續訂、結束或取消的時間、是否使用過免費試用，以及商店為這筆購買指定的識別碼。
+- 付款完全由 Apple（App Store）或 Google（Google Play）處理。我們從不接收你的信用卡號、銀行帳戶資訊或帳單地址。
+- 這些紀錄由 RevenueCat（見第 5 節）代我們保存。App 只會在你開啟 Premium 頁面、購買或回復訂閱時聯絡 RevenueCat；訂閱續訂或結束時，Apple 或 Google 會通知 RevenueCat。如果你從未開啟 Premium 頁面，就不會有任何關於你的資訊傳送給 RevenueCat。
+
+我們**不會**接收你的信用卡或帳單資訊（付款由 Apple 和 Google 處理，見 (f)），也不會蒐集精確位置、你的聯絡人，也不會從 Apple 或 Google 帳號蒐集 (a) 所列內容以外的任何資訊。
 
 ## 3. 語音資料：運作方式
 
@@ -70,6 +75,7 @@ SpeakZilla（以下簡稱 SpeakZilla 或我們）是一款發音練習 App，由
 - 將練習個人化（例如再次帶出你覺得困難的發音）；
 - 營運、保護、除錯及改善 App；
 - 就你的帳號與你聯繫（例如重設密碼）；
+- 如果你訂閱，提供 SpeakZilla Premium：向 Apple 或 Google 確認你的購買，在你登入的每台裝置上開通 Premium，並解答相關問題；
 - 在付費方案推出時通知你（如果你曾要求我們這麼做）。
 
 我們**不會**出售你的個人資料，也不會使用你的錄音來建立或訓練語音模型。
@@ -86,6 +92,7 @@ SpeakZilla（以下簡稱 SpeakZilla 或我們）是一款發音練習 App，由
 | **Cloudflare** | 網站代管與傳送 | 技術／紀錄檔資料（例如 IP） |
 | **Resend** | 寄送帳號相關郵件（確認你的電子郵件地址、重設密碼） | 你的電子郵件地址和郵件內容 |
 | **Expo (EAS Update)** | 傳送 App 更新 | 技術資料（例如 IP、App 版本、裝置平台），以及用來計算更新下載次數的匿名單次安裝識別碼。不含帳號資料 |
+| **RevenueCat** | 管理 Premium 訂閱：向 Apple 和 Google 確認購買，並保存每個訂閱的狀態 | 一個隨機產生的帳號識別碼（不含你的姓名或電子郵件地址）、第 2 節 (f) 所列的訂閱紀錄、裝置平台、App 版本和 IP 位址。僅在你開啟 Premium 頁面、購買或回復訂閱時，以及訂閱續訂或結束時 |
 
 請查閱各供應商自己的隱私權文件：
 - Supabase：https://supabase.com/privacy
@@ -94,8 +101,9 @@ SpeakZilla（以下簡稱 SpeakZilla 或我們）是一款發音練習 App，由
 - Cloudflare：https://www.cloudflare.com/privacypolicy/
 - Resend：https://resend.com/legal/privacy-policy
 - Expo：https://expo.dev/privacy
+- RevenueCat：https://www.revenuecat.com/privacy
 
-如果你選擇使用 Apple 或 Google 登入，它們即為登入服務供應商。它們不是我們的資料處理者，你在它們那裡的帳號受其各自的隱私權政策規範。
+如果你選擇使用 Apple 或 Google 登入，它們即為登入服務供應商；如果你訂閱 Premium，它們以銷售者的身分依各自的條款收取你的付款。它們不是我們的資料處理者，你在它們那裡的帳號與付款受其各自的隱私權政策規範。
 
 我們也可能在法律要求時、為保護我們的權利時，或作為業務移轉（例如合併或收購）的一部分而揭露資料；在此情況下，我們會在法律要求時通知你。
 
@@ -106,6 +114,8 @@ SpeakZilla（以下簡稱 SpeakZilla 或我們）是一款發音練習 App，由
 第 2 節 (b) 所述的開口練習紀錄會保存 **90 天**，之後自動刪除。
 
 **我們完全不會儲存你在行動 App 中的錄音。**你的語音會被串流傳送以進行評分，隨後即被捨棄；只有逐字稿和分數會被保留。為了讓你重聽而保留的最近一次錄音只存在於你的裝置上，並會在你重新錄音或離開該句子時捨棄。若有錄音被儲存（目前僅限於你在網頁上練習的情況），該錄音會在 **90 天**後自動刪除。
+
+**Premium 訂閱紀錄**會在你的帳號存在期間保存，並隨帳號一起刪除（包括 RevenueCat 保存的副本）。Apple 和 Google 會依各自的政策另行保存你的購買紀錄。
 
 **你自己寫的句子**會一直保存，直到你刪除這些句子或你的帳號為止。ElevenLabs 在產生教練的聲音時所記錄的文字副本，會在產生後由我們立即刪除；ElevenLabs 表示，該副本可能會在其備份中保留最多 30 天。教練朗讀句子的音訊會和你的帳號一起保存，直到你刪除該句子或你的帳號為止。標準語音的音訊只存在於你的裝置上，會在你刪除該句子或移除 App 時一併移除。
 
@@ -129,7 +139,7 @@ SpeakZilla（以下簡稱 SpeakZilla 或我們）是一款發音練習 App，由
 
 ## 9. 國際資料傳輸
 
-SpeakZilla 在**加拿大**營運。你的帳號、進度、逐字稿以及教練朗讀你的句子的音訊由 Supabase 儲存在**美國**。你的語音由 Microsoft Azure AI Speech 在**加拿大**（Canada Central 加拿大中部區域）處理。當你的教練的聲音朗讀你自己寫的句子時，句子的文字會傳送給位於**美國**的 ElevenLabs。Microsoft、ElevenLabs、Resend、Expo 和 Cloudflare 都是美國公司；Cloudflare 會從離你最近的資料中心提供網站。在必要時，我們會依賴適當的保護措施（例如標準契約條款及各供應商的資料處理協議）進行上述傳輸。
+SpeakZilla 在**加拿大**營運。你的帳號、進度、逐字稿以及教練朗讀你的句子的音訊由 Supabase 儲存在**美國**。你的語音由 Microsoft Azure AI Speech 在**加拿大**（Canada Central 加拿大中部區域）處理。當你的教練的聲音朗讀你自己寫的句子時，句子的文字會傳送給位於**美國**的 ElevenLabs。Premium 訂閱紀錄由 RevenueCat 儲存在**美國**。Microsoft、ElevenLabs、RevenueCat、Resend、Expo 和 Cloudflare 都是美國公司；Cloudflare 會從離你最近的資料中心提供網站。在必要時，我們會依賴適當的保護措施（例如標準契約條款及各供應商的資料處理協議）進行上述傳輸。
 
 ## 10. 兒童隱私
 

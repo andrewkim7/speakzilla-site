@@ -1,7 +1,7 @@
 # SpeakZilla Privacy Policy
 
 **Effective date:** 19 August 2026
-**Last updated:** 20 October 2026
+**Last updated:** 3 November 2026
 
 SpeakZilla ("SpeakZilla", "we", "us") is a pronunciation-practice app
 operated by Andrew Kim, Ontario, Canada. This policy explains
@@ -50,7 +50,12 @@ see Section 3)*
   IP address, device/browser type, and timestamps), collected by our
   hosting and backend providers through standard server logs.
 
-We do **not** collect payment information, precise location, your contacts, or
+**f) SpeakZilla Premium** *(only if you open the Premium screen or subscribe)*
+- If you subscribe: the plan you chose, its price and currency, the country or region of your App Store or Google Play account, when your subscription started, renewed, ends or was cancelled, whether you used a free trial, and the store's identifiers for the purchase.
+- Payment itself is handled entirely by Apple (App Store) or Google (Google Play). We never receive your card number, bank details or billing address.
+- These records are kept for us by RevenueCat (Section 5). The app contacts RevenueCat only when you open the Premium screen, buy or restore a subscription, and RevenueCat hears from Apple or Google when a subscription renews or ends. If you never open the Premium screen, nothing about you is sent to RevenueCat.
+
+We do **not** receive your payment card or billing details (Apple and Google handle payment; see (f)), and we do not collect precise location, your contacts, or
 anything from an Apple or Google account beyond what is listed in (a).
 
 ## 3. Voice data — how it works
@@ -96,6 +101,7 @@ We use the data above to:
 - personalise practice (e.g. resurfacing sounds you struggle with);
 - operate, secure, debug, and improve the app;
 - communicate with you about your account (e.g. password resets);
+- provide SpeakZilla Premium if you subscribe: confirm your purchase with Apple or Google, unlock Premium on every device you sign in on, and help with questions about it;
 - tell you when a paid plan becomes available, if you asked us to.
 
 We do **not** sell your personal data, and we do not use your voice
@@ -114,6 +120,7 @@ processes data on our behalf under their own terms and security controls:
 | **Cloudflare** | Website hosting and delivery | Technical/log data (e.g. IP) |
 | **Resend** | Delivering account email (confirming your address, password resets) | Your email address and the message |
 | **Expo (EAS Update)** | Delivering app updates | Technical data (e.g. IP, app version, device platform) and an anonymous per-install identifier used to count update downloads. No account data |
+| **RevenueCat** | Managing Premium subscriptions: confirming purchases with Apple and Google, and keeping each subscription's status | A random account identifier (not your name or email address), the subscription records in Section 2(f), device platform, app version and IP address. Only when you open the Premium screen, buy or restore, and when a subscription renews or ends |
 
 Please review each provider's own privacy documentation:
 - Supabase: https://supabase.com/privacy
@@ -122,9 +129,11 @@ Please review each provider's own privacy documentation:
 - Cloudflare: https://www.cloudflare.com/privacypolicy/
 - Resend: https://resend.com/legal/privacy-policy
 - Expo: https://expo.dev/privacy
+- RevenueCat: https://www.revenuecat.com/privacy
 
-Apple and Google act as sign-in providers if you choose them. They are not our
-processors, and their own privacy policies govern your account with them.
+Apple and Google act as sign-in providers if you choose them, and as the sellers of Premium if you
+subscribe: they take your payment under their own terms. They are not our processors, and their own
+privacy policies govern your account and your payments with them.
 
 We may also disclose data if required by law, to protect our rights, or as
 part of a business transfer (e.g. merger or acquisition), in which case we
@@ -142,6 +151,8 @@ scores are kept. The copy of your most recent attempt that the app holds so
 you can play it back stays on your device, and is discarded when you record
 again or leave the sentence. Where a recording is stored — currently only if you practise on the web —
 it is deleted automatically after **90 days**.
+
+**Premium subscription records** are kept for as long as your account exists, and are deleted with it, including RevenueCat's copy. Apple and Google keep their own records of your purchase under their policies.
 
 **Sentences you write yourself** are kept until you delete them or your account. The copy of the text that ElevenLabs records when it generates the coach's voice is deleted by us immediately afterwards; ElevenLabs states that it may remain in its backups for up to 30 days. The coach's reading of a sentence is kept with your account until you delete the sentence or your account. Audio in the standard voice exists only on your device and is removed when you delete the sentence or the app.
 
@@ -178,8 +189,8 @@ absolute security.
 
 SpeakZilla is operated from **Canada**. Your account, progress, transcripts and the coach's readings of your sentences
 are stored by Supabase in the **United States**. Your speech is processed by
-Microsoft Azure AI Speech in **Canada** (the Canada Central region). The text of sentences you write yourself is sent to ElevenLabs in the **United States** when your coach's voice reads them. Microsoft,
-ElevenLabs, Resend, Expo and Cloudflare are United States companies; Cloudflare serves the website from the
+Microsoft Azure AI Speech in **Canada** (the Canada Central region). The text of sentences you write yourself is sent to ElevenLabs in the **United States** when your coach's voice reads them. Premium subscription records are kept by RevenueCat in the **United States**. Microsoft,
+ElevenLabs, RevenueCat, Resend, Expo and Cloudflare are United States companies; Cloudflare serves the website from the
 data centre nearest to you. Where required, we rely on appropriate safeguards
 (such as Standard Contractual Clauses and each provider's data processing
 agreement) for these transfers.
