@@ -534,9 +534,12 @@ function localize(html, lang, page) {
   // line with 。or、, balance headings so one character is not left alone on a line, and a slightly smaller
   // headline -- at phone width the English size fits eleven characters across and the headline has twelve.
   // Chinese, like Japanese, has no spaces to break at.
+  // Japanese also breaks at phrase boundaries, never inside a word like 伝わ|り (word-break:auto-phrase, Chrome and
+  // Edge; other browsers ignore it and keep the old breaking), and the hero paragraph is balanced.
   const css = lang === 'ko'
     ? '  body{word-break:keep-all}\n'
-    : '  body{line-break:strict}\n  h1,h2,h3,.lede{text-wrap:balance}\n  .hero h1{font-size:clamp(25px,5.6vw,46px)}\n'
+    : '  body{line-break:strict}\n  h1,h2,h3,.lede,.hero p{text-wrap:balance}\n  .hero h1{font-size:clamp(25px,5.6vw,46px)}\n'
+      + (lang === 'ja' ? '  h1,h2,h3,.hero p,.lede{word-break:auto-phrase}\n' : '')
   once('</style>', css + '</style>')
 
   // A browser renders a newline in the source as a SPACE. English and Korean want that; between two
