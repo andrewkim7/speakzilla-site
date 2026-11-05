@@ -6,7 +6,6 @@
     "content=\"Word-by-word pronunciation feedback with a British or American coach.\"": "content=\"英式或美式教练陪你练，逐词给出发音反馈。\"",
     "<h1>Speak English.<br>Know <em>exactly</em> what to fix.</h1>": "<h1>开口说英语。<br><em>精准</em>知道哪里要改。</h1>",
     "<p>SpeakZilla listens as you read a sentence aloud and scores your pronunciation\n       word by word — so instead of guessing, you can see which sounds landed and which need another try.</p>": "<p>大声读出一句话，SpeakZilla 会边听边逐词为你的发音打分。\n       不用再靠猜——哪些音到位了、哪些还要再试一次，一目了然。</p>",
-    ">Download on the App Store</a>": ">在 App Store 下载</a>",
     "<div class=\"badge\">Android — coming soon</div>": "<div class=\"badge\">Android — 即将推出</div>",
     "Not ready to install? Watch a short lesson on ": "还没想好要不要安装？先看几段简短的课程视频：",
     "<h2>See it in action</h2>": "<h2>实际效果</h2>",
@@ -53,11 +52,16 @@
     "alt=\"My lines: a sentence you need, with words you can swap\"": "alt=\"我的句子：换几个词，练你要说的话\"",
     "alt=\"Telling two close sounds apart, like z and s\"": "alt=\"分辨两个相近的音，比如 z 和 s\"",
     "alt=\"Progress: how far your sounds have come since you started\"": "alt=\"进度：从开始到现在，你的发音进步了多少\"",
-    ">Get it on Google Play</a>": ">在 Google Play 下载</a>",
     "<h2>Now on iPhone and Android</h2>": "<h2>现已登陆 iPhone 和 Android</h2>",
     "<p>Free on both, with no adverts. Install SpeakZilla and read your first sentence in under a minute.</p>": "<p>两个平台都免费，没有广告。安装 SpeakZilla，一分钟内就能读出你的第一个句子。</p>",
     "aria-label=\"Play the video: Meet your four coaches\"": "aria-label=\"播放视频：认识你的四位教练\"",
-    "<p class=\"vcap\">Meet your four coaches: a five-minute tour of the app. Plays from YouTube.</p>": "<p class=\"vcap\">认识你的四位教练：5 分钟带你看懂这个 App。附简体中文字幕，在 YouTube 上播放。</p>"
+    "<p class=\"vcap\">Meet your four coaches: a five-minute tour of the app. Plays from YouTube.</p>": "<p class=\"vcap\">认识你的四位教练：5 分钟带你看懂这个 App。附简体中文字幕，在 YouTube 上播放。</p>",
+    "alt=\"Download on the App Store\"": "alt=\"在 App Store 下载\"",
+    "alt=\"Get it on Google Play\"": "alt=\"在 Google Play 下载\"",
+    "<h2>Learn a sound with your coach</h2>": "<h2>跟着教练学一个音</h2>",
+    "<p class=\"lede\">A score tells you which sound slipped. A coach shows you how to fix it. Here’s Sofia on the “th” in “think”: where your tongue goes, what to do with the air, and how to check it in a mirror.</p>": "<p class=\"lede\">分数告诉你哪个音没发准，教练教你怎么改。来看索菲亚讲解 “think” 里的 “th”：舌头放在哪里，气怎么出，怎样用镜子检查。</p>",
+    "aria-label=\"Play the video: the th sound with Sofia\"": "aria-label=\"播放视频：跟索菲亚练 th 音\"",
+    "<p class=\"vcap on-light\">θ as in “think” · 34 seconds · subtitles in five languages</p>": "<p class=\"vcap on-light\">θ，“think” 开头的音 · 34 秒 · 简体中文字幕</p>"
   },
   "zh-Hant": {
     "<title>SpeakZilla — Speak English, know exactly what to fix</title>": "<title>SpeakZilla — 開口說英文，精準知道哪裡要改</title>",
@@ -66,7 +70,6 @@
     "content=\"Word-by-word pronunciation feedback with a British or American coach.\"": "content=\"逐字發音回饋，搭配英式或美式教練。\"",
     "<h1>Speak English.<br>Know <em>exactly</em> what to fix.</h1>": "<h1>開口說英文。<br><em>精準</em>知道哪裡要改。</h1>",
     "<p>SpeakZilla listens as you read a sentence aloud and scores your pronunciation\n       word by word — so instead of guessing, you can see which sounds landed and which need another try.</p>": "<p>大聲唸出一個句子，SpeakZilla 會邊聽邊為你的發音逐字評分。\n       不用再憑感覺猜，哪些音到位了、哪些還要再試一次，都看得清清楚楚。</p>",
-    ">Download on the App Store</a>": ">在 App Store 下載</a>",
     "<div class=\"badge\">Android — coming soon</div>": "<div class=\"badge\">Android — 即將推出</div>",
     "Not ready to install? Watch a short lesson on ": "還不想安裝？先到 ",
     "<h2>See it in action</h2>": "<h2>實際畫面</h2>",
@@ -113,10 +116,15 @@
     "alt=\"My lines: a sentence you need, with words you can swap\"": "alt=\"我的句子：換幾個詞，練習你要說的話\"",
     "alt=\"Telling two close sounds apart, like z and s\"": "alt=\"分辨兩個相近的音，例如 z 和 s\"",
     "alt=\"Progress: how far your sounds have come since you started\"": "alt=\"進度：從開始到現在，你的發音進步了多少\"",
-    ">Get it on Google Play</a>": ">在 Google Play 下載</a>",
     "<h2>Now on iPhone and Android</h2>": "<h2>現在 iPhone 和 Android 都能用</h2>",
     "<p>Free on both, with no adverts. Install SpeakZilla and read your first sentence in under a minute.</p>": "<p>兩個平台都免費，沒有廣告。安裝 SpeakZilla，一分鐘內就能唸出你的第一個句子。</p>",
     "aria-label=\"Play the video: Meet your four coaches\"": "aria-label=\"播放影片：認識你的四位教練\"",
-    "<p class=\"vcap\">Meet your four coaches: a five-minute tour of the app. Plays from YouTube.</p>": "<p class=\"vcap\">認識你的四位教練：5 分鐘帶你看懂這個 App。附繁體中文字幕，在 YouTube 上播放。</p>"
+    "<p class=\"vcap\">Meet your four coaches: a five-minute tour of the app. Plays from YouTube.</p>": "<p class=\"vcap\">認識你的四位教練：5 分鐘帶你看懂這個 App。附繁體中文字幕，在 YouTube 上播放。</p>",
+    "alt=\"Download on the App Store\"": "alt=\"在 App Store 下載\"",
+    "alt=\"Get it on Google Play\"": "alt=\"在 Google Play 下載\"",
+    "<h2>Learn a sound with your coach</h2>": "<h2>跟著教練學一個音</h2>",
+    "<p class=\"lede\">A score tells you which sound slipped. A coach shows you how to fix it. Here’s Sofia on the “th” in “think”: where your tongue goes, what to do with the air, and how to check it in a mirror.</p>": "<p class=\"lede\">分數告訴你哪個音沒發準，教練示範怎麼改。來看蘇菲亞講解「think」裡的「th」：舌頭放在哪裡、氣怎麼出，還有怎麼用鏡子確認。</p>",
+    "aria-label=\"Play the video: the th sound with Sofia\"": "aria-label=\"播放影片：跟蘇菲亞練 th 音\"",
+    "<p class=\"vcap on-light\">θ as in “think” · 34 seconds · subtitles in five languages</p>": "<p class=\"vcap on-light\">θ，「think」開頭的音 · 34 秒 · 繁體中文字幕</p>"
   }
 }

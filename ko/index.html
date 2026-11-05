@@ -101,8 +101,12 @@
   .cta p{color:rgba(255,255,255,.6);margin:12px auto 0;max-width:560px}
   .hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
 
-  .dl{background:#fff;color:var(--ink);text-decoration:none;font-family:Fredoka,sans-serif;
-      font-weight:700;font-size:16px;padding:13px 22px;border-radius:13px;display:inline-flex;align-items:center;gap:8px}
+  /* The stores' official badges, in the page's language (build-i18n.mjs swaps them), used as published: never
+     redrawn or recoloured. Google's PNG is cropped to the badge itself so both stand the same height. */
+  .store{display:inline-block;border-radius:9px;line-height:0}
+  .store img{height:52px;width:auto;display:block}
+  .store:focus-visible{outline:3px solid #fff;outline-offset:3px}
+  @media(max-width:420px){.store img{height:46px}}
 
   .shots{background:#0f171c;padding:64px 0}
   .shots h2{color:#fff}
@@ -122,6 +126,12 @@
   @media(max-width:640px){.video{border-radius:16px}.video .play{width:64px;height:64px;margin:-32px 0 0 -32px}
                           .video .play svg{width:26px;height:26px}}
   .vcap{color:rgba(255,255,255,.6);font-size:14.5px;margin:12px 0 0;text-align:center;text-wrap:balance}
+  /* The coach's sound video: our own file (no YouTube), nothing loads before play, subtitles in the page's
+     language. On an iPhone it opens in the system player, which turns sideways with the phone. */
+  .sound{padding-top:80px;padding-bottom:64px}
+  .video.on-light{box-shadow:0 20px 50px rgba(15,14,23,.18)}
+  .video video{position:absolute;inset:0;width:100%;height:100%;background:#000;display:block}
+  .vcap.on-light{color:var(--muted)}
   .shots .video + .vcap + .lede{margin-top:40px}
   .gallery-wrap{position:relative;margin-top:30px}
   .gallery{display:flex;gap:18px;overflow-x:auto;padding:4px;scroll-snap-type:x mandatory;
@@ -199,8 +209,8 @@
     <p>문장을 소리 내어 읽으면 SpeakZilla가 듣고 발음을 단어 하나하나 채점해요.
        그래서 짐작하는 대신, 어떤 소리가 잘 전달됐고 어떤 소리를 다시 해 봐야 하는지 볼 수 있어요.</p>
     <div class="badges">
-      <a class="dl" href="https://apps.apple.com/kr/app/id6805255043">App Store에서 다운로드</a>
-      <a class="dl" href="https://play.google.com/store/apps/details?id=com.speakzilla.app">Google Play에서 다운로드</a>
+      <a class="store" href="https://apps.apple.com/kr/app/id6805255043"><img src="/assets/badges/app-store-ko.svg" width="169" height="52" alt="App Store에서 다운로드"></a>
+      <a class="store" href="https://play.google.com/store/apps/details?id=com.speakzilla.app"><img src="/assets/badges/google-play-ko.png" width="175" height="52" alt="Google Play에서 다운로드"></a>
     </div>
     <p class="watch">아직 설치가 망설여지나요? 짧은 레슨 영상을 먼저 보세요: <a href="https://www.youtube.com/@speakzilla" target="_blank" rel="noopener">YouTube</a> · <a href="https://www.tiktok.com/@speakzilla.app" target="_blank" rel="noopener">TikTok</a> · <a href="https://www.instagram.com/speakzilla/" target="_blank" rel="noopener">Instagram</a> (영어)</p>
   </div>
@@ -303,13 +313,32 @@
   </div>
 </section>
 
+<section class="wrap sound">
+  <h2>코치와 함께 소리 하나 배우기</h2>
+  <p class="lede">점수는 어떤 소리가 틀렸는지 알려 줘요. 코치는 어떻게 고치는지 보여 줘요. 소피아가 “think”의 “th” 소리를 알려 드려요. 혀를 어디에 두는지, 바람은 어떻게 내는지, 거울로 어떻게 확인하는지까지요.</p>
+  <div class="video on-light" id="sound-video">
+    <video preload="none" poster="/assets/sounds/th-poster.jpg">
+      <source src="/assets/sounds/th-sofia.mp4" type="video/mp4">
+      <track kind="subtitles" src="/assets/sounds/th.en.vtt" srclang="en" label="English">
+      <track kind="subtitles" src="/assets/sounds/th.ko.vtt" srclang="ko" label="한국어">
+      <track kind="subtitles" src="/assets/sounds/th.ja.vtt" srclang="ja" label="日本語">
+      <track kind="subtitles" src="/assets/sounds/th.zh-Hans.vtt" srclang="zh-Hans" label="简体中文">
+      <track kind="subtitles" src="/assets/sounds/th.zh-Hant.vtt" srclang="zh-Hant" label="繁體中文">
+    </video>
+    <button type="button" aria-label="영상 재생: 소피아와 함께하는 th 소리">
+      <span class="play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="#fff"><path d="M7 4.5v15l13-7.5z"/></svg></span>
+    </button>
+  </div>
+  <p class="vcap on-light">θ, “think”의 첫소리 · 34초 · 한국어 자막</p>
+</section>
+
 <section class="wrap">
   <div class="cta">
     <h2>이제 iPhone과 Android에서</h2>
     <p>둘 다 무료이고 광고도 없어요. SpeakZilla를 설치하고 1분 안에 첫 문장을 읽어 보세요.</p>
     <div class="badges">
-      <a class="dl" href="https://apps.apple.com/kr/app/id6805255043">App Store에서 다운로드</a>
-      <a class="dl" href="https://play.google.com/store/apps/details?id=com.speakzilla.app">Google Play에서 다운로드</a>
+      <a class="store" href="https://apps.apple.com/kr/app/id6805255043"><img src="/assets/badges/app-store-ko.svg" width="169" height="52" alt="App Store에서 다운로드"></a>
+      <a class="store" href="https://play.google.com/store/apps/details?id=com.speakzilla.app"><img src="/assets/badges/google-play-ko.png" width="175" height="52" alt="Google Play에서 다운로드"></a>
     </div>
   </div>
 </section>
@@ -358,6 +387,28 @@ document.addEventListener('keydown', function (e) {
     f.allow = 'autoplay; encrypted-media; picture-in-picture; fullscreen';
     f.allowFullscreen = true;
     box.replaceChild(f, btn);
+  });
+})();
+</script>
+
+<script>
+// The sound video: our orange play button until pressed, then the browser's own controls. Subtitles follow
+// the page's language (English plays without; its track can be switched on in the player).
+(function () {
+  var box = document.getElementById('sound-video');
+  if (!box) return;
+  var v = box.querySelector('video'), btn = box.querySelector('button');
+  var lang = document.documentElement.lang;
+  for (var i = 0; i < v.textTracks.length; i++) {
+    var t = v.textTracks[i];
+    t.mode = (lang !== 'en' && t.language === lang) ? 'showing' : 'disabled';
+  }
+  Array.prototype.forEach.call(v.querySelectorAll('track'), function (el) { el.default = lang !== 'en' && el.srclang === lang });
+  btn.addEventListener('click', function () {
+    box.removeChild(btn);
+    v.controls = true;
+    var p = v.play();
+    if (p && p.catch) p.catch(function () {});
   });
 })();
 </script>

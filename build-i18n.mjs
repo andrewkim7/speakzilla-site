@@ -18,13 +18,13 @@ import { fileURLToPath } from 'node:url'
 
 const root = path.dirname(fileURLToPath(import.meta.url))
 const LANGS = {
-  ko: { html: 'ko', dir: 'ko', name: '한국어', store: 'https://apps.apple.com/kr/app/id6805255043' },
-  ja: { html: 'ja', dir: 'ja', name: '日本語', store: 'https://apps.apple.com/jp/app/id6805255043' },
+  ko: { html: 'ko', dir: 'ko', name: '한국어', store: 'https://apps.apple.com/kr/app/id6805255043', appleW: 169 },
+  ja: { html: 'ja', dir: 'ja', name: '日本語', store: 'https://apps.apple.com/jp/app/id6805255043', appleW: 142 },
   // Chinese by SCRIPT (as in the app), never a bare zh. No China storefront (the app is not offered there);
   // Traditional links the Taiwan store. Their text is not in the ko/ja columns below but in i18n-zh.json,
   // keyed by the English snippet -- same exact-match rule, and a snippet with no Chinese stops the build.
-  'zh-Hans': { html: 'zh-Hans', dir: 'zh-hans', name: '简体中文', store: 'https://apps.apple.com/app/id6805255043' },
-  'zh-Hant': { html: 'zh-Hant', dir: 'zh-hant', name: '繁體中文', store: 'https://apps.apple.com/tw/app/id6805255043' },
+  'zh-Hans': { html: 'zh-Hans', dir: 'zh-hans', name: '简体中文', store: 'https://apps.apple.com/app/id6805255043', appleW: 142 },
+  'zh-Hant': { html: 'zh-Hant', dir: 'zh-hant', name: '繁體中文', store: 'https://apps.apple.com/tw/app/id6805255043', appleW: 142 },
 }
 // `node build-i18n.mjs --dump-zh <file>`: write every English snippet the Chinese pages need (with the
 // Korean and Japanese beside it for reference) instead of building. That is the translator's worksheet.
@@ -102,8 +102,9 @@ const INDEX = [
   ['<p>SpeakZilla listens as you read a sentence aloud and scores your pronunciation\n       word by word — so instead of guessing, you can see which sounds landed and which need another try.</p>',
    '<p>문장을 소리 내어 읽으면 SpeakZilla가 듣고 발음을 단어 하나하나 채점해요.\n       그래서 짐작하는 대신, 어떤 소리가 잘 전달됐고 어떤 소리를 다시 해 봐야 하는지 볼 수 있어요.</p>',
    '<p>文を声に出して読むと、SpeakZillaが聞き取り、発音を単語ひとつひとつ採点します。\n       だから当てずっぽうではなく、どの音が伝わり、どの音をもう一度やるべきかが見えます。</p>'],
-  ['>Download on the App Store</a>', '>App Store에서 다운로드</a>', '>App Storeでダウンロード</a>', 2],
-  ['>Get it on Google Play</a>', '>Google Play에서 다운로드</a>', '>Google Playで入手</a>', 2],
+  // The store badges: the artwork is swapped per language in localize(); the alt text here.
+  ['alt="Download on the App Store"', 'alt="App Store에서 다운로드"', 'alt="App Storeでダウンロード"', 2],
+  ['alt="Get it on Google Play"', 'alt="Google Play에서 다운로드"', 'alt="Google Playで入手"', 2],
   ['Not ready to install? Watch a short lesson on ', '아직 설치가 망설여지나요? 짧은 레슨 영상을 먼저 보세요: ', 'まだインストールを迷っていますか？ 短いレッスン動画をどうぞ：'],
   ['</a>, <a href="https://www.tiktok.com/@speakzilla.app" target="_blank" rel="noopener">TikTok</a> or <a href="https://www.instagram.com/speakzilla/" target="_blank" rel="noopener">Instagram</a>.</p>', '</a> · <a href="https://www.tiktok.com/@speakzilla.app" target="_blank" rel="noopener">TikTok</a> · <a href="https://www.instagram.com/speakzilla/" target="_blank" rel="noopener">Instagram</a> (영어)</p>', '</a> · <a href="https://www.tiktok.com/@speakzilla.app" target="_blank" rel="noopener">TikTok</a> · <a href="https://www.instagram.com/speakzilla/" target="_blank" rel="noopener">Instagram</a>（英語）</p>'],
   ['<h2>See it in action</h2>', '<h2>이렇게 보여요</h2>', '<h2>実際の画面</h2>'],
@@ -143,6 +144,15 @@ const INDEX = [
   ['<img src="assets/daniel.png" alt="Daniel" style="border-color:var(--daniel)">\n      <div>\n        <h3>Daniel</h3>\n        <div class="accent" style="color:var(--daniel)">American English <span class="city">· New York</span></div>\n        <p>Upbeat and sharp, with clear vowels at an everyday pace.</p>',
    '<img src="assets/daniel.png" alt="다니엘" style="border-color:var(--daniel)">\n      <div>\n        <h3>다니엘</h3>\n        <div class="accent" style="color:var(--daniel)">미국식 영어 <span class="city">· 뉴욕</span></div>\n        <p>밝고 명쾌해요. 또렷한 모음을 일상 속도로 익히기에 좋아요.</p>',
    '<img src="assets/daniel.png" alt="ダニエル" style="border-color:var(--daniel)">\n      <div>\n        <h3>ダニエル</h3>\n        <div class="accent" style="color:var(--daniel)">アメリカ英語 <span class="city">· ニューヨーク</span></div>\n        <p>明るくてテンポがいい。はっきりした母音を日常の速さで身につけるのにぴったりです。</p>'],
+  // The sound video (Sofia, θ). "think"/"sink" stay English: they are what the learner says aloud.
+  ['<h2>Learn a sound with your coach</h2>', '<h2>코치와 함께 소리 하나 배우기</h2>', '<h2>コーチと一緒に、ひとつの音を身につけよう</h2>'],
+  ['<p class="lede">A score tells you which sound slipped. A coach shows you how to fix it. Here’s Sofia on the “th” in “think”: where your tongue goes, what to do with the air, and how to check it in a mirror.</p>',
+   '<p class="lede">점수는 어떤 소리가 틀렸는지 알려 줘요. 코치는 어떻게 고치는지 보여 줘요. 소피아가 “think”의 “th” 소리를 알려 드려요. 혀를 어디에 두는지, 바람은 어떻게 내는지, 거울로 어떻게 확인하는지까지요.</p>',
+   '<p class="lede">スコアは、どの音がずれたかを教えてくれます。コーチは、その直し方を見せてくれます。ソフィアが「think」の「th」を解説します。舌をどこに置くか、息をどう出すか、鏡でどう確かめるかまで。</p>'],
+  ['aria-label="Play the video: the th sound with Sofia"', 'aria-label="영상 재생: 소피아와 함께하는 th 소리"', 'aria-label="動画を再生：ソフィアと練習するthの音"'],
+  ['<p class="vcap on-light">θ as in “think” · 34 seconds · subtitles in five languages</p>',
+   '<p class="vcap on-light">θ, “think”의 첫소리 · 34초 · 한국어 자막</p>',
+   '<p class="vcap on-light">θ、「think」の最初の音 · 34秒 · 日本語字幕</p>'],
   ['<h2>Now on iPhone and Android</h2>', '<h2>이제 iPhone과 Android에서</h2>', '<h2>iPhoneとAndroidで使えます</h2>'],
   ['<p>Free on both, with no adverts. Install SpeakZilla and read your first sentence in under a minute.</p>',
    '<p>둘 다 무료이고 광고도 없어요. SpeakZilla를 설치하고 1분 안에 첫 문장을 읽어 보세요.</p>',
@@ -513,6 +523,12 @@ function localize(html, lang, page) {
   // they pass through unchanged. The header's language menu is filled by fillMenu.
   html = fillMenu(html, lang, page)
   if (page === 'index.html') html = html.split('src="/assets/shots/shot-').join(`src="/assets/shots/${L.dir}/shot-`)
+  // The stores' official badges in the page's language (Apple's marketing toolbox and Google's badge page,
+  // 2026-11-05; Google's cropped to the badge). Apple's width differs by language; both stand 52 px tall.
+  if (page === 'index.html') {
+    once('src="/assets/badges/app-store-en.svg" width="156"', `src="/assets/badges/app-store-${L.dir}.svg" width="${L.appleW}"`, 2)
+    once('src="/assets/badges/google-play-en.png" width="175"', `src="/assets/badges/google-play-${L.dir}.png" width="175"`, 2)
+  }
 
   // Korean breaks between words, never inside one. Japanese has no spaces to break at, so: never start a
   // line with 。or、, balance headings so one character is not left alone on a line, and a slightly smaller
