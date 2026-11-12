@@ -24,6 +24,11 @@
   .bar a.nav{color:rgba(255,255,255,.6);text-decoration:none;font-size:14px;white-space:nowrap}
   .bar nav{display:flex;align-items:center;gap:18px}
   .bar a.nav:hover{color:#fff}
+  /* Premium in the header (from the 1.5.0 launch): white with a small orange dot, one step brighter than the
+     other links. The same word in every language, as in the app. */
+  .bar a.nav.prem{color:#fff;font-weight:600}
+  .bar a.nav.prem::before{content:"";display:inline-block;width:6px;height:6px;border-radius:50%;
+                          background:var(--accent);margin-right:6px;vertical-align:2px}
   /* Language menu: one entry in the bar however many languages there are. */
   .lang-menu{position:relative}
   .lang-menu summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:5px;
@@ -73,6 +78,7 @@
   <div class="wrap bar">
     <a class="brand" href="/ko/"><img src="/assets/icon.png" alt=""><span>SpeakZilla</span></a>
     <nav>
+      <a class="nav prem" href="/ko/#premium">Premium</a>
       <a class="nav" href="/ko/support.html">도움말</a>
       <a class="nav" href="/ko/privacy.html">개인정보</a>
       <!-- lang:start -->
@@ -230,7 +236,6 @@
       앱에서 <strong>프로필 → 계정 삭제</strong>를 누르세요. 계정과 학습 기록, 녹음이
       영구적으로 삭제돼요. 되돌릴 수 없고, 저에게 따로 연락할 필요도 없어요.
     </p>
-    <p><strong>Premium을 쓰고 계신가요?</strong> 계정을 삭제해도 구독은 해지되지 않아요. 구독은 SpeakZilla가 아니라 App Store나 Google Play에서 결제되기 때문이에요. 먼저 App Store 또는 Google Play의 구독 설정에서 해지하신 뒤(아래 <a href="#premium">Premium 해지와 환불</a> 참고) 계정을 삭제해 주세요.</p>
     <p>
       앱이 더 이상 없으신가요? SpeakZilla 계정의 이메일 주소로
       <a href="mailto:support@speakzilla.app">support@speakzilla.app</a>에 메일을 보내 주시면
@@ -243,9 +248,18 @@
       나와 있어요.
     </p>
 
+    <h3 id="premium-includes">Premium에는 무엇이 있나요?</h3>
+    <p>SpeakZilla Premium은 선택해서 쓰는 구독이에요. 월간과 연간이 있고, 연간 플랜은 7일 무료 체험으로 시작해요. Premium에서 더해지는 것:</p>
+    <ul>
+      <li><strong>맞춤 연습:</strong> 레슨에서 실수한 단어로, 가장 어려운 소리 세 개를 하루 5분 연습해요.</li>
+      <li><strong>코치 영상:</strong> 가장 어려운 소리들을 코치가 내 언어 자막과 함께 보여 줘요. 영상은 계속 추가돼요.</li>
+      <li><strong>하루 제한 없음:</strong> 레슨과 단어 연습을 원하는 만큼, 내 문장은 하루 10개까지.</li>
+    </ul>
+    <p>무료였던 기능이 유료로 바뀐 건 없어요. 모든 레슨, 발음 맵, 발음 연습, 체크포인트, 내 문장, 네 명의 코치 모두 계속 무료예요. 구독하려면 앱에서 프로필 → SpeakZilla Premium을 열어 주세요.</p>
+
     <h3 id="premium">Premium 해지와 환불</h3>
     <p><strong>해지.</strong> App Store 또는 Google Play의 구독 설정에서 언제든 해지하실 수 있어요.
-      이미 결제한 기간이 끝날 때까지 Premium을 그대로 쓰실 수 있고, 그 뒤로는 결제되지 않아요. 앱에서 계정을 삭제해도 구독은 해지되지 않아요.</p>
+      이미 결제한 기간이 끝날 때까지 Premium을 그대로 쓰실 수 있고, 그 뒤로는 결제되지 않아요.</p>
     <p><strong>무료 체험.</strong> 7일이 끝나기 전에 해지하시면 요금이 전혀 청구되지 않아요.</p>
     <p><strong>환불.</strong> Premium이 마음에 들지 않으시면 <a href="mailto:support@speakzilla.app">support@speakzilla.app</a>에 메일을 보내 주세요. 해결해 드릴게요.</p>
     <ul>

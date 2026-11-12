@@ -103,8 +103,8 @@ const INDEX = [
    '<p>문장을 소리 내어 읽으면 SpeakZilla가 듣고 발음을 단어 하나하나 채점해요.\n       그래서 짐작하는 대신, 어떤 소리가 잘 전달됐고 어떤 소리를 다시 해 봐야 하는지 볼 수 있어요.</p>',
    '<p>文を声に出して読むと、SpeakZillaが聞き取り、発音を単語ひとつひとつ採点します。\n       だから当てずっぽうではなく、どの音が伝わり、どの音をもう一度やるべきかが見えます。</p>'],
   // The store badges: the artwork is swapped per language in localize(); the alt text here.
-  ['alt="Download on the App Store"', 'alt="App Store에서 다운로드"', 'alt="App Storeでダウンロード"', 2],
-  ['alt="Get it on Google Play"', 'alt="Google Play에서 다운로드"', 'alt="Google Playで入手"', 2],
+  ['alt="Download on the App Store"', 'alt="App Store에서 다운로드"', 'alt="App Storeでダウンロード"', 3],
+  ['alt="Get it on Google Play"', 'alt="Google Play에서 다운로드"', 'alt="Google Playで入手"', 3],
   ['Not ready to install? Watch a short lesson on ', '아직 설치가 망설여지나요? 짧은 레슨 영상을 먼저 보세요: ', 'まだインストールを迷っていますか？ 短いレッスン動画をどうぞ：'],
   ['</a>, <a href="https://www.tiktok.com/@speakzilla.app" target="_blank" rel="noopener">TikTok</a> or <a href="https://www.instagram.com/speakzilla/" target="_blank" rel="noopener">Instagram</a>.</p>', '</a> · <a href="https://www.tiktok.com/@speakzilla.app" target="_blank" rel="noopener">TikTok</a> · <a href="https://www.instagram.com/speakzilla/" target="_blank" rel="noopener">Instagram</a> (영어)</p>', '</a> · <a href="https://www.tiktok.com/@speakzilla.app" target="_blank" rel="noopener">TikTok</a> · <a href="https://www.instagram.com/speakzilla/" target="_blank" rel="noopener">Instagram</a>（英語）</p>'],
   ['<h2>See it in action</h2>', '<h2>이렇게 보여요</h2>', '<h2>実際の画面</h2>'],
@@ -154,9 +154,101 @@ const INDEX = [
    '<p class="vcap on-light">θ, “think”의 첫소리 · 34초 · 한국어 자막</p>',
    '<p class="vcap on-light">θ、「think」の最初の音 · 34秒 · 日本語字幕</p>'],
   ['<h2>Now on iPhone and Android</h2>', '<h2>이제 iPhone과 Android에서</h2>', '<h2>iPhoneとAndroidで使えます</h2>'],
-  ['<p>Free on both, with no adverts. Install SpeakZilla and read your first sentence in under a minute.</p>',
-   '<p>둘 다 무료이고 광고도 없어요. SpeakZilla를 설치하고 1분 안에 첫 문장을 읽어 보세요.</p>',
-   '<p>どちらも無料で、広告もありません。SpeakZillaをインストールして、1分以内に最初の文を読んでみましょう。</p>'],
+  ['<p>Free on both, with no adverts. Install SpeakZilla and read your first sentence in under a minute. <span class="more">Want more? Premium starts with a free week.</span></p>',
+   '<p>둘 다 무료이고 광고도 없어요. SpeakZilla를 설치하고 1분 안에 첫 문장을 읽어 보세요. <span class="more">더 원하시나요? Premium은 무료 1주로 시작해요.</span></p>',
+   '<p>どちらも無料で、広告もありません。SpeakZillaをインストールして、1分以内に最初の文を読んでみましょう。<span class="more">もっと練習したいときは、Premium を無料の1週間から始められます。</span></p>'],
+  // The Premium launch (1.5.0, Nov 2026): the hero pill, the line under the θ video, the Premium section.
+  // The feature texts are the app's own Premium page (speakzilla-mobile locales/*.json premium.f1-f3).
+  ['<span class="tag">NEW</span>SpeakZilla Premium is here <span',
+   '<span class="tag">NEW</span>SpeakZilla Premium이 나왔어요 <span',
+   '<span class="tag">NEW</span>SpeakZilla Premium が登場 <span'],
+  ['<p class="vcap on-light lead-in">This one is free for everyone. <a href="#premium">Premium</a> has videos for the trickiest sounds, with more on the way.</p>',
+   '<p class="vcap on-light lead-in">이 영상은 누구나 무료로 볼 수 있어요. <a href="#premium">Premium</a>에는 가장 어려운 소리들의 영상이 있고, 계속 추가돼요.</p>',
+   '<p class="vcap on-light lead-in">この動画は誰でも無料で見られます。<a href="#premium">Premium</a> には特に難しい音の動画があり、これからも増えます。</p>'],
+  ['<h2>Practise like you have a tutor</h2>',
+   '<h2>과외 선생님이 있는 것처럼 연습하세요</h2>',
+   '<h2>家庭教師がいるように練習しよう</h2>'],
+  ['<p class="lede">Built around your own sounds, with your coach. Premium is optional: everything free stays free, and free keeps getting new sentences and words.</p>',
+   '<p class="lede">내 발음에 맞춰, 내 코치와 함께. Premium은 선택이에요. 무료 기능은 계속 무료이고, 무료에도 새 문장과 단어가 계속 추가돼요.</p>',
+   '<p class="lede">あなたの音に合わせて、あなたのコーチと。Premium は任意です。無料の機能はずっと無料で、無料にも新しい文と単語が増え続けます。</p>'],
+  ['<h3>Personal practice, every day</h3>',
+   '<h3>매일 나만의 맞춤 연습</h3>',
+   '<h3>毎日の個別練習</h3>'],
+  ['<p>Five minutes on your three hardest sounds, from the words that slipped in your lessons, with a check that shows what changed.</p>',
+   '<p>레슨에서 실수한 단어로 가장 어려운 소리 세 개를 5분 동안 연습하고, 무엇이 달라졌는지 체크로 확인해요.</p>',
+   '<p>レッスンでつまずいた単語から、いちばん苦手な3つの音を5分で練習。最後のチェックで何が変わったかがわかります。</p>'],
+  ['<h3>Your coach shows the hardest sounds</h3>',
+   '<h3>어려운 소리는 코치가 시범을 보여 줘요</h3>',
+   '<h3>難しい音はコーチがお手本</h3>'],
+  ['<p>Short videos for the trickiest sounds: where the tongue goes, with captions in your language. More are on the way.</p>',
+   '<p>가장 어려운 소리들은 짧은 영상으로: 혀가 어디로 가는지, 내 언어 자막과 함께. 영상은 계속 추가돼요.</p>',
+   '<p>特に難しい音は短い動画で：舌の位置を、あなたの言語の字幕つきで。動画はこれからも増えます。</p>'],
+  ['<h3>No daily limit</h3>',
+   '<h3>하루 제한 없음</h3>',
+   '<h3>1日の制限なし</h3>'],
+  ['<p>As many lessons and word practice as you like, and 10 new My lines a day.</p>',
+   '<p>레슨과 단어 연습을 원하는 만큼, 내 문장은 하루 10개까지.</p>',
+   '<p>レッスンと単語練習は好きなだけ、自分の文は1日10個まで。</p>'],
+  ['<span class="hp">Feature</span>',
+   '<span class="hp">기능</span>',
+   '<span class="hp">機能</span>'],
+  ['<th scope="col">Free</th>',
+   '<th scope="col">무료</th>',
+   '<th scope="col">無料</th>'],
+  ['<th scope="row">Every lesson, the Sound Map, drills and checkpoints</th>',
+   '<th scope="row">모든 레슨, 발음 맵, 발음 연습, 체크포인트</th>',
+   '<th scope="row">すべてのレッスン、発音マップ、発音練習、チェックポイント</th>'],
+  ['<th scope="row">All four coaches, British and American</th>',
+   '<th scope="row">네 명의 코치 모두 (영국식과 미국식)</th>',
+   '<th scope="row">4人のコーチ全員（イギリス英語とアメリカ英語）</th>'],
+  ['<th scope="row">New lessons a day</th>',
+   '<th scope="row">하루 새 레슨</th>',
+   '<th scope="row">1日の新しいレッスン</th>'],
+  ['<td>3 (the first 10 have no limit, and eggs you earn open more)</td>',
+   '<td>3개 (처음 10개는 제한 없음, 모은 달걀로 더 열 수 있어요)</td>',
+   '<td>3つ（最初の10レッスンは制限なし。集めたたまごで追加できます）</td>'],
+  ['<td class="p">No limit</td>',
+   '<td class="p">제한 없음</td>',
+   '<td class="p">制限なし</td>', 2],
+  ['<th scope="row">Word practice</th>',
+   '<th scope="row">단어 연습</th>',
+   '<th scope="row">単語練習</th>'],
+  ['<td>20 a day</td>',
+   '<td>하루 20번</td>',
+   '<td>1日20回</td>'],
+  ['<th scope="row">My lines: new sentences</th>',
+   '<th scope="row">내 문장: 새 문장</th>',
+   '<th scope="row">自分の文：新しい文</th>'],
+  ['<td>1 a day</td>',
+   '<td>하루 1개</td>',
+   '<td>1日1個</td>'],
+  ['<td class="p">10 a day</td>',
+   '<td class="p">하루 10개</td>',
+   '<td class="p">1日10個</td>'],
+  ['<th scope="row">Personal practice from your weak sounds</th>',
+   '<th scope="row">약한 소리로 만드는 맞춤 연습</th>',
+   '<th scope="row">苦手な音から作る個別練習</th>'],
+  ['<td class="p">Every day</td>',
+   '<td class="p">매일</td>',
+   '<td class="p">毎日</td>'],
+  ['<th scope="row">Coach videos</th>',
+   '<th scope="row">코치 영상</th>',
+   '<th scope="row">コーチ動画</th>'],
+  ['<td>The θ video</td>',
+   '<td>θ 영상</td>',
+   '<td>θの動画</td>'],
+  ['<td class="p">The trickiest sounds, more on the way</td>',
+   '<td class="p">가장 어려운 소리들, 계속 추가돼요</td>',
+   '<td class="p">特に難しい音。これからも増えます</td>'],
+  ['<th scope="row">Adverts</th><td>None</td><td class="p">None</td>',
+   '<th scope="row">광고</th><td>없음</td><td class="p">없음</td>',
+   '<th scope="row">広告</th><td>なし</td><td class="p">なし</td>'],
+  ['<p><b>Try it free for 7 days with the yearly plan</b>, or choose monthly. Subscribe in the app, from Profile. Cancel any time in your App Store or Google Play settings; cancel during the free week and you pay nothing.</p>',
+   '<p><b>연간 플랜은 7일 동안 무료로 체험할 수 있어요.</b> 월간 플랜도 있어요. 구독은 앱의 프로필에서 해요. App Store 또는 Google Play 설정에서 언제든 해지할 수 있고, 무료 1주 동안 해지하면 요금이 전혀 청구되지 않아요.</p>',
+   '<p><b>年額プランは7日間無料でお試しいただけます。</b>月額プランもあります。登録はアプリのプロフィールから。App Store または Google Play の設定でいつでも解約でき、無料の1週間のうちに解約すれば料金はかかりません。</p>'],
+  ['<p class="pmore">Questions about cancelling or refunds? See <a href="/support.html#premium">Support</a>.</p>',
+   '<p class="pmore">해지나 환불이 궁금하신가요? <a href="/support.html#premium">도움말</a>을 확인해 주세요.</p>',
+   '<p class="pmore">解約や返金については、<a href="/support.html#premium">サポート</a>をご覧ください。</p>'],
   ["'Go to screenshot '", "'화면 '", "'画面 '"],
 ]
 
@@ -315,6 +407,15 @@ const SUPPORT_BODY = {
       무엇을 얼마 동안 저장하는지는 <a href="%PRIVACY%">개인정보 처리방침%PRIVACY_NOTE%</a>에
       나와 있어요.
     </p>
+
+    <h3 id="premium-includes">Premium에는 무엇이 있나요?</h3>
+    <p>SpeakZilla Premium은 선택해서 쓰는 구독이에요. 월간과 연간이 있고, 연간 플랜은 7일 무료 체험으로 시작해요. Premium에서 더해지는 것:</p>
+    <ul>
+      <li><strong>맞춤 연습:</strong> 레슨에서 실수한 단어로, 가장 어려운 소리 세 개를 하루 5분 연습해요.</li>
+      <li><strong>코치 영상:</strong> 가장 어려운 소리들을 코치가 내 언어 자막과 함께 보여 줘요. 영상은 계속 추가돼요.</li>
+      <li><strong>하루 제한 없음:</strong> 레슨과 단어 연습을 원하는 만큼, 내 문장은 하루 10개까지.</li>
+    </ul>
+    <p>무료였던 기능이 유료로 바뀐 건 없어요. 모든 레슨, 발음 맵, 발음 연습, 체크포인트, 내 문장, 네 명의 코치 모두 계속 무료예요. 구독하려면 앱에서 프로필 → SpeakZilla Premium을 열어 주세요.</p>
 
     <h3 id="premium">Premium 해지와 환불</h3>
     <p><strong>해지.</strong> App Store 또는 Google Play의 구독 설정에서 언제든 해지하실 수 있어요.
@@ -523,6 +624,15 @@ const SUPPORT_BODY = {
       記載しています。
     </p>
 
+    <h3 id="premium-includes">Premium には何がありますか？</h3>
+    <p>SpeakZilla Premium は任意のサブスクリプションです。月額と年額があり、年額プランは7日間の無料体験から始まります。Premium で加わるもの：</p>
+    <ul>
+      <li><strong>個別練習：</strong>レッスンでつまずいた単語から、いちばん苦手な3つの音を1日5分練習します。</li>
+      <li><strong>コーチ動画：</strong>特に難しい音は、コーチが動画でお手本を見せます。あなたの言語の字幕つきで、動画はこれからも増えます。</li>
+      <li><strong>1日の制限なし：</strong>レッスンと単語練習は好きなだけ、自分の文は1日10個まで。</li>
+    </ul>
+    <p>無料だった機能が有料になったものはありません。すべてのレッスン、発音マップ、発音練習、チェックポイント、自分の文、4人のコーチは、これからも無料です。登録するには、アプリでプロフィール → SpeakZilla Premium を開いてください。</p>
+
     <h3 id="premium">Premium の解約と返金</h3>
     <p><strong>解約。</strong>App Store または Google Play のサブスクリプション設定から、いつでも解約できます。
       お支払い済みの期間が終わるまで Premium はそのまま使え、その後は請求されません。</p>
@@ -608,7 +718,8 @@ function localize(html, lang, page) {
   // Absolute, so the same markup works one directory down.
   html = html.split('href="assets/').join('href="/assets/').split('src="assets/').join('src="/assets/').split('content="assets/').join('content="/assets/')
   once('<a class="brand" href="/">', `<a class="brand" href="/${L.dir}/">`)
-  html = html.split('href="/support.html"').join(`href="/${L.dir}/support.html"`)
+  html = html.split('href="/support.html').join(`href="/${L.dir}/support.html`)   // also /support.html#premium
+  html = html.split('href="/#premium"').join(`href="/${L.dir}/#premium"`)        // the header's Premium link
   html = html.split('href="/privacy.html"').join(`href="${privacy}"`)
   html = html.split('https://apps.apple.com/app/id6805255043').join(L.store)
   // hreflang tags: the English source carries every language (plus x-default) and they are absolute, so
@@ -618,8 +729,8 @@ function localize(html, lang, page) {
   // The stores' official badges in the page's language (Apple's marketing toolbox and Google's badge page,
   // 2026-11-05; Google's cropped to the badge). Apple's width differs by language; both stand 52 px tall.
   if (page === 'index.html') {
-    once('src="/assets/badges/app-store-en.svg" width="156"', `src="/assets/badges/app-store-${L.dir}.svg" width="${L.appleW}"`, 2)
-    once('src="/assets/badges/google-play-en.png" width="175"', `src="/assets/badges/google-play-${L.dir}.png" width="175"`, 2)
+    once('src="/assets/badges/app-store-en.svg" width="156"', `src="/assets/badges/app-store-${L.dir}.svg" width="${L.appleW}"`, 3)
+    once('src="/assets/badges/google-play-en.png" width="175"', `src="/assets/badges/google-play-${L.dir}.png" width="175"`, 3)
   }
 
   // Korean breaks between words, never inside one. Japanese has no spaces to break at, so: never start a

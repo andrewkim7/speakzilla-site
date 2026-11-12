@@ -39,6 +39,11 @@
   .bar a.nav{color:rgba(255,255,255,.6);text-decoration:none;font-size:14px;white-space:nowrap}
   .bar nav{display:flex;align-items:center;gap:18px}
   .bar a.nav:hover{color:#fff}
+  /* Premium in the header (from the 1.5.0 launch): white with a small orange dot, one step brighter than the
+     other links. The same word in every language, as in the app. */
+  .bar a.nav.prem{color:#fff;font-weight:600}
+  .bar a.nav.prem::before{content:"";display:inline-block;width:6px;height:6px;border-radius:50%;
+                          background:var(--accent);margin-right:6px;vertical-align:2px}
   /* Language menu: one entry in the bar however many languages there are. */
   .lang-menu{position:relative}
   .lang-menu summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:5px;
@@ -168,6 +173,49 @@
   .lb-count{position:absolute;bottom:22px;left:0;right:0;text-align:center;color:rgba(255,255,255,.6);font-size:14px}
   @media(max-width:640px){.lbnav{display:none} .lb img{max-height:calc(100vh - 150px)}}   /* room for the × above it */
 
+  /* The Premium launch (1.5.0, Nov 2026). Quiet on purpose: one pill in the hero, one line under the θ video,
+     one section, one line in the closing card. No prices: the stores charge in each country's own currency
+     and every page is read worldwide, so the app shows each person theirs. No countdowns or "save x%". */
+  .pill{display:inline-flex;align-items:center;gap:8px;margin:0 auto 16px;padding:5px 14px 5px 5px;border-radius:99px;
+        background:rgba(0,201,167,.12);border:1px solid rgba(0,201,167,.45);color:#fff;text-decoration:none;font-size:14px;
+        transition:background .15s}
+  .pill:hover{background:rgba(0,201,167,.22)}
+  .pill:focus-visible{outline:3px solid #fff;outline-offset:3px}
+  .pill .tag{background:var(--accent);color:#fff;border-radius:99px;padding:2px 9px;font-size:11px;font-weight:700;letter-spacing:.06em}
+  .pill .go{color:var(--teal)}
+  .vcap.lead-in{margin-top:6px}
+  .premium{padding-top:8px}
+  .pcard{background:var(--surface);border-radius:26px;padding:clamp(24px,4vw,44px)}
+  .pbadge{display:inline-block;background:var(--night);color:#fff;border-radius:99px;padding:4px 12px;font-size:12px;
+          font-weight:700;letter-spacing:.1em}
+  .pbadge i{font-style:normal;color:var(--accent)}
+  .pcard h2{font-size:clamp(26px,4.4vw,36px);margin-top:14px}
+  .feats{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-top:28px}
+  .feat{background:var(--paper);border-radius:16px;padding:20px;min-width:0}
+  .feat .ic{background:var(--teal);width:42px;height:42px;border-radius:13px;margin-bottom:12px}
+  .feat .ic svg{width:22px;height:22px}
+  .feat h3{font-size:17px;margin-bottom:6px}
+  .feat p{margin:0;color:var(--muted);font-size:15px}
+  .tablebox{overflow-x:auto;margin-top:28px}
+  .compare{border-collapse:collapse;width:100%;font-size:15px}   /* no min-width: on a phone all three columns stay in view */
+  @media(max-width:560px){.compare{font-size:14px}.compare th,.compare td{padding:9px 6px}.compare th[scope=row]{width:38%}}
+  .compare th,.compare td{padding:11px 12px;text-align:left;border-bottom:1px solid var(--border);vertical-align:top}
+  .compare thead th{font-family:Fredoka,system-ui,sans-serif;font-size:16px;font-weight:600;border-bottom:2px solid var(--border)}
+  .compare thead th{white-space:nowrap}
+  .compare thead th span{color:var(--accent)}
+  .compare th[scope=row]{font-weight:400}
+  .compare td{width:30%;color:var(--muted)}
+  .compare td.p{color:var(--ink);font-weight:600}
+  .compare .tick{color:var(--teal);font-weight:700}
+  .trial{display:flex;flex-wrap:wrap;gap:18px;align-items:center;justify-content:space-between;margin-top:28px;
+         background:var(--night);color:#fff;border-radius:18px;padding:20px 24px}
+  .trial p{margin:0;max-width:52ch;color:rgba(255,255,255,.75);font-size:15px}
+  .trial p b{color:#fff}
+  .trial .badges{margin:0}
+  .trial .store img{height:46px}
+  .pmore{margin:14px 0 0;font-size:14px;color:var(--muted)}
+  .cta p .more{color:#fff}
+
   footer{border-top:1px solid var(--border);padding:28px 0 44px;color:var(--muted);font-size:14px}
   footer .row{display:flex;gap:18px;flex-wrap:wrap;justify-content:space-between}
   footer a{color:var(--muted)}
@@ -183,6 +231,7 @@
   <div class="wrap bar">
     <a class="brand" href="/zh-hant/"><img src="/assets/icon.png" alt=""><span>SpeakZilla</span></a>
     <nav>
+      <a class="nav prem" href="/zh-hant/#premium">Premium</a>
       <a class="nav" href="/zh-hant/support.html">支援</a>
       <a class="nav" href="/zh-hant/privacy.html">隱私權</a>
       <!-- lang:start -->
@@ -207,6 +256,7 @@
       <source media="(prefers-reduced-motion: reduce)" srcset="/assets/zilla-hello.jpg">
       <img class="zilla" src="/assets/zilla-hello.webp" width="420" height="420" alt="" aria-hidden="true">
     </picture>
+    <div><a class="pill" href="#premium"><span class="tag">NEW</span>SpeakZilla Premium 來了 <span class="go" aria-hidden="true">→</span></a></div>
     <h1>開口說英文。<br><em>精準</em>知道哪裡要改。</h1>
     <p>大聲唸出一個句子，SpeakZilla 會邊聽邊為你的發音逐字評分。不用再憑感覺猜，哪些音到位了、哪些還要再試一次，都看得清清楚楚。</p>
     <div class="badges">
@@ -330,12 +380,61 @@
     </button>
   </div>
   <p class="vcap on-light">θ，「think」開頭的音 · 34 秒 · 繁體中文字幕</p>
+  <p class="vcap on-light lead-in">這支影片人人都能免費看。<a href="#premium">Premium</a> 有最難的幾個音的影片，更多陸續推出。</p>
+</section>
+
+<section class="wrap premium" id="premium">
+  <div class="pcard">
+    <span class="pbadge">SPEAKZILLA <i>PREMIUM</i></span>
+    <h2>像有家教一樣練習</h2>
+    <p class="lede">圍繞你自己的發音，和你的教練一起。Premium 是選用的：免費功能會一直免費，而且免費內容也會持續加入新的句子和單字。</p>
+    <div class="feats">
+      <div class="feat">
+        <div class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="4"/><circle cx="12" cy="12" r=".6" fill="#fff"/></svg></div>
+        <h3>每天的個人練習</h3>
+        <p>用你在課程中出錯的單字，花五分鐘練習你最難的三個音，最後的檢測會讓你看到哪裡不一樣了。</p>
+      </div>
+      <div class="feat">
+        <div class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="13" height="12" rx="2.5"/><path d="M16 10.5l5-3v9l-5-3"/></svg></div>
+        <h3>最難的音，教練來示範</h3>
+        <p>最難的幾個音有短片：舌頭放在哪裡，附你的語言字幕。更多影片陸續推出。</p>
+      </div>
+      <div class="feat">
+        <div class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7.5 15.5c-2 0-3.5-1.6-3.5-3.5s1.5-3.5 3.5-3.5c3.5 0 5.5 7 9 7 2 0 3.5-1.6 3.5-3.5s-1.5-3.5-3.5-3.5c-3.5 0-5.5 7-9 7z"/></svg></div>
+        <h3>沒有每日上限</h3>
+        <p>課程和單字練習想練多少就練多少，「我的句子」每天可以新增 10 個。</p>
+      </div>
+    </div>
+    <div class="tablebox">
+      <table class="compare">
+        <thead><tr><th scope="col"><span class="hp">功能</span></th><th scope="col">免費</th><th scope="col">Premium <span aria-hidden="true">●</span></th></tr></thead>
+        <tbody>
+          <tr><th scope="row">所有課程、發音地圖、發音練習和檢查點</th><td><span class="tick">✓</span></td><td class="p"><span class="tick">✓</span></td></tr>
+          <tr><th scope="row">全部四位教練（英式和美式）</th><td><span class="tick">✓</span></td><td class="p"><span class="tick">✓</span></td></tr>
+          <tr><th scope="row">每天的新課程</th><td>3 課（前十課沒有上限，攢下的蛋可以開更多）</td><td class="p">沒有上限</td></tr>
+          <tr><th scope="row">單字練習</th><td>每天 20 次</td><td class="p">沒有上限</td></tr>
+          <tr><th scope="row">「我的句子」：新句子</th><td>每天 1 個</td><td class="p">每天 10 個</td></tr>
+          <tr><th scope="row">依照你較弱的發音安排的個人練習</th><td>–</td><td class="p">每天</td></tr>
+          <tr><th scope="row">教練影片</th><td>θ 的影片</td><td class="p">最難的幾個音，更多陸續推出</td></tr>
+          <tr><th scope="row">廣告</th><td>沒有</td><td class="p">沒有</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="trial">
+      <p><b>年度方案可免費試用 7 天</b>，也可以選擇月繳。在 App 的「我的」頁面訂閱。隨時可以在 App Store 或 Google Play 的設定中取消；在免費的一週內取消，不會產生任何費用。</p>
+      <div class="badges">
+        <a class="store" href="https://apps.apple.com/tw/app/id6805255043"><img src="/assets/badges/app-store-zh-hant.svg" width="142" height="52" alt="在 App Store 下載"></a>
+        <a class="store" href="https://play.google.com/store/apps/details?id=com.speakzilla.app"><img src="/assets/badges/google-play-zh-hant.png" width="175" height="52" alt="在 Google Play 下載"></a>
+      </div>
+    </div>
+    <p class="pmore">想了解取消訂閱或退款？請看<a href="/zh-hant/support.html#premium">支援</a>。</p>
+  </div>
 </section>
 
 <section class="wrap">
   <div class="cta">
     <h2>現在 iPhone 和 Android 都能用</h2>
-    <p>兩個平台都免費，沒有廣告。安裝 SpeakZilla，一分鐘內就能唸出你的第一個句子。</p>
+    <p>兩個平台都免費，沒有廣告。安裝 SpeakZilla，一分鐘內就能唸出你的第一個句子。<span class="more">想要更多？Premium 從免費一週開始。</span></p>
     <div class="badges">
       <a class="store" href="https://apps.apple.com/tw/app/id6805255043"><img src="/assets/badges/app-store-zh-hant.svg" width="142" height="52" alt="在 App Store 下載"></a>
       <a class="store" href="https://play.google.com/store/apps/details?id=com.speakzilla.app"><img src="/assets/badges/google-play-zh-hant.png" width="175" height="52" alt="在 Google Play 下載"></a>

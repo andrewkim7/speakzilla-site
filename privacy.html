@@ -23,6 +23,11 @@
   .bar a.nav{color:rgba(255,255,255,.6);text-decoration:none;font-size:14px;white-space:nowrap}
   .bar nav{display:flex;align-items:center;gap:18px}
   .bar a.nav:hover{color:#fff}
+  /* Premium in the header (from the 1.5.0 launch): white with a small orange dot, one step brighter than the
+     other links. The same word in every language, as in the app. */
+  .bar a.nav.prem{color:#fff;font-weight:600}
+  .bar a.nav.prem::before{content:"";display:inline-block;width:6px;height:6px;border-radius:50%;
+                          background:var(--accent);margin-right:6px;vertical-align:2px}
   /* Language menu: one entry in the bar however many languages there are. */
   .lang-menu{position:relative}
   .lang-menu summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:5px;
@@ -70,6 +75,7 @@
   <div class="wrap bar">
     <a class="brand" href="/"><img src="assets/icon.png" alt=""><span>SpeakZilla</span></a>
     <nav>
+      <a class="nav prem" href="/#premium">Premium</a>
       <a class="nav" href="/support.html">Support</a>
       <a class="nav" href="/privacy.html">Privacy</a>
       <!-- lang:start -->
