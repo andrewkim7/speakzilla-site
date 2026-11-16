@@ -720,6 +720,7 @@ function localize(html, lang, page) {
   once('<a class="brand" href="/">', `<a class="brand" href="/${L.dir}/">`)
   html = html.split('href="/support.html').join(`href="/${L.dir}/support.html`)   // also /support.html#premium
   html = html.split('href="/#premium"').join(`href="/${L.dir}/#premium"`)        // the header's Premium link
+  html = html.split('href="/learn/"').join(`href="/${L.dir}/learn/"`)            // the header's Videos link
   html = html.split('href="/privacy.html"').join(`href="${privacy}"`)
   html = html.split('https://apps.apple.com/app/id6805255043').join(L.store)
   // hreflang tags: the English source carries every language (plus x-default) and they are absolute, so
@@ -768,9 +769,12 @@ for (const lang of Object.keys(LANGS)) {
   let idx = fs.readFileSync(path.join(root, 'index.html'), 'utf8').replace(/\r\n/g, '\n')
   idx = applyAll(idx, INDEX, lang, 'index.html')
   idx = applyAll(idx, [
-    ['<a class="nav" href="/support.html">Support</a>\n      <a class="nav" href="/privacy.html">Privacy</a>',
-      `<a class="nav" href="/support.html">${footerWords.ko[0]}</a>\n      <a class="nav" href="/privacy.html">개인정보</a>`,
-      `<a class="nav" href="/support.html">${footerWords.ja[0]}</a>\n      <a class="nav" href="/privacy.html">プライバシー</a>`],
+    // The header (2026-11-16): Videos (the /learn/ pages, build-learn.mjs) first; Privacy left the header for the
+    // footer, where it already was, so five links still fit at phone width.
+    ['<a class="nav" href="/learn/">Videos</a>', '<a class="nav" href="/learn/">영상</a>', '<a class="nav" href="/learn/">動画</a>'],
+    ['<a class="nav" href="/support.html">Support</a>\n      <!-- lang:start -->',
+      `<a class="nav" href="/support.html">${footerWords.ko[0]}</a>\n      <!-- lang:start -->`,
+      `<a class="nav" href="/support.html">${footerWords.ja[0]}</a>\n      <!-- lang:start -->`],
     ['<a href="/support.html">Support</a> &nbsp;·&nbsp;\n      <a href="/privacy.html">Privacy policy</a> &nbsp;·&nbsp;',
       `<a href="/support.html">${footerWords.ko[0]}</a> &nbsp;·&nbsp;\n      <a href="/privacy.html">${footerWords.ko[1]}${note}</a> &nbsp;·&nbsp;`,
       `<a href="/support.html">${footerWords.ja[0]}</a> &nbsp;·&nbsp;\n      <a href="/privacy.html">${footerWords.ja[1]}${note}</a> &nbsp;·&nbsp;`],
@@ -786,9 +790,12 @@ for (const lang of Object.keys(LANGS)) {
   sup = sup.slice(0, sup.indexOf(start) + start.length) + (SUPPORT_BODY[lang] ?? ZH[lang]?.__support_body__) + '\n' + sup.slice(sup.indexOf(end))
   sup = applyAll(sup, SUPPORT_HEAD, lang, 'support.html')
   sup = applyAll(sup, [
-    ['<a class="nav" href="/support.html">Support</a>\n      <a class="nav" href="/privacy.html">Privacy</a>',
-      `<a class="nav" href="/support.html">${footerWords.ko[0]}</a>\n      <a class="nav" href="/privacy.html">개인정보</a>`,
-      `<a class="nav" href="/support.html">${footerWords.ja[0]}</a>\n      <a class="nav" href="/privacy.html">プライバシー</a>`],
+    // The header (2026-11-16): Videos (the /learn/ pages, build-learn.mjs) first; Privacy left the header for the
+    // footer, where it already was, so five links still fit at phone width.
+    ['<a class="nav" href="/learn/">Videos</a>', '<a class="nav" href="/learn/">영상</a>', '<a class="nav" href="/learn/">動画</a>'],
+    ['<a class="nav" href="/support.html">Support</a>\n      <!-- lang:start -->',
+      `<a class="nav" href="/support.html">${footerWords.ko[0]}</a>\n      <!-- lang:start -->`,
+      `<a class="nav" href="/support.html">${footerWords.ja[0]}</a>\n      <!-- lang:start -->`],
     ['<a href="/support.html">Support</a> &nbsp;&middot;&nbsp;\n      <a href="/privacy.html">Privacy policy</a> &nbsp;&middot;&nbsp;',
       `<a href="/support.html">${footerWords.ko[0]}</a> &nbsp;&middot;&nbsp;\n      <a href="/privacy.html">${footerWords.ko[1]}${note}</a> &nbsp;&middot;&nbsp;`,
       `<a href="/support.html">${footerWords.ja[0]}</a> &nbsp;&middot;&nbsp;\n      <a href="/privacy.html">${footerWords.ja[1]}${note}</a> &nbsp;&middot;&nbsp;`],
@@ -808,9 +815,12 @@ for (const lang of Object.keys(LANGS)) {
     pv = pv.slice(0, pv.indexOf(start) + start.length) + body + '\n' + pv.slice(pv.indexOf(end))
     pv = applyAll(pv, [
       ['<title>Privacy policy — SpeakZilla</title>', '<title>개인정보 처리방침 — SpeakZilla</title>', '<title>プライバシーポリシー — SpeakZilla</title>'],
-      ['<a class="nav" href="/support.html">Support</a>\n      <a class="nav" href="/privacy.html">Privacy</a>',
-        `<a class="nav" href="/support.html">${footerWords.ko[0]}</a>\n      <a class="nav" href="/privacy.html">개인정보</a>`,
-        `<a class="nav" href="/support.html">${footerWords.ja[0]}</a>\n      <a class="nav" href="/privacy.html">プライバシー</a>`],
+      // The header (2026-11-16): Videos (the /learn/ pages, build-learn.mjs) first; Privacy left the header for the
+      // footer, where it already was, so five links still fit at phone width.
+      ['<a class="nav" href="/learn/">Videos</a>', '<a class="nav" href="/learn/">영상</a>', '<a class="nav" href="/learn/">動画</a>'],
+      ['<a class="nav" href="/support.html">Support</a>\n      <!-- lang:start -->',
+        `<a class="nav" href="/support.html">${footerWords.ko[0]}</a>\n      <!-- lang:start -->`,
+        `<a class="nav" href="/support.html">${footerWords.ja[0]}</a>\n      <!-- lang:start -->`],
       ['<a href="/support.html">Support</a> &nbsp;&middot;&nbsp;\n      <a href="/privacy.html">Privacy policy</a> &nbsp;&middot;&nbsp;',
         `<a href="/support.html">${footerWords.ko[0]}</a> &nbsp;&middot;&nbsp;\n      <a href="/privacy.html">${footerWords.ko[1]}</a> &nbsp;&middot;&nbsp;`,
         `<a href="/support.html">${footerWords.ja[0]}</a> &nbsp;&middot;&nbsp;\n      <a href="/privacy.html">${footerWords.ja[1]}</a> &nbsp;&middot;&nbsp;`],

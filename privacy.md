@@ -1,7 +1,7 @@
 # SpeakZilla Privacy Policy
 
 **Effective date:** 19 August 2026
-**Last updated:** 2 November 2026
+**Last updated:** 16 November 2026
 
 SpeakZilla ("SpeakZilla", "we", "us") is a pronunciation-practice app
 operated by Andrew Kim, Ontario, Canada. This policy explains
@@ -134,6 +134,11 @@ Please review each provider's own privacy documentation:
 Apple and Google act as sign-in providers if you choose them, and as the sellers of Premium if you
 subscribe: they take your payment under their own terms. They are not our processors, and their own
 privacy policies govern your account and your payments with them.
+
+**Videos on our website.** The pronunciation videos on speakzilla.app are hosted on YouTube. Nothing is loaded
+from YouTube until you tap a video to play it. When you do, the video plays in YouTube's privacy-enhanced mode
+(youtube-nocookie.com), and YouTube (Google) receives technical data such as your IP address and browser details,
+under Google's own privacy policy: https://policies.google.com/privacy. Google is not our processor for this.
 
 We may also disclose data if required by law, to protect our rights, or as
 part of a business transfer (e.g. merger or acquisition), in which case we

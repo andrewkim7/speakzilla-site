@@ -3,7 +3,7 @@
 本文是英文版隐私政策的中文译本；如中文译本与英文版有任何不一致，以英文版（https://speakzilla.app/privacy）为准。
 
 **生效日期：** 2026年8月19日
-**最后更新：** 2026年11月2日
+**最后更新：** 2026年11月16日
 
 SpeakZilla（下称 SpeakZilla 或我们）是一款发音练习应用，由加拿大安大略省的 Andrew Kim 运营。本政策说明我们收集哪些个人数据、为什么收集、与谁共享，以及你享有的选择和权利。
 
@@ -102,6 +102,8 @@ SpeakZilla（下称 SpeakZilla 或我们）是一款发音练习应用，由加�
 - RevenueCat：https://www.revenuecat.com/privacy
 
 如果你选择使用 Apple 或 Google 登录，它们即作为登录服务提供商；如果你订阅 Premium，它们作为销售方按照各自的条款收取你的付款。它们不是我们的数据处理方，你在它们那里的账号和付款受其各自的隐私政策约束。
+
+**我们网站上的视频。** speakzilla.app 上的发音视频托管在 YouTube 上。在你点击播放之前，我们不会从 YouTube 加载任何内容。你点击播放后，视频会以 YouTube 的隐私增强模式（youtube-nocookie.com）播放，YouTube（Google）会收到你的 IP 地址和浏览器信息等技术数据，这些数据受 Google 自己的隐私政策约束：https://policies.google.com/privacy。就此而言，Google 不是我们的数据处理方。
 
 在法律要求时、为保护我们的权利时，或作为业务转让（例如合并或收购）的一部分时，我们也可能披露数据；在这种情况下，我们会在需要时通知你。
 
