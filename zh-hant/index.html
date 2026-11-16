@@ -207,10 +207,12 @@
   .compare td{width:30%;color:var(--muted)}
   .compare td.p{color:var(--ink);font-weight:600}
   .compare .tick{color:var(--teal);font-weight:700}
-  .trial{display:flex;flex-wrap:wrap;gap:18px;align-items:center;justify-content:space-between;margin-top:28px;
-         background:var(--night);color:#fff;border-radius:18px;padding:20px 24px}
-  .trial p{margin:0;max-width:52ch;color:rgba(255,255,255,.75);font-size:15px}
-  .trial p b{color:#fff}
+  /* Light, with a tick and no store buttons (2026-11-16): the closing card is the one dark box with buttons. */
+  .trial{display:flex;gap:16px;align-items:flex-start;margin-top:28px;
+         background:#e6f7f4;border:1px solid #bfe9e1;color:var(--night);border-radius:18px;padding:20px 24px}
+  .trial .tk{flex:none;width:34px;height:34px;border-radius:50%;background:var(--teal);display:flex;align-items:center;justify-content:center}
+  .trial p{margin:0;color:var(--night);font-size:15px}
+  .trial p b{color:var(--night)}
   .trial .badges{margin:0}
   .trial .store img{height:46px}
   .pmore{margin:14px 0 0;font-size:14px;color:var(--muted)}
@@ -220,6 +222,27 @@
   footer .row{display:flex;gap:18px;flex-wrap:wrap;justify-content:space-between}
   footer a{color:var(--muted)}
   footer .social{margin-top:12px}
+  /* The hero's way to the videos (2026-11-16). */
+  .watchbtn{display:inline-flex;align-items:center;gap:10px;margin-top:22px;padding:12px 22px;border-radius:999px;border:1.5px solid var(--teal);color:#fff;text-decoration:none;font-weight:600;background:rgba(0,201,167,.12)}
+  .watchbtn:hover{background:rgba(0,201,167,.22)}
+  .watchbtn .pl{width:26px;height:26px;border-radius:50%;background:var(--accent);display:inline-flex;align-items:center;justify-content:center;flex:none}
+  .hero p.watch{margin-top:12px;font-size:14px}
+  /* The newest Shorts (build-learn.mjs). */
+  .vids{padding:8px 20px 36px}
+  .vids .vhead{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:12px}
+  .vids h2{font-size:clamp(24px,4vw,32px)}
+  .vids .vhead p{margin:6px 0 0;color:var(--muted);font-size:17px}
+  .vids .vall{background:var(--night);color:#fff;text-decoration:none;font-weight:700;border-radius:12px;padding:12px 18px;font-size:15px;white-space:nowrap}
+  .vcards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin-top:20px}
+  .vcard{display:block;text-decoration:none;color:var(--ink);background:#fff;border:1px solid var(--border);border-radius:18px;overflow:hidden}
+  .vcard img{width:100%;height:auto;aspect-ratio:4/3;object-fit:cover;object-position:center 52%;display:block}
+  .vcard span{display:block;padding:10px 14px 14px;font-weight:600;line-height:1.35}
+  .vcard small{display:block;font-size:12px;font-weight:700;color:#0a8077;text-transform:uppercase;letter-spacing:.04em;margin-bottom:2px}
+  @media (max-width:640px){.vcards{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.vcards .vcard:nth-child(3){display:none}.vcard span{font-size:14px;padding:8px 10px 12px}}
+  /* Back to top (2026-11-16): hidden at the top, fades in after one screen of scrolling. */
+  .totop{position:fixed;right:18px;bottom:18px;width:48px;height:48px;border-radius:50%;background:var(--night);border:2px solid #00c9a7;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 22px rgba(14,34,41,.3);opacity:0;pointer-events:none;transform:translateY(8px);transition:opacity .2s,transform .2s;z-index:30}
+  .totop.on{opacity:1;pointer-events:auto;transform:none}
+  @media (prefers-reduced-motion:reduce){.totop{transition:none}}
   body{line-break:strict}
   h1,h2,h3,.lede,.hero p{text-wrap:balance}
   .hero h1{font-size:clamp(25px,5.6vw,46px)}
@@ -263,7 +286,8 @@
       <a class="store" href="https://apps.apple.com/tw/app/id6805255043"><img src="/assets/badges/app-store-zh-hant.svg" width="142" height="52" alt="在 App Store 下載"></a>
       <a class="store" href="https://play.google.com/store/apps/details?id=com.speakzilla.app"><img src="/assets/badges/google-play-zh-hant.png" width="175" height="52" alt="在 Google Play 下載"></a>
     </div>
-    <p class="watch">還不想安裝？先到 <a href="https://www.youtube.com/@speakzilla" target="_blank" rel="noopener">YouTube</a>、<a href="https://www.tiktok.com/@speakzilla.app" target="_blank" rel="noopener">TikTok</a> 或 <a href="https://www.instagram.com/speakzilla/" target="_blank" rel="noopener">Instagram</a> 看看簡短的課程影片（英文）。</p>
+    <a class="watchbtn" href="/zh-hant/learn/"><span class="pl" aria-hidden="true"><svg viewBox="0 0 24 24" width="13" height="13"><path d="M8 5v14l11-7z" fill="#fff"/></svg></span>還不想安裝？先看一支一分鐘的課程影片</a>
+    <p class="watch">也可以到這裡看（英文）：<a href="https://www.youtube.com/@speakzilla" target="_blank" rel="noopener">YouTube</a> · <a href="https://www.tiktok.com/@speakzilla.app" target="_blank" rel="noopener">TikTok</a> · <a href="https://www.instagram.com/speakzilla/" target="_blank" rel="noopener">Instagram</a></p>
   </div>
 </div>
 
@@ -421,14 +445,28 @@
       </table>
     </div>
     <div class="trial">
+      <span class="tk" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>
       <p><b>年度方案可免費試用 7 天</b>，也可以選擇月繳。在 App 的「我的」頁面訂閱。隨時可以在 App Store 或 Google Play 的設定中取消；在免費的一週內取消，不會產生任何費用。</p>
-      <div class="badges">
-        <a class="store" href="https://apps.apple.com/tw/app/id6805255043"><img src="/assets/badges/app-store-zh-hant.svg" width="142" height="52" alt="在 App Store 下載"></a>
-        <a class="store" href="https://play.google.com/store/apps/details?id=com.speakzilla.app"><img src="/assets/badges/google-play-zh-hant.png" width="175" height="52" alt="在 Google Play 下載"></a>
-      </div>
     </div>
     <p class="pmore">想了解取消訂閱或退款？請看<a href="/zh-hant/support.html#premium">支援</a>。</p>
   </div>
+</section>
+
+<section class="wrap vids" id="videos">
+<!-- videos:start (build-learn.mjs fills this in every language) -->
+  <div class="vhead">
+    <div>
+      <h2>一分鐘糾正一個音</h2>
+      <p>四位教練的免費影片，每支都有中文講解。</p>
+    </div>
+    <a class="vall" href="/zh-hant/learn/">看全部影片 ›</a>
+  </div>
+  <div class="vcards">
+    <a class="vcard" href="/zh-hant/learn/the-silent-b-in-subtle/"><img src="/assets/learn/51.jpg" alt="" loading="lazy" width="540" height="405"><span><small>容易唸錯的字</small>SUBTLE 裡不發音的 B｜英文發音</span></a>
+    <a class="vcard" href="/zh-hant/learn/silent-k/"><img src="/assets/learn/50.jpg" alt="" loading="lazy" width="540" height="405"><span><small>容易唸錯的字</small>不發音的 K：knife, know, knee, knock｜英文發音</span></a>
+    <a class="vcard" href="/zh-hant/learn/theres-a-silent-p-in-receipt/"><img src="/assets/learn/49.jpg" alt="" loading="lazy" width="540" height="405"><span><small>容易唸錯的字</small>RECEIPT 裡有個不發音的 P｜英文發音</span></a>
+  </div>
+<!-- videos:end -->
 </section>
 
 <section class="wrap">
@@ -446,6 +484,7 @@
   <div class="wrap row">
     <div>© <span id="y"></span> SpeakZilla</div>
     <div>
+      <a href="/zh-hant/learn/">影片</a> &nbsp;·&nbsp;
       <a href="/zh-hant/support.html">支援</a> &nbsp;·&nbsp;
       <a href="/zh-hant/privacy.html">隱私權政策</a> &nbsp;·&nbsp;
       <a href="mailto:support@speakzilla.app">support@speakzilla.app</a>
@@ -607,5 +646,7 @@ document.addEventListener('keydown', function (e) {
 })();
 </script>
 
+<a class="totop" href="#" aria-label="回到頂端"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V6M6 11l6-6 6 6"/></svg></a>
+<script>(function(){var b=document.querySelector('.totop');if(!b)return;function f(){b.classList.toggle('on',scrollY>innerHeight)}addEventListener('scroll',f,{passive:true});f();b.addEventListener('click',function(e){e.preventDefault();scrollTo({top:0,behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'})})})()</script>
 </body>
 </html>

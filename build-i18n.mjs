@@ -99,14 +99,16 @@ const INDEX = [
   ['<meta property="og:title" content="SpeakZilla — Speak English, know exactly what to fix">', '<meta property="og:title" content="SpeakZilla — 영어 발음, 무엇을 고칠지 정확히 알려 드려요">', '<meta property="og:title" content="SpeakZilla — 英語の発音、何を直せばいいかが正確にわかる">'],
   ['content="Word-by-word pronunciation feedback with a British or American coach."', 'content="영국식 또는 미국식 코치와 함께하는, 단어 하나하나 발음 채점."', 'content="イギリス式またはアメリカ式のコーチと、単語ひとつひとつの発音採点。"'],
   ['<h1>Speak English.<br>Know <em>exactly</em> what to fix.</h1>', '<h1>소리 내어 말해 보세요.<br>무엇을 고칠지 <em>정확히</em> 알려 드려요.</h1>', '<h1>声に出して言ってみよう。<br>直す場所が<em>正確に</em>わかる。</h1>'],
-  ['<p>SpeakZilla listens as you read a sentence aloud and scores your pronunciation\n       word by word — so instead of guessing, you can see which sounds landed and which need another try.</p>',
+  ['<p>SpeakZilla listens as you read a sentence aloud and scores your pronunciation\n       word by word. Instead of guessing, you can see which sounds landed and which need another try.</p>',
    '<p>문장을 소리 내어 읽으면 SpeakZilla가 듣고 발음을 단어 하나하나 채점해요.\n       그래서 짐작하는 대신, 어떤 소리가 잘 전달됐고 어떤 소리를 다시 해 봐야 하는지 볼 수 있어요.</p>',
    '<p>文を声に出して読むと、SpeakZillaが聞き取り、発音を単語ひとつひとつ採点します。\n       だから当てずっぽうではなく、どの音が伝わり、どの音をもう一度やるべきかが見えます。</p>'],
   // The store badges: the artwork is swapped per language in localize(); the alt text here.
-  ['alt="Download on the App Store"', 'alt="App Store에서 다운로드"', 'alt="App Storeでダウンロード"', 3],
-  ['alt="Get it on Google Play"', 'alt="Google Play에서 다운로드"', 'alt="Google Playで入手"', 3],
-  ['Not ready to install? Watch a short lesson on ', '아직 설치가 망설여지나요? 짧은 레슨 영상을 먼저 보세요: ', 'まだインストールを迷っていますか？ 短いレッスン動画をどうぞ：'],
-  ['</a>, <a href="https://www.tiktok.com/@speakzilla.app" target="_blank" rel="noopener">TikTok</a> or <a href="https://www.instagram.com/speakzilla/" target="_blank" rel="noopener">Instagram</a>.</p>', '</a> · <a href="https://www.tiktok.com/@speakzilla.app" target="_blank" rel="noopener">TikTok</a> · <a href="https://www.instagram.com/speakzilla/" target="_blank" rel="noopener">Instagram</a> (영어)</p>', '</a> · <a href="https://www.tiktok.com/@speakzilla.app" target="_blank" rel="noopener">TikTok</a> · <a href="https://www.instagram.com/speakzilla/" target="_blank" rel="noopener">Instagram</a>（英語）</p>'],
+  ['alt="Download on the App Store"', 'alt="App Store에서 다운로드"', 'alt="App Storeでダウンロード"', 2],
+  ['alt="Get it on Google Play"', 'alt="Google Play에서 다운로드"', 'alt="Google Playで入手"', 2],
+  // The hero's way to the videos (2026-11-16), then the channels on one small line.
+  ['Not ready to install? Watch a 1-minute lesson</a>', '아직 설치가 망설여지나요? 1분 레슨 영상부터 보세요</a>', 'まだインストールを迷っていますか？ 1分のレッスン動画をどうぞ</a>'],
+  ['<p class="watch">Also on ', '<p class="watch">이곳에서도 볼 수 있어요 (영어): ', '<p class="watch">こちらでも見られます（英語）：'],
+  ['</a>, <a href="https://www.tiktok.com/@speakzilla.app" target="_blank" rel="noopener">TikTok</a> and <a href="https://www.instagram.com/speakzilla/" target="_blank" rel="noopener">Instagram</a>.</p>', '</a> · <a href="https://www.tiktok.com/@speakzilla.app" target="_blank" rel="noopener">TikTok</a> · <a href="https://www.instagram.com/speakzilla/" target="_blank" rel="noopener">Instagram</a></p>', '</a> · <a href="https://www.tiktok.com/@speakzilla.app" target="_blank" rel="noopener">TikTok</a> · <a href="https://www.instagram.com/speakzilla/" target="_blank" rel="noopener">Instagram</a></p>'],
   ['<h2>See it in action</h2>', '<h2>이렇게 보여요</h2>', '<h2>実際の画面</h2>'],
   ['aria-label="Play the video: Meet your four coaches"', 'aria-label="영상 재생: 네 명의 코치를 만나 보세요"', 'aria-label="動画を再生：4人のコーチに会おう"'],
   ['<p class="vcap">Meet your four coaches: a five-minute tour of the app. Plays from YouTube.</p>', '<p class="vcap">네 명의 코치를 만나 보세요. 5분 만에 둘러보는 앱 소개예요. 한국어 자막과 함께 YouTube에서 재생돼요.</p>', '<p class="vcap">4人のコーチに会いましょう。5分でわかるアプリ紹介です。日本語字幕つきでYouTubeから再生されます。</p>'],
@@ -730,8 +732,8 @@ function localize(html, lang, page) {
   // The stores' official badges in the page's language (Apple's marketing toolbox and Google's badge page,
   // 2026-11-05; Google's cropped to the badge). Apple's width differs by language; both stand 52 px tall.
   if (page === 'index.html') {
-    once('src="/assets/badges/app-store-en.svg" width="156"', `src="/assets/badges/app-store-${L.dir}.svg" width="${L.appleW}"`, 3)
-    once('src="/assets/badges/google-play-en.png" width="175"', `src="/assets/badges/google-play-${L.dir}.png" width="175"`, 3)
+    once('src="/assets/badges/app-store-en.svg" width="156"', `src="/assets/badges/app-store-${L.dir}.svg" width="${L.appleW}"`, 2)
+    once('src="/assets/badges/google-play-en.png" width="175"', `src="/assets/badges/google-play-${L.dir}.png" width="175"`, 2)
   }
 
   // Korean breaks between words, never inside one. Japanese has no spaces to break at, so: never start a
@@ -779,6 +781,8 @@ for (const lang of Object.keys(LANGS)) {
       `<a href="/support.html">${footerWords.ko[0]}</a> &nbsp;·&nbsp;\n      <a href="/privacy.html">${footerWords.ko[1]}${note}</a> &nbsp;·&nbsp;`,
       `<a href="/support.html">${footerWords.ja[0]}</a> &nbsp;·&nbsp;\n      <a href="/privacy.html">${footerWords.ja[1]}${note}</a> &nbsp;·&nbsp;`],
     ['Short lessons: ', '짧은 레슨 영상 (영어): ', 'ショート動画（英語）：'],
+    ['<a href="/learn/">Videos</a> &nbsp;', '<a href="/learn/">영상</a> &nbsp;', '<a href="/learn/">動画</a> &nbsp;'],
+    ['aria-label="Back to top"', 'aria-label="맨 위로"', 'aria-label="ページの先頭へ"'],
   ], lang, 'index.html')
   idx = localize(idx, lang, 'index.html')
   outputs.push([path.join(root, LANGS[lang].dir, 'index.html'), idx])
@@ -800,6 +804,8 @@ for (const lang of Object.keys(LANGS)) {
       `<a href="/support.html">${footerWords.ko[0]}</a> &nbsp;&middot;&nbsp;\n      <a href="/privacy.html">${footerWords.ko[1]}${note}</a> &nbsp;&middot;&nbsp;`,
       `<a href="/support.html">${footerWords.ja[0]}</a> &nbsp;&middot;&nbsp;\n      <a href="/privacy.html">${footerWords.ja[1]}${note}</a> &nbsp;&middot;&nbsp;`],
     ['Short lessons: ', '짧은 레슨 영상 (영어): ', 'ショート動画（英語）：'],
+    ['<a href="/learn/">Videos</a> &nbsp;', '<a href="/learn/">영상</a> &nbsp;', '<a href="/learn/">動画</a> &nbsp;'],
+    ['aria-label="Back to top"', 'aria-label="맨 위로"', 'aria-label="ページの先頭へ"'],
   ], lang, 'support.html')
   sup = sup.split('%PRIVACY_NOTE%').join(note).split('%PRIVACY%').join('/privacy.html')
   sup = localize(sup, lang, 'support.html')
@@ -825,6 +831,8 @@ for (const lang of Object.keys(LANGS)) {
         `<a href="/support.html">${footerWords.ko[0]}</a> &nbsp;&middot;&nbsp;\n      <a href="/privacy.html">${footerWords.ko[1]}</a> &nbsp;&middot;&nbsp;`,
         `<a href="/support.html">${footerWords.ja[0]}</a> &nbsp;&middot;&nbsp;\n      <a href="/privacy.html">${footerWords.ja[1]}</a> &nbsp;&middot;&nbsp;`],
       ['Short lessons: ', '짧은 레슨 영상 (영어): ', 'ショート動画（英語）：'],
+      ['<a href="/learn/">Videos</a> &nbsp;', '<a href="/learn/">영상</a> &nbsp;', '<a href="/learn/">動画</a> &nbsp;'],
+      ['aria-label="Back to top"', 'aria-label="맨 위로"', 'aria-label="ページの先頭へ"'],
       // Six-column tables (Korea's transfer table) need room to scroll sideways on a phone.
       // (The row has one column per language; the CSS is the same in both.)
     ], lang, 'privacy.html')

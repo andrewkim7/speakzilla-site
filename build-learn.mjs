@@ -61,6 +61,7 @@ const L = {
     },
     cats: { vowels: 'Vowels', consonants: 'Consonants', bva: 'British vs American', words: 'Words people get wrong', rhythm: 'Stress and rhythm' },
     or: 'or', count: (n) => `${n} videos`,
+    home: { title: 'Fix one sound in a minute', lede: 'Free videos from the four coaches, each one explained in your language.' }, top: 'Back to top',
   },
   ko: {
     html: 'ko', dir: 'ko', name: '한국어', menu: '언어',
@@ -82,6 +83,7 @@ const L = {
     },
     cats: { vowels: '모음', consonants: '자음', bva: '영국식 vs 미국식', words: '자주 틀리는 단어', rhythm: '강세와 리듬' },
     or: '또는', count: (n) => `영상 ${n}개`,
+    home: { title: '1분에 소리 하나 고치기', lede: '네 코치의 무료 영상이에요. 설명은 한국어로 볼 수 있어요.' }, top: '맨 위로',
   },
   ja: {
     html: 'ja', dir: 'ja', name: '日本語', menu: '言語',
@@ -102,6 +104,7 @@ const L = {
     },
     cats: { vowels: '母音', consonants: '子音', bva: 'イギリス英語とアメリカ英語', words: '間違えやすい単語', rhythm: '強勢とリズム' },
     or: 'または', count: (n) => `${n}本`,
+    home: { title: '1分で音をひとつ直す', lede: '4人のコーチによる無料の動画です。解説は日本語で読めます。' }, top: 'ページの先頭へ',
   },
   'zh-Hans': {
     html: 'zh-Hans', dir: 'zh-hans', name: '简体中文', menu: '语言',
@@ -122,6 +125,7 @@ const L = {
     },
     cats: { vowels: '元音', consonants: '辅音', bva: '英式与美式', words: '容易读错的词', rhythm: '重音与节奏' },
     or: '或', count: (n) => `${n} 个视频`,
+    home: { title: '一分钟纠正一个音', lede: '四位教练的免费视频，每个都有中文讲解。' }, top: '回到顶部',
   },
   'zh-Hant': {
     html: 'zh-Hant', dir: 'zh-hant', name: '繁體中文', menu: '語言',
@@ -142,6 +146,7 @@ const L = {
     },
     cats: { vowels: '母音', consonants: '子音', bva: '英式與美式', words: '容易唸錯的字', rhythm: '重音與節奏' },
     or: '或', count: (n) => `${n} 支影片`,
+    home: { title: '一分鐘糾正一個音', lede: '四位教練的免費影片，每支都有中文講解。' }, top: '回到頂端',
   },
 }
 const LANGS = Object.keys(L)
@@ -331,8 +336,13 @@ const CSS = `
   footer .row{display:flex;gap:18px;flex-wrap:wrap;justify-content:space-between}
   footer a{color:var(--muted)}
   footer .social{margin-top:12px}
+  .totop{position:fixed;right:18px;bottom:18px;width:48px;height:48px;border-radius:50%;background:var(--night);border:2px solid var(--teal);display:flex;align-items:center;justify-content:center;box-shadow:0 8px 22px rgba(14,34,41,.3);opacity:0;pointer-events:none;transform:translateY(8px);transition:opacity .2s,transform .2s;z-index:30}
+  .totop.on{opacity:1;pointer-events:auto;transform:none}
+  @media (prefers-reduced-motion:reduce){.totop{transition:none}}
 `
 
+const TOP_JS = "(function(){var b=document.querySelector('.totop');if(!b)return;function f(){b.classList.toggle('on',scrollY>innerHeight)}addEventListener('scroll',f,{passive:true});f();b.addEventListener('click',function(e){e.preventDefault();scrollTo({top:0,behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'})})})()"
+const totop = (lang) => `<a class="totop" href="#" aria-label="${L[lang].top}"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V6M6 11l6-6 6 6"/></svg></a>`
 const PLAY_JS = `document.addEventListener('click',function(e){var b=e.target.closest&&e.target.closest('button.poster');if(!b)return;var f=document.createElement('iframe');f.src='https://www.youtube-nocookie.com/embed/'+b.dataset.id+'?autoplay=1&playsinline=1&rel=0';f.title=b.getAttribute('aria-label');f.allow='autoplay; encrypted-media; picture-in-picture; fullscreen';f.setAttribute('allowfullscreen','');b.replaceWith(Object.assign(document.createElement('div'),{className:'poster'}));document.querySelector('div.poster').appendChild(f)});`
 
 function head(lang, { title, desc, tail, image }) {
@@ -387,6 +397,7 @@ function footer(lang) {
   <div class="wrap row">
     <div>© 2026 SpeakZilla</div>
     <div>
+      <a href="${urlOf(lang, 'learn/')}">${t.nav.videos}</a> &nbsp;·&nbsp;
       <a href="${urlOf(lang, 'support.html')}">${t.foot.support}</a> &nbsp;·&nbsp;
       <a href="${urlOf(lang, 'privacy.html')}">${t.foot.privacy}</a> &nbsp;·&nbsp;
       <a href="mailto:support@speakzilla.app">support@speakzilla.app</a>
@@ -465,7 +476,8 @@ ${header(lang, tail)}
   </section>
 </main>
 ${footer(lang)}
-<script>${PLAY_JS}</script>
+${totop(lang)}
+<script>${PLAY_JS}${TOP_JS}</script>
 </body>
 </html>
 `
@@ -487,10 +499,42 @@ ${header(lang, 'learn/')}
   </section>`).join('\n  ')}
 </main>
 ${footer(lang)}
+${totop(lang)}
+<script>${TOP_JS}</script>
 </body>
 </html>
 `
 }
+
+// Posting dates from SCHEDULE.md ("| Thu Sep 17 | 59 |"): Sep–Dec are 2026, Jan–Aug 2027. The episode numbers
+// are not the posting order (the schedule was reshuffled), so "newest" goes by these.
+const MON = { Jan: 0, Feb: 1, Mar: 2, Apr: 3, May: 4, Jun: 5, Jul: 6, Aug: 7, Sep: 8, Oct: 9, Nov: 10, Dec: 11 }
+const postedOn = {}
+for (const m of read(path.join(YT, 'SCHEDULE.md')).matchAll(/\b(?:Mon|Tue|Wed|Thu|Fri|Sat|Sun) (Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec) (\d+) \| (\d+) \|/g)) {
+  const mo = MON[m[1]]
+  const at = Date.UTC(mo >= 8 ? 2026 : 2027, mo, +m[2])
+  postedOn[+m[3]] = Math.min(postedOn[+m[3]] ?? Infinity, at)   // a Short listed twice: its first posting
+}
+
+// The home page's videos section, in each language's index.html (between the markers): the newest three.
+function homeVideos(lang) {
+  const t = L[lang], newest = [...eps].sort((a, b) => (postedOn[b] ?? 0) - (postedOn[a] ?? 0) || b - a).slice(0, 3)
+  const card = (n) => `<a class="vcard" href="${urlOf(lang, `learn/${slug[n]}/`)}"><img src="/assets/learn/${n}.jpg" alt="" loading="lazy" width="540" height="405"><span><small>${t.cats[category(n)]}</small>${esc(titleOf(n, lang))}</span></a>`
+  return `  <div class="vhead">
+    <div>
+      <h2>${t.home.title}</h2>
+      <p>${t.home.lede}</p>
+    </div>
+    <a class="vall" href="${urlOf(lang, 'learn/')}">${t.all}</a>
+  </div>
+  <div class="vcards">
+    ${newest.map(card).join('\n    ')}
+  </div>`
+}
+
+// The translated home, support and privacy pages first: they are copies of the English, and the videos
+// section below is filled into each copy afterwards.
+execFileSync('node', [path.join(root, 'build-i18n.mjs')], { stdio: 'inherit' })
 
 // ── Write ────────────────────────────────────────────────────────────────────────────────────────────────
 let pages = 0
@@ -509,6 +553,14 @@ for (const lang of LANGS) {
     fs.mkdirSync(path.join(base, slug[n]), { recursive: true })
     fs.writeFileSync(path.join(base, slug[n], 'index.html'), shortPage(n, lang)); pages++
   }
+}
+
+for (const lang of LANGS) {
+  const f = path.join(root, L[lang].dir, 'index.html')
+  const html = read(f)
+  const re = /(<!-- videos:start[^>]*-->)[\s\S]*?(<!-- videos:end -->)/
+  if (!re.test(html)) throw new Error(`${f}: the videos markers are missing`)
+  fs.writeFileSync(f, html.replace(re, (_, a, b) => `${a}\n${homeVideos(lang)}\n${b}`))
 }
 
 // Sitemap: replace the learn block (between the markers), keep the rest.

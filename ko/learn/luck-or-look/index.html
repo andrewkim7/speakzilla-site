@@ -95,6 +95,9 @@
   footer .row{display:flex;gap:18px;flex-wrap:wrap;justify-content:space-between}
   footer a{color:var(--muted)}
   footer .social{margin-top:12px}
+  .totop{position:fixed;right:18px;bottom:18px;width:48px;height:48px;border-radius:50%;background:var(--night);border:2px solid var(--teal);display:flex;align-items:center;justify-content:center;box-shadow:0 8px 22px rgba(14,34,41,.3);opacity:0;pointer-events:none;transform:translateY(8px);transition:opacity .2s,transform .2s;z-index:30}
+  .totop.on{opacity:1;pointer-events:auto;transform:none}
+  @media (prefers-reduced-motion:reduce){.totop{transition:none}}
 </style>
 </head>
 <body>
@@ -171,6 +174,7 @@
   <div class="wrap row">
     <div>© 2026 SpeakZilla</div>
     <div>
+      <a href="/ko/learn/">영상</a> &nbsp;·&nbsp;
       <a href="/ko/support.html">도움말</a> &nbsp;·&nbsp;
       <a href="/ko/privacy.html">개인정보 처리방침</a> &nbsp;·&nbsp;
       <a href="mailto:support@speakzilla.app">support@speakzilla.app</a>
@@ -180,6 +184,7 @@
     짧은 레슨 영상 (영어): <a href="https://www.youtube.com/@speakzilla" target="_blank" rel="noopener">YouTube</a> &nbsp;·&nbsp; <a href="https://www.tiktok.com/@speakzilla.app" target="_blank" rel="noopener">TikTok</a> &nbsp;·&nbsp; <a href="https://www.instagram.com/speakzilla/" target="_blank" rel="noopener">Instagram</a>
   </div>
 </footer>
-<script>document.addEventListener('click',function(e){var b=e.target.closest&&e.target.closest('button.poster');if(!b)return;var f=document.createElement('iframe');f.src='https://www.youtube-nocookie.com/embed/'+b.dataset.id+'?autoplay=1&playsinline=1&rel=0';f.title=b.getAttribute('aria-label');f.allow='autoplay; encrypted-media; picture-in-picture; fullscreen';f.setAttribute('allowfullscreen','');b.replaceWith(Object.assign(document.createElement('div'),{className:'poster'}));document.querySelector('div.poster').appendChild(f)});</script>
+<a class="totop" href="#" aria-label="맨 위로"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V6M6 11l6-6 6 6"/></svg></a>
+<script>document.addEventListener('click',function(e){var b=e.target.closest&&e.target.closest('button.poster');if(!b)return;var f=document.createElement('iframe');f.src='https://www.youtube-nocookie.com/embed/'+b.dataset.id+'?autoplay=1&playsinline=1&rel=0';f.title=b.getAttribute('aria-label');f.allow='autoplay; encrypted-media; picture-in-picture; fullscreen';f.setAttribute('allowfullscreen','');b.replaceWith(Object.assign(document.createElement('div'),{className:'poster'}));document.querySelector('div.poster').appendChild(f)});(function(){var b=document.querySelector('.totop');if(!b)return;function f(){b.classList.toggle('on',scrollY>innerHeight)}addEventListener('scroll',f,{passive:true});f();b.addEventListener('click',function(e){e.preventDefault();scrollTo({top:0,behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'})})})()</script>
 </body>
 </html>
