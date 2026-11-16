@@ -331,7 +331,7 @@ const CSS = `
   .cat{margin-top:40px}
   .cat h2{font-size:26px;margin-bottom:14px}
   .cat h2 small{font-family:system-ui,sans-serif;font-size:14px;font-weight:600;color:var(--muted);margin-left:8px}
-  .lede{color:var(--muted);font-size:18px;max-width:640px;margin:0}
+  .lede{color:var(--muted);font-size:18px;margin:0;text-wrap:pretty}
   footer{border-top:1px solid var(--border);padding:28px 0 44px;color:var(--muted);font-size:14px}
   footer .row{display:flex;gap:18px;flex-wrap:wrap;justify-content:space-between}
   footer a{color:var(--muted)}
